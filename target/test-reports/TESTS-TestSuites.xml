@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="ListingSpec" package="msse_auctions" tests="1" time="7.178" timestamp="2015-02-18T00:33:14">
+      <properties />
+
+      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="7.049" />
+
+      <system-out><![CDATA[--Output from create a listing--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from create a listing--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
