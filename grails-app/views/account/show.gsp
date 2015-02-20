@@ -23,6 +23,15 @@
     </g:if>
     <ol class="property-list user">
 
+        <g:if test="${accountInstance?.email}">
+            <li class="fieldcontain">
+                <span id="email-label" class="property-label"><g:message code="account.email.label" default="Email" /></span>
+
+                <span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${accountInstance}" field="email"/></span>
+
+            </li>
+        </g:if>
+
         <g:if test="${accountInstance?.username}">
             <li class="fieldcontain">
                 <span id="username-label" class="property-label"><g:message code="account.username.label" default="Username" /></span>
@@ -36,34 +45,7 @@
             <li class="fieldcontain">
                 <span id="fullName-label" class="property-label"><g:message code="account.fullName.label" default="Full Name" /></span>
 
-                <span class="property-value" aria-labelledby="fullName-label"><g:fieldValue bean="${userInstance}" field="fullName"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${accountInstance?.password}">
-            <li class="fieldcontain">
-                <span id="password-label" class="property-label"><g:message code="account.password.label" default="Password" /></span>
-
-                <span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${accountInstance}" field="password"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${accountInstance?.addressState}">
-            <li class="fieldcontain">
-                <span id="addressState-label" class="property-label"><g:message code="account.addressState.label" default="Address State" /></span>
-
-                <span class="property-value" aria-labelledby="addressState-label"><g:fieldValue bean="${accountInstance}" field="addressState"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${accountInstance?.addressCity}">
-            <li class="fieldcontain">
-                <span id="addressCity-label" class="property-label"><g:message code="account.addressCity.label" default="Address City" /></span>
-
-                <span class="property-value" aria-labelledby="addressCity-label"><g:fieldValue bean="${accountInstance}" field="addressCity"/></span>
+                <span class="property-value" aria-labelledby="fullName-label"><g:fieldValue bean="${accountInstance}" field="fullName"/></span>
 
             </li>
         </g:if>
@@ -77,6 +59,24 @@
             </li>
         </g:if>
 
+        <g:if test="${accountInstance?.addressCity}">
+            <li class="fieldcontain">
+                <span id="addressCity-label" class="property-label"><g:message code="account.addressCity.label" default="Address City" /></span>
+
+                <span class="property-value" aria-labelledby="addressCity-label"><g:fieldValue bean="${accountInstance}" field="addressCity"/></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${accountInstance?.addressState}">
+            <li class="fieldcontain">
+                <span id="addressState-label" class="property-label"><g:message code="account.addressState.label" default="Address State" /></span>
+
+                <span class="property-value" aria-labelledby="addressState-label"><g:fieldValue bean="${accountInstance}" field="addressState"/></span>
+
+            </li>
+        </g:if>
+
         <g:if test="${accountInstance?.addressZip}">
             <li class="fieldcontain">
                 <span id="addressZip-label" class="property-label"><g:message code="account.addressZip.label" default="Address Zip" /></span>
@@ -86,12 +86,17 @@
             </li>
         </g:if>
 
-        <g:if test="${accountInstance?.email}">
+        <g:if test="${accountInstance?.dateCreated}">
             <li class="fieldcontain">
-                <span id="email-label" class="property-label"><g:message code="account.email.label" default="Email" /></span>
+                <span id="dateCreated-label" class="property-label"><g:message code="account.dateCreated.label" default="Date Created" /></span>
+                <span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="M/dd/yy h:mm a" date="${accountInstance?.dateCreated}" /></span>
+            </li>
+        </g:if>
 
-                <span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${accountInstance}" field="email"/></span>
-
+        <g:if test="${accountInstance?.lastUpdated}">
+            <li class="fieldcontain">
+                <span id="lastUpdated-label" class="property-label"><g:message code="account.lastUpdated.label" default="Last Updated" /></span>
+                <span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="M/dd/yy h:mm a" date="${accountInstance?.lastUpdated}" /></span>
             </li>
         </g:if>
 

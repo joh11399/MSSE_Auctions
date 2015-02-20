@@ -1,0 +1,21 @@
+package msse_auctions
+
+import grails.test.mixin.TestFor
+import msse_auctions.BidController
+import spock.lang.Specification
+
+/**
+ * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
+ */
+@TestFor(BidController)
+class BidControllerSpec extends Specification {
+
+    def setup() {
+    }
+
+    def cleanup() {
+    }
+
+    void "test something"() {
+    }
+}

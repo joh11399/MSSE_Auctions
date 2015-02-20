@@ -2,6 +2,15 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'email', 'error')} required">
+    <label for="email">
+        <g:message code="account.email.label" default="Email" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="email" required="" value="${accountInstance?.email}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
     <label for="username">
         <g:message code="account.username.label" default="Username" />
@@ -29,12 +38,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'addressState', 'error')} required">
-    <label for="addressState">
-        <g:message code="account.addressState.label" default="Address State" />
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressStreet', 'error')} required">
+    <label for="addressStreet">
+        <g:message code="account.addressStreet.label" default="Address Street" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select name="addressState" from="${accountInstance.constraints.addressState.inList}" required="" value="${accountInstance?.addressState}" valueMessagePrefix="account.addressState"/>
+    <g:textField name="addressStreet" required="" value="${accountInstance?.addressStreet}"/>
 
 </div>
 
@@ -47,12 +56,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressStreet', 'error')} required">
-    <label for="addressStreet">
-        <g:message code="account.addressStreet.label" default="Address Street" />
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressState', 'error')} required">
+    <label for="addressState">
+        <g:message code="account.addressState.label" default="Address State" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="addressStreet" required="" value="${accountInstance?.addressStreet}"/>
+    <g:select name="addressState" from="${accountInstance.constraints.addressState.inList}" required="" value="${accountInstance?.addressState}" valueMessagePrefix="account.addressState"/>
 
 </div>
 
@@ -65,12 +74,18 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'email', 'error')} required">
-    <label for="email">
-        <g:message code="account.email.label" default="Email" />
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'dateCreated', 'error')} required">
+    <label for="dateCreated">
+        <g:message code="account.dateCreated.label" default="Date Created" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="email" required="" value="${accountInstance?.email}"/>
-
+    <g:datePicker name="dateCreated" precision="day"  value="${accountInstance?.dateCreated}"  />
+</div>
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'lastUpdated', 'error')} required">
+    <label for="lastUpdated">
+        <g:message code="account.lastUpdated.label" default="Last Updated" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="lastUpdated" precision="day"  value="${accountInstance?.lastUpdated}"  />
 </div>
 

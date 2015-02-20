@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="ListingSpec" package="msse_auctions" tests="1" time="7.178" timestamp="2015-02-18T00:33:14">
+  <testsuite errors="1" failures="0" hostname="F7DP9W1" id="0" name="AccountSpec" package="msse_auctions" tests="3" time="3.678" timestamp="2015-02-20T19:18:45">
       <properties />
 
-      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="7.049" />
+      <testcase classname="msse_auctions.AccountSpec" name="successfully create a user" time="2.08">
+          <error message="Validation error occurred during call to save():&#xa;- Field error in object &apos;msse_auctions.Account&apos; on field &apos;username&apos;: rejected value [joh11399]; codes [msse_auctions.Account.username.unique.error.msse_auctions.Account.username,msse_auctions.Account.username.unique.error.username,msse_auctions.Account.username.unique.error.java.lang.String,msse_auctions.Account.username.unique.error,account.username.unique.error.msse_auctions.Account.username,account.username.unique.error.username,account.username.unique.error.java.lang.String,account.username.unique.error,msse_auctions.Account.username.unique.msse_auctions.Account.username,msse_auctions.Account.username.unique.username,msse_auctions.Account.username.unique.java.lang.String,msse_auctions.Account.username.unique,account.username.unique.msse_auctions.Account.username,account.username.unique.username,account.username.unique.java.lang.String,account.username.unique,unique.msse_auctions.Account.username,unique.username,unique.java.lang.String,unique]; arguments [username,class msse_auctions.Account,joh11399]; default message [null]&#xa;- Field error in object &apos;msse_auctions.Account&apos; on field &apos;password&apos;: rejected value [P@$sW*rD]; codes [msse_auctions.Account.password.validator.error.msse_auctions.Account.password,msse_auctions.Account.password.validator.error.password,msse_auctions.Account.password.validator.error.java.lang.String,msse_auctions.Account.password.validator.error,account.password.validator.error.msse_auctions.Account.password,account.password.validator.error.password,account.password.validator.error.java.lang.String,account.password.validator.error,msse_auctions.Account.password.validator.invalid.msse_auctions.Account.password,msse_auctions.Account.password.validator.invalid.password,msse_auctions.Account.password.validator.invalid.java.lang.String,msse_auctions.Account.password.validator.invalid,account.password.validator.invalid.msse_auctions.Account.password,account.password.validator.invalid.password,account.password.validator.invalid.java.lang.String,account.password.validator.invalid,validator.invalid.msse_auctions.Account.password,validator.invalid.password,validator.invalid.java.lang.String,validator.invalid]; arguments [password,class msse_auctions.Account,P@$sW*rD]; default message [Property [{0}] of class [{1}] with value [{2}] does not pass custom validation]&#xa;" type="grails.validation.ValidationException">grails.validation.ValidationException: Validation error occurred during call to save():
+- Field error in object &apos;msse_auctions.Account&apos; on field &apos;username&apos;: rejected value [joh11399]; codes [msse_auctions.Account.username.unique.error.msse_auctions.Account.username,msse_auctions.Account.username.unique.error.username,msse_auctions.Account.username.unique.error.java.lang.String,msse_auctions.Account.username.unique.error,account.username.unique.error.msse_auctions.Account.username,account.username.unique.error.username,account.username.unique.error.java.lang.String,account.username.unique.error,msse_auctions.Account.username.unique.msse_auctions.Account.username,msse_auctions.Account.username.unique.username,msse_auctions.Account.username.unique.java.lang.String,msse_auctions.Account.username.unique,account.username.unique.msse_auctions.Account.username,account.username.unique.username,account.username.unique.java.lang.String,account.username.unique,unique.msse_auctions.Account.username,unique.username,unique.java.lang.String,unique]; arguments [username,class msse_auctions.Account,joh11399]; default message [null]
+- Field error in object &apos;msse_auctions.Account&apos; on field &apos;password&apos;: rejected value [P@$sW*rD]; codes [msse_auctions.Account.password.validator.error.msse_auctions.Account.password,msse_auctions.Account.password.validator.error.password,msse_auctions.Account.password.validator.error.java.lang.String,msse_auctions.Account.password.validator.error,account.password.validator.error.msse_auctions.Account.password,account.password.validator.error.password,account.password.validator.error.java.lang.String,account.password.validator.error,msse_auctions.Account.password.validator.invalid.msse_auctions.Account.password,msse_auctions.Account.password.validator.invalid.password,msse_auctions.Account.password.validator.invalid.java.lang.String,msse_auctions.Account.password.validator.invalid,account.password.validator.invalid.msse_auctions.Account.password,account.password.validator.invalid.password,account.password.validator.invalid.java.lang.String,account.password.validator.invalid,validator.invalid.msse_auctions.Account.password,validator.invalid.password,validator.invalid.java.lang.String,validator.invalid]; arguments [password,class msse_auctions.Account,P@$sW*rD]; default message [Property [{0}] of class [{1}] with value [{2}] does not pass custom validation]
+
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrConstructorNewInstance(ReflectiveInterceptor.java:1002)
+	at org.grails.datastore.gorm.GormInstanceApi.doSave(GormInstanceApi.groovy:182)
+	at org.grails.datastore.gorm.GormInstanceApi.save_closure5(GormInstanceApi.groovy:162)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
+	at groovy.lang.Closure.call(Closure.java:423)
+	at org.grails.datastore.mapping.core.DatastoreUtils.execute(DatastoreUtils.java:302)
+	at org.grails.datastore.gorm.AbstractDatastoreApi.execute(AbstractDatastoreApi.groovy:37)
+	at org.grails.datastore.gorm.GormInstanceApi.save(GormInstanceApi.groovy:161)
+	at msse_auctions.AccountSpec.successfully create a user(AccountSpec.groovy:15)
+</error>
+
+      </testcase>
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create a user:  bad username" time="1.442" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create a user:  bad email" time="0.045" />
+
+      <system-out><![CDATA[--Output from successfully create a user--
+--Output from unsuccessfully create a user:  bad username--
+--Output from unsuccessfully create a user:  bad email--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from successfully create a user--
+--Output from unsuccessfully create a user:  bad username--
+--Output from unsuccessfully create a user:  bad email--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="1" failures="0" hostname="F7DP9W1" id="1" name="ListingSpec" package="msse_auctions" tests="1" time="0.663" timestamp="2015-02-20T19:18:49">
+      <properties />
+
+      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="0.65">
+          <error message="Validation error occurred during call to save():&#xa;- Field error in object &apos;msse_auctions.Account&apos; on field &apos;password&apos;: rejected value [P@$sW*rD]; codes [msse_auctions.Account.password.validator.error.msse_auctions.Account.password,msse_auctions.Account.password.validator.error.password,msse_auctions.Account.password.validator.error.java.lang.String,msse_auctions.Account.password.validator.error,account.password.validator.error.msse_auctions.Account.password,account.password.validator.error.password,account.password.validator.error.java.lang.String,account.password.validator.error,msse_auctions.Account.password.validator.invalid.msse_auctions.Account.password,msse_auctions.Account.password.validator.invalid.password,msse_auctions.Account.password.validator.invalid.java.lang.String,msse_auctions.Account.password.validator.invalid,account.password.validator.invalid.msse_auctions.Account.password,account.password.validator.invalid.password,account.password.validator.invalid.java.lang.String,account.password.validator.invalid,validator.invalid.msse_auctions.Account.password,validator.invalid.password,validator.invalid.java.lang.String,validator.invalid]; arguments [password,class msse_auctions.Account,P@$sW*rD]; default message [Property [{0}] of class [{1}] with value [{2}] does not pass custom validation]&#xa;" type="grails.validation.ValidationException">grails.validation.ValidationException: Validation error occurred during call to save():
+- Field error in object &apos;msse_auctions.Account&apos; on field &apos;password&apos;: rejected value [P@$sW*rD]; codes [msse_auctions.Account.password.validator.error.msse_auctions.Account.password,msse_auctions.Account.password.validator.error.password,msse_auctions.Account.password.validator.error.java.lang.String,msse_auctions.Account.password.validator.error,account.password.validator.error.msse_auctions.Account.password,account.password.validator.error.password,account.password.validator.error.java.lang.String,account.password.validator.error,msse_auctions.Account.password.validator.invalid.msse_auctions.Account.password,msse_auctions.Account.password.validator.invalid.password,msse_auctions.Account.password.validator.invalid.java.lang.String,msse_auctions.Account.password.validator.invalid,account.password.validator.invalid.msse_auctions.Account.password,account.password.validator.invalid.password,account.password.validator.invalid.java.lang.String,account.password.validator.invalid,validator.invalid.msse_auctions.Account.password,validator.invalid.password,validator.invalid.java.lang.String,validator.invalid]; arguments [password,class msse_auctions.Account,P@$sW*rD]; default message [Property [{0}] of class [{1}] with value [{2}] does not pass custom validation]
+
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrConstructorNewInstance(ReflectiveInterceptor.java:1002)
+	at org.grails.datastore.gorm.GormInstanceApi.doSave(GormInstanceApi.groovy:182)
+	at org.grails.datastore.gorm.GormInstanceApi.save_closure5(GormInstanceApi.groovy:162)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
+	at groovy.lang.Closure.call(Closure.java:423)
+	at org.grails.datastore.mapping.core.DatastoreUtils.execute(DatastoreUtils.java:302)
+	at org.grails.datastore.gorm.AbstractDatastoreApi.execute(AbstractDatastoreApi.groovy:37)
+	at org.grails.datastore.gorm.GormInstanceApi.save(GormInstanceApi.groovy:161)
+	at msse_auctions.ListingSpec.create a listing(ListingSpec.groovy:16)
+</error>
+
+      </testcase>
 
       <system-out><![CDATA[--Output from create a listing--
 ]]></system-out>

@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'owner', 'error')} required">
-    <label for="owner">
-        <g:message code="listing.owner.label" default="Owner" />
+<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'seller', 'error')} required">
+    <label for="seller">
+        <g:message code="listing.seller.label" default="Seller" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="owner" name="owner.id" from="${msse_auctions.Account.list()}" optionKey="id" required="" value="${listingInstance?.owner?.id}" class="many-to-one"/>
+    <g:select id="seller" name="seller.id" from="${msse_auctions.Account.list()}" optionKey="id" required="" value="${listingInstance?.seller?.id}" class="many-to-one"/>
 
 </div>
 
@@ -38,12 +38,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'endDate', 'error')} required">
-    <label for="endDate">
-        <g:message code="listing.endDate.label" default="End Date" />
+<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'days', 'error')} required">
+    <label for="days">
+        <g:message code="listing.days.label" default="Days" />
         <span class="required-indicator">*</span>
     </label>
-    <g:datePicker name="endDate" precision="day"  value="${listingInstance?.endDate}"  />
+    <g:textField name="days" precision="day"  value="${listingInstance?.days}"  />
 
 </div>
 
@@ -56,12 +56,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'buyAmount', 'error')} required">
-    <label for="buyAmount">
-        <g:message code="listing.buyAmount.label" default="Buy Amount" />
+<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'deliverOption', 'error')} required">
+    <label for="deliverOption">
+        <g:message code="listing.deliverOption.label" default="Deliver Option" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="buyAmount" required="" value="${listingInstance?.buyAmount}"/>
-
+    <g:select name="deliverOption" from="${listingInstance.constraints.deliverOption.inList}" required="" value="${listingInstance?.deliverOption}" valueMessagePrefix="account.addressState"/>
 </div>
+
 

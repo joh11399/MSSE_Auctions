@@ -1,22 +1,19 @@
 package msse_auctions
 
 class Bid {
-    String id
-    Listing auction
-    Account bidder
-    String amount
-    Date bidDate
-    String toString(){
-        "${bidder} (${amount})"
-    }
     Date dateCreated
     Date lastUpdated
 
+    Listing listing
+    Account bidder
+    float amount
+    String toString(){
+        "${bidder} (${amount})"
+    }
+
     static constraints = {
-        id(blank: false, unique: true)
-        auction()
+        listing()
         bidder()
         amount()
-        bidDate()
     }
 }

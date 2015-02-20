@@ -1,11 +1,13 @@
-<%@ page import="msse_auctions.Account; msse_auctions.Listing; msse_auctions.Bid" %>
+<%@ page import="msse_auctions.Bid" %>
 
-<div class="fieldcontain ${hasErrors(bean: bidInstance, field: 'auction', 'error')} required">
+
+
+<div class="fieldcontain ${hasErrors(bean: bidInstance, field: 'listing', 'error')} required">
     <label for="auction">
-        <g:message code="bid.auction.label" default="Auction" />
+        <g:message code="bid.listing.label" default="Listing" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="auction" name="auction.id" from="${msse_auctions.Listing.list()}" optionKey="id" required="" value="${bidInstance?.auction?.id}" class="many-to-one"/>
+    <g:select id="listing" name="listing.id" from="${msse_auctions.Listing.list()}" optionKey="id" required="" value="${bidInstance?.listing?.id}" class="many-to-one"/>
 
 </div>
 
@@ -27,12 +29,4 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: bidInstance, field: 'bidDate', 'error')} required">
-    <label for="bidDate">
-        <g:message code="bid.bidDate.label" default="Bid Date" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:datePicker name="bidDate" precision="day"  value="${bidInstance?.bidDate}"  />
-
-</div>
 

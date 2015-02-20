@@ -1,10 +1,10 @@
 
-<%@ page import="msse_auctions.Auction" %>
+<%@ page import="msse_auctions.Listing" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'auction.label', default: 'Auction')}" />
+    <g:set var="entityName" value="${message(code: 'listing.label', default: 'Listing')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -23,11 +23,11 @@
     </g:if>
     <ol class="property-list auction">
 
-        <g:if test="${listingInstance?.owner}">
+        <g:if test="${listingInstance?.seller}">
             <li class="fieldcontain">
-                <span id="owner-label" class="property-label"><g:message code="listing.owner.label" default="Owner" /></span>
+                <span id="seller-label" class="property-label"><g:message code="listing.seller.label" default="Owner" /></span>
 
-                <span class="property-value" aria-labelledby="owner-label"><g:link controller="account" action="show" id="${listingInstance?.owner?.id}">${listingInstance?.owner?.encodeAsHTML()}</g:link></span>
+                <span class="property-value" aria-labelledby="seller-label"><g:link controller="account" action="show" id="${listingInstance?.seller?.id}">${listingInstance?.seller?.encodeAsHTML()}</g:link></span>
 
             </li>
         </g:if>
@@ -59,11 +59,11 @@
             </li>
         </g:if>
 
-        <g:if test="${listingInstance?.endDate}">
+        <g:if test="${listingInstance?.days}">
             <li class="fieldcontain">
-                <span id="endDate-label" class="property-label"><g:message code="listing.endDate.label" default="End Date" /></span>
+                <span id="days-label" class="property-label"><g:message code="listing.days.label" default="Days" /></span>
 
-                <span class="property-value" aria-labelledby="endDate-label"><g:formatDate date="${listingInstance?.endDate}" /></span>
+                <span class="property-value" aria-labelledby="days-label"><g:fieldValue bean="${listingInstance}" field="days" /></span>
 
             </li>
         </g:if>
@@ -76,12 +76,11 @@
 
             </li>
         </g:if>
-
-        <g:if test="${listingInstance?.buyAmount}">
+        <g:if test="${listingInstance?.deliverOption}">
             <li class="fieldcontain">
-                <span id="buyAmount-label" class="property-label"><g:message code="listing.buyAmount.label" default="Buy Amount" /></span>
+                <span id="deliverOption-label" class="property-label"><g:message code="listing.deliverOption.label" default="Deliver Option" /></span>
 
-                <span class="property-value" aria-labelledby="buyAmount-label"><g:fieldValue bean="${listingInstance}" field="buyAmount"/></span>
+                <span class="property-value" aria-labelledby="deliverOption-label"><g:fieldValue bean="${listingInstance}" field="deliverOption"/></span>
 
             </li>
         </g:if>

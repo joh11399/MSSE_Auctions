@@ -18,7 +18,12 @@ class Account {
     static constraints = {
         username(blank: false, unique: true)
         fullName()
-        password(password: true)
+        password(blank: false, password: true, size: 2..16, validator: {val ->
+            def containsNumber = val.matches(".*\\d.*")
+            def containsLetter = val ==~ /.*[a-zA-Z].*/
+
+            return containsNumber && containsLetter
+        })
         email(email: true)
         addressState(inList:["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
                              "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",

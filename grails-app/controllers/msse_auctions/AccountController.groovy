@@ -1,8 +1,12 @@
 package msse_auctions
 
+import static org.springframework.http.HttpStatus.OK
+
 class AccountController {
 
-    def index() {
+    def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Account.list(params), model:[accountInstanceCount: Account.count()]
     }
 
     def show(Account accountInstance) {
@@ -18,10 +22,7 @@ class AccountController {
             redirect(controller: 'Listing', action:"index")
         }else{
 
-
-            //TODO: remove this....
-            /////////////////////flash.message = "Sorry, ${params.username}. Please try again."
-
+            flash.message = "Sorry, ${params.username}. Please try again."
 
             redirect(action:"login")
         }
@@ -42,6 +43,31 @@ class AccountController {
         }else{
             accountInstance.save()
             authenticate()
+        }
+    }
+
+    def edit(Account accountInstance) {
+        respond accountInstance
+    }
+    def update(Account accountInstance) {
+        if (accountInstance == null) {
+            notFound()
+            return
+        }
+
+        if (accountInstance.hasErrors()) {
+            respond accountInstance.errors, view:'edit'
+            return
+        }
+
+        accountInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Account.label', default: 'Account'), accountInstance.id])
+                redirect accountInstance
+            }
+            '*'{ respond accountInstance, [status: OK] }
         }
     }
 }
