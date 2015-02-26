@@ -59,7 +59,6 @@ class ListingControllerSpec extends Specification {
         model.listingInstanceList.size() <= 10
     }
 
-
     def "index with search text entered returns no more than 10 open listings with name or description containing the search text"(){
         given:
         def searchText = 'test'
