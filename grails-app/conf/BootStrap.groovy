@@ -9,17 +9,8 @@ class BootStrap {
 
     def init = { servletContext ->
         environments{
-
             if(Environment != Environment.PRODUCTION) {
                 addH2items()
-            }
-
-            development {
-
-            }
-
-            test{
-
             }
         }
     }
@@ -34,9 +25,9 @@ class BootStrap {
             twoHours = twoHours + 2.hours
         }
 
-        def a1 = new Account( email: 'dan1@dan.com', password: 'P@$sW0rD',name: 'Dan Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
-        def a2 = new Account( email: 'dan2@dan.com',  password: 'a1b2c3po', name: 'Dan Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
-        def a3 = new Account(email: 'dan3@dan.com', password: 'abc12345', name: 'Heather Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        def a1 = new Account( email: 'dan@email.com', password: 'P@$sW0rD',name: 'Dan Johnson', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(failOnError: true)
+        def a2 = new Account( email: 'j.smith@smith.com',  password: 'a1b2c3po', name: 'John Smith', addressStreet: '456 Avenue St. Se', addressCity: 'St. Paul', addressState: 'MN', addressZip: '23456').save(failOnError: true)
+        def a3 = new Account(email: 'sally@swanson.com', password: 'abc12345', name: 'Sally Swanson', addressStreet: '789 Boulevard Cir', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '34567').save(failOnError: true)
 
         def l1 = new Listing(name: 'lamp', description: 'it\'s a lamp', dateCreated: new Date() - 11, startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a3).save(failOnError: true)
         def l2 = new Listing(name: 'antique dresser', description: 'it\'s an antique dresser', dateCreated: new Date() - 9, startDate: new Date() - 9, days: 9, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)

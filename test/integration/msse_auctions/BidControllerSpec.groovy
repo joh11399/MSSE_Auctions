@@ -17,6 +17,9 @@ class BidControllerSpec extends Specification {
     }
 
     /*
+
+    //TODO  this doesn't work...
+
     def "create a new bid"() {
         given:
         def l1 = Listing.findByName('open listing BidController test')
@@ -37,9 +40,15 @@ class BidControllerSpec extends Specification {
     def "unsuccessfully create a new bid:  amount is below the startingPrice"() {
         given:
         def l1 = Listing.findByName('open listing BidController test')
-        def b1 = new Bid(listing: l1, bidder: Account.findByEmail('bidControllerTest@email.com'), amount: 9.99)
 
         when:
+        def b1 = new Bid(listing: l1, bidder: Account.findByEmail('bidControllerTest@email.com'), amount: 9.99)
+
+        println('----------------------------------------------')
+        println(l1)
+        println(b1)
+        println('----------------------------------------------')
+
         controller.save(b1)
 
         then:
@@ -60,5 +69,8 @@ class BidControllerSpec extends Specification {
         then:
         //the string will still show the original bid and price, because the 20.25 bid was not accepted
         Bid.findByListing(l1).toString() == 'Test Name (20.0)'
+
+        cleanup:
+        Bid.findByListing(l1).delete()
     }
 }

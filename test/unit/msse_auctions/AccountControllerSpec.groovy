@@ -25,18 +25,18 @@ class AccountControllerSpec extends Specification {
     def "create account"() {
         given:
         request.method = 'POST'
-        controller.request.json = '{"class":"msse_auctions.Account","email":"dan@johnson.com","password":"danjohnson1","name":"danjohnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"danjohnson1","name":"danjohnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
 
         when:
         controller.save()
 
         then:
         Account.list().size() == 1
-        def newAccount = Account.findByEmail('dan@johnson.com')
+        def newAccount = Account.findByEmail('accountController@test.com')
         newAccount != null
 
         cleanup:
-        Account.findByEmail('dan@johnson.com').delete()
+        Account.findByEmail('accountController@test.com').delete()
 
     }
     def "create account with bad email"() {
@@ -54,7 +54,7 @@ class AccountControllerSpec extends Specification {
     def "create account via json post with too short of a password"(){
         given:
         request.method = 'POST'
-        controller.request.json = '{"class":"msse_auctions.Account","email":"dan@johnson.com","password":"a1","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"a1","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
 
         when:
         controller.save()
@@ -66,7 +66,7 @@ class AccountControllerSpec extends Specification {
     def "create account via json post with a password without a number"(){
         given:
         request.method = 'POST'
-        controller.request.json = '{"class":"msse_auctions.Account","email":"dan@johnson.com","password":"abcdefgh","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"abcdefgh","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
 
         when:
         controller.save()
@@ -78,7 +78,7 @@ class AccountControllerSpec extends Specification {
     def "create account via json post with a password without a letter"(){
         given:
         request.method = 'POST'
-        controller.request.json = '{"class":"msse_auctions.Account","email":"dan@johnson.com","password":"12345678","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"12345678","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
 
         when:
         controller.save()
@@ -89,16 +89,19 @@ class AccountControllerSpec extends Specification {
 
     def "update account"(){
         given:
-        new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
+        new Account(email: 'accountController@test.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
         request.method = 'POST'
-        controller.request.json = '{"class":"msse_auctions.Account","id":"1","email":"dan@dan.com","password":"danjohnson1","name":"danjohnson","addressStreet":"123","addressCity":"789","addressState":"MN","addressZip":"54321"}'
+        controller.request.json = '{"class":"msse_auctions.Account","id":"1","email":"accountController@test.com","password":"danjohnson1","name":"danjohnson","addressStreet":"123","addressCity":"789","addressState":"MN","addressZip":"54321"}'
 
         when:
         controller.update()
 
         then:
         Account.list().size() == 1
-        def updatedAccount = Account.findByEmail('dan@dan.com')
+        def updatedAccount = Account.findByEmail('accountController@test.com')
         updatedAccount.addressCity == '789'
+
+        cleanup:
+        Account.findByEmail('accountController@test.com').delete()
     }
 }
