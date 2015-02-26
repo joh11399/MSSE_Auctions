@@ -137,12 +137,12 @@
     <url-pattern>/grails-errorhandler</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>grails</servlet-name>
-    <url-pattern>*.dispatch</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>grails-remote-control</servlet-name>
     <url-pattern>/grails-remote-control</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>grails</servlet-name>
+    <url-pattern>*.dispatch</url-pattern>
   </servlet-mapping>
 
     <session-config>

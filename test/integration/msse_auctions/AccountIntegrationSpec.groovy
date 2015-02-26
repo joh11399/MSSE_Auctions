@@ -1,11 +1,10 @@
 package msse_auctions
 
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-@TestFor(AccountController)
 class AccountIntegrationSpec extends Specification {
 
+    //def controller = new AccountController()
 
     void "unsuccessfully create an account:  duplicate email"() {
         given:

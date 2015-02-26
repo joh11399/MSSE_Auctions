@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="1.114" timestamp="2015-02-26T03:21:14">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="12.877" timestamp="2015-02-26T05:27:38">
       <properties />
 
-      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="1.063" />
+      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="12.876" />
+
+      <system-out><![CDATA[--Output from gets account details--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from gets account details--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="0.271" timestamp="2015-02-26T05:26:58">
+      <properties />
+
+      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="0.269" />
 
       <system-out><![CDATA[--Output from unsuccessfully create an account:  duplicate email--
 ]]></system-out>
@@ -12,14 +24,14 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="BidControllerSpec" package="msse_auctions" tests="3" time="1.042" timestamp="2015-02-26T03:21:15">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidControllerSpec" package="msse_auctions" tests="3" time="0.568" timestamp="2015-02-26T05:26:59">
       <properties />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="create a new bid" time="0.793" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="create a new bid" time="0.47" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.17" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.04" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.063" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.057" />
 
       <system-out><![CDATA[--Output from create a new bid--
 --Output from unsuccessfully create a new bid:  amount is below the startingPrice--
@@ -32,16 +44,17 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidSpec" package="msse_auctions" tests="3" time="1.895" timestamp="2015-02-26T03:21:16">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidSpec" package="msse_auctions" tests="3" time="0.102" timestamp="2015-02-26T05:26:59">
       <properties />
 
-      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="1.725" />
+      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="0.043" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.062" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.026" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.039" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.027" />
 
       <system-out><![CDATA[--Output from create a bid--
+Test Name (20.0)
 --Output from unsuccessfully create a bid:  null listing--
 --Output from unsuccessfully create a bid:  null bidder--
 ]]></system-out>
@@ -52,84 +65,10 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="6" failures="0" hostname="F7DP9W1" id="3" name="ListingControllerSpec" package="msse_auctions" tests="6" time="0.806" timestamp="2015-02-26T03:21:18">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingControllerSpec" package="msse_auctions" tests="1" time="0.668" timestamp="2015-02-26T05:26:59">
       <properties />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 open listings" time="0.45">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at msse_auctions.ListingController.index_closure1(ListingController.groovy:70)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at groovy.lang.Closure.call(Closure.java:439)
-	at msse_auctions.ListingController.index(ListingController.groovy:69)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with Show Completed Listings checked returns no more than 10 open or completed listings" time="0.046">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at msse_auctions.ListingController.index_closure1(ListingController.groovy:70)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at groovy.lang.Closure.call(Closure.java:439)
-	at msse_auctions.ListingController.index(ListingController.groovy:69)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with search text entered returns no more than 10 open listings with name or description containing the search text" time="0.081">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at msse_auctions.ListingController.index_closure1(ListingController.groovy:70)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at groovy.lang.Closure.call(Closure.java:439)
-	at msse_auctions.ListingController.index(ListingController.groovy:69)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with &apos;page 2&apos; requested returns no more than 10 open listings" time="0.052">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at msse_auctions.ListingController.index_closure1(ListingController.groovy:70)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at groovy.lang.Closure.call(Closure.java:439)
-	at msse_auctions.ListingController.index(ListingController.groovy:69)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingControllerSpec" name="show listing returns listing values for an open listing" time="0.09">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at msse_auctions.ListingController.show(ListingController.groovy:128)
-	at msse_auctions.ListingControllerSpec.show listing returns listing values for an open listing(ListingControllerSpec.groovy:102)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingControllerSpec" name="show listing returns listing values for a completed listing" time="0.045">
-          <error message="Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly." type="java.lang.IllegalStateException">java.lang.IllegalStateException: Method on class [msse_auctions.Bid] was used outside of a Grails application. If running in the context of a test using the mocking API or bootstrap Grails correctly.
-	at msse_auctions.BidController.getBids(BidController.groovy:58)
-	at msse_auctions.ListingController.getListingBidderAndState(ListingController.groovy:104)
-	at msse_auctions.ListingController.show(ListingController.groovy:128)
-	at msse_auctions.ListingControllerSpec.show listing returns listing values for a completed listing(ListingControllerSpec.groovy:120)
-</error>
-
-      </testcase>
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 open listings" time="0.654" />
 
       <system-out><![CDATA[--Output from index with no parameters returns no more than 10 open listings--
 
@@ -140,1351 +79,43 @@ max   :  null
 offset:  null
 sort  :  null
 order :  null
---Output from index with Show Completed Listings checked returns no more than 10 open or completed listings--
-
-descr:  null
-descr:  
-params:  [completedListingsCheckbox:on]
-max   :  null
-offset:  null
-sort  :  null
-order :  null
---Output from index with search text entered returns no more than 10 open listings with name or description containing the search text--
-
-descr:  test
-descr:  test
-params:  [searchDescription:test]
-max   :  null
-offset:  null
-sort  :  null
-order :  null
---Output from index with 'page 2' requested returns no more than 10 open listings--
-
-descr:  null
-descr:  
-params:  [offset:10]
-max   :  null
-offset:  10
-sort  :  null
-order :  null
---Output from show listing returns listing values for an open listing--
---Output from show listing returns listing values for a completed listing--
+msse_auctions.ListingController@2662e3ff
 ]]></system-out>
 
       <system-err><![CDATA[--Output from index with no parameters returns no more than 10 open listings--
---Output from index with Show Completed Listings checked returns no more than 10 open or completed listings--
---Output from index with search text entered returns no more than 10 open listings with name or description containing the search text--
---Output from index with 'page 2' requested returns no more than 10 open listings--
---Output from show listing returns listing values for an open listing--
---Output from show listing returns listing values for a completed listing--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="14" failures="0" hostname="F7DP9W1" id="4" name="ListingSpec" package="msse_auctions" tests="14" time="2.659" timestamp="2015-02-26T03:21:18">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingSpec" package="msse_auctions" tests="14" time="0.289" timestamp="2015-02-26T05:27:00">
       <properties />
 
-      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="0.398">
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing(GormStaticApi.groovy:105)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at msse_auctions.ListingSpec.create a listing(ListingSpec.groovy:25)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="0.046" />
 
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null seller" time="0.018" />
 
-      </testcase>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null seller" time="0.214">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.02" />
 
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank name" time="0.021" />
 
-      </testcase>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.083">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.018" />
 
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.023" />
 
-      </testcase>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.016" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.126">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.018" />
 
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.016" />
 
-      </testcase>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative starting price" time="0.017" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank name" time="0.253">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.017" />
 
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.155">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.143">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.401">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.261">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.197">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.161">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative starting price" time="0.056">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.122">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
-
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid deliver option" time="0.067">
-          <error message="Cannot activate transaction synchronization - already active" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Cannot activate transaction synchronization - already active
-	at org.springframework.transaction.support.TransactionSynchronizationManager.initSynchronization(TransactionSynchronizationManager.java:270)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTransactionInterceptor.init(GrailsTestTransactionInterceptor.groovy:69)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.initTransactionIfNecessary(GrailsTestInterceptor.groovy:67)
-	at org.codehaus.groovy.grails.test.support.GrailsTestInterceptor.init(GrailsTestInterceptor.groovy:41)
-	at grails.test.mixin.integration.IntegrationTestMixin.initIntegrationTest(IntegrationTestMixin.groovy:58)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.builtin.JUnitFixtureMethodsExtension$FixtureType$FixtureMethodInterceptor.intercept(JUnitFixtureMethodsExtension.java:145)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$1$2.evaluate(TestRuntimeJunitAdapter.groovy:49)
-	at org.spockframework.runtime.extension.builtin.TestRuleInterceptor.intercept(TestRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.spockframework.util.ReflectionUtil.invokeMethod(ReflectionUtil.java:138)
-	at org.spockframework.runtime.extension.MethodInvocation.invokeTargetMethod(MethodInvocation.java:91)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:85)
-	at org.spockframework.runtime.extension.builtin.AbstractRuleInterceptor$1.evaluate(AbstractRuleInterceptor.java:37)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at grails.test.runtime.TestRuntimeJunitAdapter$3$4.evaluate(TestRuntimeJunitAdapter.groovy:76)
-	at org.spockframework.runtime.extension.builtin.ClassRuleInterceptor.intercept(ClassRuleInterceptor.java:38)
-	at org.spockframework.runtime.extension.MethodInvocation.proceed(MethodInvocation.java:84)
-	at org.codehaus.groovy.grails.test.spock.GrailsSpecTestType.doRun(GrailsSpecTestType.groovy:147)
-	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests_closure7(GrailsProjectTestRunner.groovy:313)
-	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1270)
-	at groovy.lang.Closure.call(Closure.java:423)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
-	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.runInstance(ForkedGrailsTestRunner.groovy:128)
-	at org.codehaus.groovy.grails.cli.fork.ForkedGrailsProjectClassExecutor.run(ForkedGrailsProjectClassExecutor.groovy:74)
-	at org.codehaus.groovy.grails.cli.fork.testing.ForkedGrailsTestRunner.main(ForkedGrailsTestRunner.groovy:75)
-</error>
-
-          <error message="Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:&#xa;update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]" type="org.springframework.dao.DataIntegrityViolationException">org.springframework.dao.DataIntegrityViolationException: Hibernate operation: could not execute statement; SQL [n/a]; NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]; nested exception is org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:243)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertJdbcAccessException(GrailsHibernateTemplate.java:600)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.convertHibernateAccessException(GrailsHibernateTemplate.java:588)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:183)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.execute(GrailsHibernateTemplate.java:123)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.doInvokeInternalWithExpressions(AbstractFindByPersistentMethod.java:62)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:544)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractClausedStaticPersistentMethod.doInvokeInternal(AbstractClausedStaticPersistentMethod.java:418)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:79)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractStaticPersistentMethod.invoke(AbstractStaticPersistentMethod.java:72)
-	at org.grails.datastore.gorm.GormStaticApi.methodMissing_closure2(GormStaticApi.groovy:102)
-	at msse_auctions.ListingSpec.cleanup(ListingSpec.groovy:18)
-Caused by: org.h2.jdbc.JdbcSQLException: NULL not allowed for column &quot;SELLER_ID&quot;; SQL statement:
-update listing set version=?, date_created=?, days=?, deliver_option=?, description=?, end_date=?, highest_bidid=?, last_updated=?, name=?, seller_id=?, start_date=?, starting_price=?, time_remaining=? where id=? and version=? [23502-176]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
-	at org.h2.message.DbException.get(DbException.java:178)
-	at org.h2.message.DbException.get(DbException.java:154)
-	at org.h2.table.Column.validateConvertUpdateSequence(Column.java:308)
-	at org.h2.table.Table.validateConvertUpdateSequence(Table.java:726)
-	at org.h2.command.dml.Update.update(Update.java:126)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:79)
-	at org.h2.command.Command.executeUpdate(Command.java:254)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:158)
-	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:144)
-	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3285)
-	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3183)
-	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3525)
-	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:159)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:463)
-	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:349)
-	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:350)
-	at org.hibernate.event.internal.DefaultAutoFlushEventListener.onAutoFlush(DefaultAutoFlushEventListener.java:67)
-	at org.hibernate.internal.SessionImpl.autoFlushIfRequired(SessionImpl.java:1191)
-	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1675)
-	at org.hibernate.internal.CriteriaImpl.list(CriteriaImpl.java:380)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod.getResult(AbstractFindByPersistentMethod.java:105)
-	at org.codehaus.groovy.grails.orm.hibernate.metaclass.AbstractFindByPersistentMethod$1.doInHibernate(AbstractFindByPersistentMethod.java:67)
-	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTemplate.doExecute(GrailsHibernateTemplate.java:179)
-</error>
-
-      </testcase>
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid deliver option" time="0.016" />
 
       <system-out><![CDATA[--Output from create a listing--
 --Output from unsuccessfully create a listing:  null seller--
@@ -1516,6 +147,80 @@ update listing set version=?, date_created=?, days=?, deliver_option=?, descript
 --Output from unsuccessfully create a listing:  negative starting price--
 --Output from unsuccessfully create a listing:  null deliver option--
 --Output from unsuccessfully create a listing:  invalid deliver option--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="AccountControllerSpec" package="msse_auctions" tests="7" time="9.507" timestamp="2015-02-26T05:26:34">
+      <properties />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account" time="8.883" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account with bad email" time="0.185" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with too short of a password" time="0.041" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a number" time="0.037" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a letter" time="0.032" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="show account details" time="0.107" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="update account" time="0.15" />
+
+      <system-out><![CDATA[--Output from create account--
+--Output from create account with bad email--
+--Output from create account via json post with too short of a password--
+--Output from create account via json post with a password without a number--
+--Output from create account via json post with a password without a letter--
+--Output from show account details--
+
+
+
+==========================================
+show:   
+Dan Johnson
+[:]
+==========================================
+
+
+--Output from update account--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from create account--
+--Output from create account with bad email--
+--Output from create account via json post with too short of a password--
+--Output from create account via json post with a password without a number--
+--Output from create account via json post with a password without a letter--
+--Output from show account details--
+--Output from update account--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="7" name="AccountSpec" package="msse_auctions" tests="5" time="0.26" timestamp="2015-02-26T05:26:44">
+      <properties />
+
+      <testcase classname="msse_auctions.AccountSpec" name="successfully create an account" time="0.145" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  bad email" time="0.044" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password too short" time="0.018" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a number" time="0.019" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a letter" time="0.023" />
+
+      <system-out><![CDATA[--Output from successfully create an account--
+--Output from unsuccessfully create an account:  bad email--
+--Output from unsuccessfully create an account:  password too short--
+--Output from unsuccessfully create an account:  password doesn't contain a number--
+--Output from unsuccessfully create an account:  password doesn't contain a letter--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from successfully create an account--
+--Output from unsuccessfully create an account:  bad email--
+--Output from unsuccessfully create an account:  password too short--
+--Output from unsuccessfully create an account:  password doesn't contain a number--
+--Output from unsuccessfully create an account:  password doesn't contain a letter--
 ]]></system-err>
 
   </testsuite>

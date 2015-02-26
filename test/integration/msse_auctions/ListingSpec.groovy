@@ -1,13 +1,7 @@
 package msse_auctions
 
-import grails.test.mixin.Mock
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
- */
-@TestFor(Listing)
 class ListingSpec extends Specification {
 
     void setup() {
@@ -26,7 +20,6 @@ class ListingSpec extends Specification {
 
         then:
         Listing.findByName('firsta').description == 'first auction'
-        Listing.count() == 1
     }
 
     def "unsuccessfully create a listing:  null seller"() {
@@ -37,7 +30,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  invalid seller"() {
@@ -48,7 +40,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  null name"() {
@@ -59,7 +50,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  blank name"() {
@@ -70,7 +60,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  null description"() {
@@ -81,7 +70,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  blank description"() {
@@ -92,7 +80,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  null start date"() {
@@ -103,7 +90,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  null days"() {
@@ -114,7 +100,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  zero days"() {
@@ -125,7 +110,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  negative days"() {
@@ -136,7 +120,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  negative starting price"() {
@@ -147,7 +130,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  null deliver option"() {
@@ -158,7 +140,6 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 
     def "unsuccessfully create a listing:  invalid deliver option"() {
@@ -169,6 +150,5 @@ class ListingSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Listing.count() == 0
     }
 }

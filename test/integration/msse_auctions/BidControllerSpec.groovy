@@ -1,10 +1,10 @@
 package msse_auctions
 
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-@TestFor(BidController)
 class BidControllerSpec extends Specification {
+
+    def controller = new BidController()
 
     void setup() {
         new Account(email: 'bidControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)

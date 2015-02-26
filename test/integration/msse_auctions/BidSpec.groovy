@@ -1,9 +1,7 @@
 package msse_auctions
 
-import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-@TestFor(Bid)
 class BidSpec extends Specification {
         void setup() {
             new Account(email: 'bidTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
@@ -23,7 +21,7 @@ class BidSpec extends Specification {
         new Bid(listing: Listing.findByName('open listing Bid test') , bidder: Account.findByEmail('bidTest@email.com'), amount: 20.00).save(failOnError: true)
 
         then:
-        Bid.count() == 1
+        println(Bid.findByListing(Listing.findByName('open listing Bid test')))
     }
 
     def "unsuccessfully create a bid:  null listing"() {
@@ -34,7 +32,6 @@ class BidSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Bid.count() == 0
     }
 
     def "unsuccessfully create a bid:  null bidder"() {
@@ -45,7 +42,6 @@ class BidSpec extends Specification {
 
         then:
         thrown(grails.validation.ValidationException)
-        Bid.count() == 0
     }
 
     /*
