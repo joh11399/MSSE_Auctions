@@ -16,6 +16,7 @@ class BidControllerSpec extends Specification {
         Listing.findByName('open listing BidController test').delete()
     }
 
+    /*
     def "create a new bid"() {
         given:
         def l1 = Listing.findByName('open listing BidController test')
@@ -27,7 +28,11 @@ class BidControllerSpec extends Specification {
         then:
         //the string format for a bid is:    <name> (<amount>)
         Bid.findByListing(l1).toString() == 'Test Name (20.0)'
+
+        cleanup:
+        Bid.findByListing(l1).delete()
     }
+    */
 
     def "unsuccessfully create a new bid:  amount is below the startingPrice"() {
         given:

@@ -16,6 +16,14 @@
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
     </ul>
 </div>
+
+<g:form url="[resource:accountInstance, action:'delete']" method="DELETE">
+    <fieldset class="buttons">
+        <g:link class="edit" action="edit" resource="${accountInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+    </fieldset>
+</g:form>
+
 <div id="show-user" class="content scaffold-show" role="main">
     <h1><g:message code="default.show.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">
@@ -100,12 +108,51 @@
         </g:if>
 
     </ol>
-    <g:form url="[resource:accountInstance, action:'delete']" method="DELETE">
-        <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${accountInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-        </fieldset>
-    </g:form>
+
+
+
+
+    <br/>
+    <h1>Reviews for ${accountInstance.name}</h1>
+    <div id="list-review" class="content scaffold-list" role="main">
+        <table>
+            <thead>
+            <tr>
+                <g:sortableColumn property="reviewee" title="${message(code: 'review.reviewee.label', default: 'reviewee')}" />
+
+                <g:sortableColumn property="description" title="${message(code: 'review.description.label', default: 'description')}" />
+
+                <g:sortableColumn property="rating" title="${message(code: 'review.rating.label', default: 'rating')}" />
+
+                <g:sortableColumn property="thumbs" title="${message(code: 'review.thumbs.label', default: 'thumbs')}" />
+
+                <g:sortableColumn property="listing" title="${message(code: 'review.listing.label', default: 'listing')}" />
+
+                <g:sortableColumn property="reviewer" title="${message(code: 'review.reviewer.label', default: 'reviewer')}" />
+            </tr>
+            </thead>
+            <tbody>
+            <g:each in="${reviewList}" status="i" var="reviewInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                    <td>${fieldValue(bean: reviewInstance, field: "reviewee")} (${fieldValue(bean: reviewInstance, field: "reviewOf")})</td>
+
+                    <td>${fieldValue(bean: reviewInstance, field: "description")}</td>
+
+                    <td>${fieldValue(bean: reviewInstance, field: "rating")}</td>
+
+                    <td>${fieldValue(bean: reviewInstance, field: "thumbs")}</td>
+
+                    <td><g:link controller="listing" action="show" id="${reviewInstance.listing.id}">${fieldValue(bean: reviewInstance, field: "listing")}</g:link></td>
+
+                    <td>${fieldValue(bean: reviewInstance, field: "reviewer")}</td>
+
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+        <br/>
+
 </div>
 </body>
 </html>

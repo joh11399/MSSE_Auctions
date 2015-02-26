@@ -12,18 +12,11 @@ class AccountController {
 
     def show(Account accountInstance) {
 
-        println('')
-        println('')
-        println('')
-        println('==========================================')
-        println('show:   ')
-        println(accountInstance)
-        println(request.getJSON())
-        println('==========================================')
-        println('')
-        println('')
+        def account = accountInstance
 
-        respond accountInstance
+        def reviewList = Review.findByReviewee( accountInstance )
+
+        respond account, model:[reviewList: reviewList]
     }
 
     def login = {}

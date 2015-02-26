@@ -87,38 +87,6 @@ class AccountControllerSpec extends Specification {
         Account.count() == 0
     }
 
-    def "show account details"() {
-        given:
-        def newAccount = new Account(email: 'dan@dan.com', password: 'danjohnson1', name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
-
-        when:
-        controller.show(newAccount)
-
-        then:
-        //verify the accountInstance has the correct parameters
-        model.accountInstance.email == 'dan@dan.com'
-        model.accountInstance.password == 'danjohnson1'
-        model.accountInstance.name == 'Dan Johnson'
-        model.accountInstance.addressStreet == '123'
-        model.accountInstance.addressCity == '456'
-        model.accountInstance.addressState == 'MN'
-        model.accountInstance.addressZip == '54321'
-    }
-
-
-/*
-        println("")
-        println("response:  "+_response)
-        println("")
-        //println("resptext:  "+_response)
-        println("")
-        println("source .:  "+source)
-        println("")
-
-        //TODO  you need to assert something
-
-    }*/
-
     def "update account"(){
         given:
         new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)

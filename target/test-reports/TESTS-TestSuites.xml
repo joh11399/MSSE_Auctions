@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="12.877" timestamp="2015-02-26T05:27:38">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="9.603" timestamp="2015-02-26T20:03:59">
       <properties />
 
-      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="12.876" />
+      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="9.602" />
 
       <system-out><![CDATA[--Output from gets account details--
 ]]></system-out>
@@ -12,10 +12,10 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="0.271" timestamp="2015-02-26T05:26:58">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="0.271" timestamp="2015-02-26T20:03:03">
       <properties />
 
-      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="0.269" />
+      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="0.271" />
 
       <system-out><![CDATA[--Output from unsuccessfully create an account:  duplicate email--
 ]]></system-out>
@@ -24,37 +24,32 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidControllerSpec" package="msse_auctions" tests="3" time="0.568" timestamp="2015-02-26T05:26:59">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidControllerSpec" package="msse_auctions" tests="2" time="0.509" timestamp="2015-02-26T20:03:04">
       <properties />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="create a new bid" time="0.47" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.443" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.04" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.063" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.057" />
-
-      <system-out><![CDATA[--Output from create a new bid--
---Output from unsuccessfully create a new bid:  amount is below the startingPrice--
+      <system-out><![CDATA[--Output from unsuccessfully create a new bid:  amount is below the startingPrice--
 --Output from unsuccessfully create a new bid:  amount is below the highest bid + 0.50--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from create a new bid--
---Output from unsuccessfully create a new bid:  amount is below the startingPrice--
+      <system-err><![CDATA[--Output from unsuccessfully create a new bid:  amount is below the startingPrice--
 --Output from unsuccessfully create a new bid:  amount is below the highest bid + 0.50--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidSpec" package="msse_auctions" tests="3" time="0.102" timestamp="2015-02-26T05:26:59">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidSpec" package="msse_auctions" tests="3" time="0.179" timestamp="2015-02-26T20:03:04">
       <properties />
 
-      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="0.043" />
+      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="0.058" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.026" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.066" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.027" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.038" />
 
       <system-out><![CDATA[--Output from create a bid--
-Test Name (20.0)
 --Output from unsuccessfully create a bid:  null listing--
 --Output from unsuccessfully create a bid:  null bidder--
 ]]></system-out>
@@ -65,10 +60,10 @@ Test Name (20.0)
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingControllerSpec" package="msse_auctions" tests="1" time="0.668" timestamp="2015-02-26T05:26:59">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingControllerSpec" package="msse_auctions" tests="1" time="0.61" timestamp="2015-02-26T20:03:04">
       <properties />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 open listings" time="0.654" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 open listings" time="0.598" />
 
       <system-out><![CDATA[--Output from index with no parameters returns no more than 10 open listings--
 
@@ -79,41 +74,41 @@ max   :  null
 offset:  null
 sort  :  null
 order :  null
-msse_auctions.ListingController@2662e3ff
+msse_auctions.ListingController@37fc7e3c
 ]]></system-out>
 
       <system-err><![CDATA[--Output from index with no parameters returns no more than 10 open listings--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingSpec" package="msse_auctions" tests="14" time="0.289" timestamp="2015-02-26T05:27:00">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingSpec" package="msse_auctions" tests="14" time="0.308" timestamp="2015-02-26T20:03:05">
       <properties />
 
-      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="0.046" />
+      <testcase classname="msse_auctions.ListingSpec" name="create a listing" time="0.05" />
 
       <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null seller" time="0.018" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.019" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.022" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.02" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank name" time="0.021" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank name" time="0.018" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.019" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.018" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.018" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.016" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.023" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.016" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.033" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.018" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.02" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.016" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.024" />
 
       <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative starting price" time="0.017" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.017" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.015" />
 
       <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid deliver option" time="0.016" />
 
@@ -150,39 +145,58 @@ msse_auctions.ListingController@2662e3ff
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="AccountControllerSpec" package="msse_auctions" tests="7" time="9.507" timestamp="2015-02-26T05:26:34">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="ReviewSpec" package="msse_auctions" tests="6" time="0.224" timestamp="2015-02-26T20:03:05">
       <properties />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="create account" time="8.883" />
+      <testcase classname="msse_auctions.ReviewSpec" name="successfully create a review" time="0.063" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="create account with bad email" time="0.185" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  description too long" time="0.035" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with too short of a password" time="0.041" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewer" time="0.031" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a number" time="0.037" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewee" time="0.032" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a letter" time="0.032" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  invalid rating" time="0.03" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="show account details" time="0.107" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  invalid thumbs" time="0.032" />
 
-      <testcase classname="msse_auctions.AccountControllerSpec" name="update account" time="0.15" />
+      <system-out><![CDATA[--Output from successfully create a review--
+--Output from unsuccessfully create a review:  description too long--
+--Output from unsuccessfully create a review:  null reviewer--
+--Output from unsuccessfully create a review:  null reviewee--
+--Output from unsuccessfully create a review:  invalid rating--
+--Output from unsuccessfully create a review:  invalid thumbs--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from successfully create a review--
+--Output from unsuccessfully create a review:  description too long--
+--Output from unsuccessfully create a review:  null reviewer--
+--Output from unsuccessfully create a review:  null reviewee--
+--Output from unsuccessfully create a review:  invalid rating--
+--Output from unsuccessfully create a review:  invalid thumbs--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="7" name="AccountControllerSpec" package="msse_auctions" tests="6" time="10.939" timestamp="2015-02-26T20:02:36">
+      <properties />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account" time="10.281" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account with bad email" time="0.205" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with too short of a password" time="0.047" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a number" time="0.057" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account via json post with a password without a letter" time="0.034" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="update account" time="0.225" />
 
       <system-out><![CDATA[--Output from create account--
 --Output from create account with bad email--
 --Output from create account via json post with too short of a password--
 --Output from create account via json post with a password without a number--
 --Output from create account via json post with a password without a letter--
---Output from show account details--
-
-
-
-==========================================
-show:   
-Dan Johnson
-[:]
-==========================================
-
-
 --Output from update account--
 ]]></system-out>
 
@@ -191,23 +205,22 @@ Dan Johnson
 --Output from create account via json post with too short of a password--
 --Output from create account via json post with a password without a number--
 --Output from create account via json post with a password without a letter--
---Output from show account details--
 --Output from update account--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="7" name="AccountSpec" package="msse_auctions" tests="5" time="0.26" timestamp="2015-02-26T05:26:44">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="8" name="AccountSpec" package="msse_auctions" tests="5" time="0.287" timestamp="2015-02-26T20:02:47">
       <properties />
 
-      <testcase classname="msse_auctions.AccountSpec" name="successfully create an account" time="0.145" />
+      <testcase classname="msse_auctions.AccountSpec" name="successfully create an account" time="0.144" />
 
-      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  bad email" time="0.044" />
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  bad email" time="0.051" />
 
-      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password too short" time="0.018" />
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password too short" time="0.023" />
 
-      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a number" time="0.019" />
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a number" time="0.026" />
 
-      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a letter" time="0.023" />
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  password doesn&apos;t contain a letter" time="0.029" />
 
       <system-out><![CDATA[--Output from successfully create an account--
 --Output from unsuccessfully create an account:  bad email--

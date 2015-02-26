@@ -3,16 +3,15 @@ package msse_auctions
 import spock.lang.Specification
 
 class BidSpec extends Specification {
-        void setup() {
-            new Account(email: 'bidTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
-            new Listing(name: 'open listing Bid test', description: 'test description 2', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: Account.findByEmail('bidTest@email.com')).save(failOnError: true)
-        }
+    void setup() {
+        new Account(email: 'bidTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Listing(name: 'open listing Bid test', description: 'test description 2', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: Account.findByEmail('bidTest@email.com')).save(failOnError: true)
+    }
 
-        void cleanup() {
-            Account.findByEmail('bidTest@email.com').delete()
-            Listing.findByName('open listing Bid test').delete()
-        }
-
+    void cleanup() {
+        Account.findByEmail('bidTest@email.com').delete()
+        Listing.findByName('open listing Bid test').delete()
+    }
 
     def "create a bid"() {
         given:
@@ -21,7 +20,12 @@ class BidSpec extends Specification {
         new Bid(listing: Listing.findByName('open listing Bid test') , bidder: Account.findByEmail('bidTest@email.com'), amount: 20.00).save(failOnError: true)
 
         then:
-        println(Bid.findByListing(Listing.findByName('open listing Bid test')))
+        //the string format for a bid is:  <name> (<amount>)
+        Bid.findByListing(Listing.findByName('open listing Bid test')).toString() == 'Test Name (20.0)'
+
+        cleanup:
+        Bid.findByListing(Listing.findByName('open listing Bid test')).delete()
+
     }
 
     def "unsuccessfully create a bid:  null listing"() {
