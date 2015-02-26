@@ -12,8 +12,8 @@ class Bid {
     }
 
     static constraints = {
-        listing()
-        bidder()
-        amount()
+        listing(nullable: false)
+        bidder(nullable: false)
+        amount(nullable: false)
     }
 }

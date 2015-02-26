@@ -23,6 +23,14 @@
     </g:if>
     <ol class="property-list user">
 
+
+        <g:if test="${accountInstance?.name}">
+            <input id="name" name=”name” type=”hidden” value="${accountInstance.name}" />
+        </g:if>
+        <g:if test="${accountInstance?.email}">
+            <input id="email" name=”email” type=”hidden” value="${accountInstance.email}" />
+        </g:if>
+
         <g:if test="${accountInstance?.email}">
             <li class="fieldcontain">
                 <span id="email-label" class="property-label"><g:message code="account.email.label" default="Email" /></span>
@@ -32,20 +40,11 @@
             </li>
         </g:if>
 
-        <g:if test="${accountInstance?.username}">
+        <g:if test="${accountInstance?.name}">
             <li class="fieldcontain">
-                <span id="username-label" class="property-label"><g:message code="account.username.label" default="Username" /></span>
+                <span id="name-label" class="property-label"><g:message code="account.name.label" default="Name" /></span>
 
-                <span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${accountInstance}" field="username"/></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${accountInstance?.fullName}">
-            <li class="fieldcontain">
-                <span id="fullName-label" class="property-label"><g:message code="account.fullName.label" default="Full Name" /></span>
-
-                <span class="property-value" aria-labelledby="fullName-label"><g:fieldValue bean="${accountInstance}" field="fullName"/></span>
+                <span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${accountInstance}" field="name"/></span>
 
             </li>
         </g:if>

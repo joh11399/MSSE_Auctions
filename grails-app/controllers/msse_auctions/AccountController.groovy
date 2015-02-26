@@ -6,23 +6,36 @@ class AccountController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+
         respond Account.list(params), model:[accountInstanceCount: Account.count()]
     }
 
     def show(Account accountInstance) {
+
+        println('')
+        println('')
+        println('')
+        println('==========================================')
+        println('show:   ')
+        println(accountInstance)
+        println(request.getJSON())
+        println('==========================================')
+        println('')
+        println('')
+
         respond accountInstance
     }
 
     def login = {}
 
     def authenticate = {
-        def user = Account.findByUsernameAndPassword(params.username, params.password)
+        def user = Account.findByEmailAndPassword(params.email, params.password)
         if(user){
             session.user = user
             redirect(controller: 'Listing', action:"index")
         }else{
 
-            flash.message = "Sorry, ${params.username}. Please try again."
+            flash.message = "Sorry. Please try again."
 
             redirect(action:"login")
         }

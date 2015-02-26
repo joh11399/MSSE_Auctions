@@ -5,6 +5,10 @@ class BidController {
     def beforeInterceptor = [action:this.&auth]
 
     def auth() {
+
+        //TODO  this bypasses the login process
+        session.user = Account.findById('1')
+
         if(!session.user) {
             redirect(controller: 'Account', action:"login")
             return false
@@ -13,15 +17,26 @@ class BidController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Bid.list(params), model:[bidInstanceCount: Bid.count()]
+
+        def bids
+        if(params.listingID){
+            String listingID = params.listingID
+            Listing listing = Listing.findById(listingID)
+            bids = Bid.findAll("from Bid as b where b.listing.id = :listingID order by b.dateCreated desc", [listingID: listing.id], params)
+        }else{
+            bids = Bid.list(params)
+        }
+        respond bids, model:[bidInstanceCount: Bid.count()]
     }
 
     def create(String listingID) {
         def bid = new Bid(params)
-        Listing listing = Listing.findById(listingID)
-        bid.listing = listing
+        if(listingID) {
+            Listing listing = Listing.findById(listingID)
+            bid.listing = listing
+            bid.amount = getHighestBidAmount(listing)
+        }
         bid.bidder = session.user
-        bid.amount = getHighestBidAmount(listing)
 
         respond bid
     }
@@ -30,7 +45,7 @@ class BidController {
         def highestBidAmount
         def bids = getBids(listing)
         if(bids.size() == 0) {
-            highestBidAmount = listing.minAmount
+            highestBidAmount = listing.startingPrice
         }
         else{
             def highestBid = getHighestBid(bids)
@@ -67,17 +82,17 @@ class BidController {
             respond bidInstance.errors, view:'create'
             return
         }
+        /*
         else if(bidInstance.bidder.id != session.user.id) {
             respond flash.message = 'You are not logged in as ' + bidInstance.bidder + '.  Please log in or select the correct account.', view:'create'
             return
-        }
+        }*/
         else if(bidInstance.amount < highestBidAmount){
             respond flash.message = 'The minimum bid for this listing is $' + highestBidAmount, view:'create'
             return
         }
         else{
             bidInstance.save flush:true
-            //redirect(controller: "Listing", action: "show", id: bidInstance.listing.id)
             redirect(controller: "listing", action: "index")
         }
     }

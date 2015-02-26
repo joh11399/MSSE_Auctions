@@ -44,7 +44,7 @@
 
                 <td>${fieldValue(bean: bidInstance, field: "bidder")}</td>
 
-                <td>${fieldValue(bean: bidInstance, field: "amount")}</td>
+                <td>$${fieldValue(bean: bidInstance, field: "amount")}</td>
 
                 <td>${fieldValue(bean: bidInstance, field: "id")}</td>
 

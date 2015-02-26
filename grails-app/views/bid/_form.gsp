@@ -3,7 +3,7 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: bidInstance, field: 'listing', 'error')} required">
-    <label for="auction">
+    <label for="listing">
         <g:message code="bid.listing.label" default="Listing" />
         <span class="required-indicator">*</span>
     </label>

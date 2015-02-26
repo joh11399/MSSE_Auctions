@@ -23,20 +23,11 @@
     </g:if>
     <ol class="property-list auction">
 
-        <g:if test="${listingInstance?.seller}">
-            <li class="fieldcontain">
-                <span id="seller-label" class="property-label"><g:message code="listing.seller.label" default="Owner" /></span>
-
-                <span class="property-value" aria-labelledby="seller-label"><g:link controller="account" action="show" id="${listingInstance?.seller?.id}">${listingInstance?.seller?.encodeAsHTML()}</g:link></span>
-
-            </li>
-        </g:if>
-
         <g:if test="${listingInstance?.name}">
             <li class="fieldcontain">
                 <span id="name-label" class="property-label"><g:message code="listing.name.label" default="Name" /></span>
 
-                <span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${listingInstance}" field="name"/></span>
+                <span class="property-value" aria-labelledby="name-label"><b><g:fieldValue bean="${listingInstance}" field="name"/></b></span>
 
             </li>
         </g:if>
@@ -50,11 +41,49 @@
             </li>
         </g:if>
 
-        <g:if test="${listingInstance?.begDate}">
+        <g:if test="${listingInstance?.timeRemaining}">
             <li class="fieldcontain">
-                <span id="begDate-label" class="property-label"><g:message code="listing.begDate.label" default="Beg Date" /></span>
+                <span id="timeRemaining-label" class="property-label"><g:message code="listing.timeRemaining.label" default="Time Remaining" /></span>
 
-                <span class="property-value" aria-labelledby="begDate-label"><g:formatDate date="${listingInstance?.begDate}" /></span>
+                <span class="property-value" aria-labelledby="timeRemaining-label"><g:fieldValue bean="${listingInstance}" field="timeRemaining"/>
+                (<g:formatDate format="M/dd h:mm a" date="${listingInstance.endDate}"/>)</span>
+
+            </li>
+        </g:if>
+        <g:if test="${listingInstance?.highestBidID}">
+            <li class="fieldcontain">
+                <span id="highestBidID-label" class="property-label"><g:message code="listing.highestBidID.label" default="${listingInstance.timeRemaining=='completed' ? 'Winning Bid':'Highest Bid'}" /></span>
+
+                <span class="property-value" aria-labelledby="highestBidID-label"><b><g:fieldValue bean="${listingInstance}" field="highestBidID"/></b>
+                    <g:link class="create" controller="bid" action="index" style="margin-left: 15px;" params="[listingID: listingInstance.id]">Bid History</g:link>
+                </span>
+            </li>
+        </g:if>
+
+        <li class="fieldcontain">
+            <span id="bid-label" class="property-label"></span>
+
+            <span class="property-value" aria-labelledby="bid-label"><g:link class="create" controller="bid" action="create" params="[listingID: listingInstance.id]" style="display: ${listingInstance.timeRemaining=='completed' ? 'none': 'block' }">bid</g:link></span>
+
+        </li>
+
+        <br/><br/>
+
+
+        <g:if test="${listingInstance?.seller}">
+            <li class="fieldcontain">
+                <span id="seller-label" class="property-label"><g:message code="listing.seller.label" default="Seller" /></span>
+
+                <span class="property-value" aria-labelledby="seller-label"><g:link controller="account" action="show" id="${listingInstance?.seller?.id}">${listingInstance?.seller?.encodeAsHTML()}</g:link></span>
+
+            </li>
+        </g:if>
+
+        <g:if test="${listingInstance?.startDate}">
+            <li class="fieldcontain">
+                <span id="startDate-label" class="property-label"><g:message code="listing.startDate.label" default="Start Date" /></span>
+
+                <span class="property-value" aria-labelledby="startDate-label"><g:formatDate format="M/dd h:mm a" date="${listingInstance?.startDate}" /></span>
 
             </li>
         </g:if>
@@ -68,11 +97,11 @@
             </li>
         </g:if>
 
-        <g:if test="${listingInstance?.minAmount}">
+        <g:if test="${listingInstance?.startingPrice}">
             <li class="fieldcontain">
-                <span id="minAmount-label" class="property-label"><g:message code="listing.minAmount.label" default="Min Amount" /></span>
+                <span id="startingPrice-label" class="property-label"><g:message code="listing.startingPrice.label" default="Starting Price" /></span>
 
-                <span class="property-value" aria-labelledby="minAmount-label"><g:fieldValue bean="${listingInstance}" field="minAmount"/></span>
+                <span class="property-value" aria-labelledby="startingPrice-label"><g:fieldValue bean="${listingInstance}" field="startingPrice"/></span>
 
             </li>
         </g:if>
@@ -85,11 +114,14 @@
             </li>
         </g:if>
 
+
+
+
+
     </ol>
     <g:form url="[resource:listingInstance, action:'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${auctionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
         </fieldset>
     </g:form>
 </div>

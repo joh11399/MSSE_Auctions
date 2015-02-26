@@ -11,31 +11,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
-    <label for="username">
-        <g:message code="account.username.label" default="Username" />
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'name', 'error')} required">
+    <label for="name">
+        <g:message code="account.name.label" default="Name" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="username" required="" value="${accountInstance?.username}"/>
+    <g:textField name="name" required="" value="${accountInstance?.name}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'fullName', 'error')} required">
-    <label for="fullName">
-        <g:message code="account.fullName.label" default="Full Name" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:textField name="fullName" required="" value="${accountInstance?.fullName}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'password', 'error')} required">
     <label for="password">
         <g:message code="account.password.label" default="Password" />
         <span class="required-indicator">*</span>
     </label>
     <g:field type="password" name="password" required="" value="${accountInstance?.password}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressStreet', 'error')} required">
@@ -74,6 +64,17 @@
 
 </div>
 
+
+<g:if test="${accountInstance?.dateCreated}">
+        <span id="dateCreated-label" class="property-label"><g:message code="account.dateCreated.label" default="Date Created" /></span><br/>
+        <span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="M/dd/yy h:mm a" date="${accountInstance?.dateCreated}" /></span><br/><br/>
+</g:if>
+
+<g:if test="${accountInstance?.lastUpdated}">
+        <span id="lastUpdated-label" class="property-label"><g:message code="account.lastUpdated.label" default="Last Updated" /></span><br/>
+        <span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="M/dd/yy h:mm a" date="${accountInstance?.lastUpdated}" /></span>
+</g:if>
+<!--
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'dateCreated', 'error')} required">
     <label for="dateCreated">
         <g:message code="account.dateCreated.label" default="Date Created" />
@@ -88,4 +89,4 @@
     </label>
     <g:datePicker name="lastUpdated" precision="day"  value="${accountInstance?.lastUpdated}"  />
 </div>
-
+-->

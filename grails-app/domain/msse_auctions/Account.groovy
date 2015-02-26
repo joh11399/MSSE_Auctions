@@ -1,30 +1,30 @@
 package msse_auctions
 
 class Account {
-    String username
     String email
     String password
-    String fullName
+    String name
     String addressStreet
     String addressCity
     String addressState
     String addressZip
     String toString(){
-        "${fullName} (${username})"
+        "${name}"
     }
     Date dateCreated
     Date lastUpdated
 
+
+
     static constraints = {
-        username(blank: false, unique: true)
-        fullName()
-        password(blank: false, password: true, size: 2..16, validator: {val ->
+        email(email: true, blank: false, unique: true)
+        password(blank: false, password: true, size: 8..16, validator: {val ->
             def containsNumber = val.matches(".*\\d.*")
             def containsLetter = val ==~ /.*[a-zA-Z].*/
 
             return containsNumber && containsLetter
         })
-        email(email: true)
+        name()
         addressState(inList:["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
                              "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
                              "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",

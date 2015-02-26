@@ -29,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'begDate', 'error')} required">
-    <label for="begDate">
-        <g:message code="listing.begDate.label" default="Beg Date" />
+<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'startDate', 'error')} required">
+    <label for="startDate">
+        <g:message code="listing.startDate.label" default="Start Date" />
         <span class="required-indicator">*</span>
     </label>
-    <g:datePicker name="begDate" precision="day"  value="${listingInstance?.begDate}"  />
+    <g:datePicker name="startDate" precision="day"  value="${listingInstance?.startDate}"  />
 
 </div>
 
@@ -47,12 +47,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'minAmount', 'error')} required">
-    <label for="minAmount">
-        <g:message code="listing.minAmount.label" default="Min Amount" />
+<div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'startingPrice', 'error')} required">
+    <label for="startingPrice">
+        <g:message code="listing.startingPrice.label" default="Starting Price" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="minAmount" required="" value="${listingInstance?.minAmount}"/>
+    <g:textField name="startingPrice" required="" value="${listingInstance?.startingPrice}"/>
 
 </div>
 
@@ -61,7 +61,7 @@
         <g:message code="listing.deliverOption.label" default="Deliver Option" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select name="deliverOption" from="${listingInstance.constraints.deliverOption.inList}" required="" value="${listingInstance?.deliverOption}" valueMessagePrefix="account.addressState"/>
+    <g:select name="deliverOption" from="${listingInstance.constraints.deliverOption.inList}" required="" value="${listingInstance?.deliverOption}" valueMessagePrefix="listing.deliverOption"/>
 </div>
 
 

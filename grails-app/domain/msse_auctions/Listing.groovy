@@ -7,9 +7,9 @@ class Listing {
     Account seller
     String name
     String description
-    Date begDate
+    Date startDate
     int days
-    float minAmount
+    float startingPrice
     String deliverOption
     String toString(){
         "${name}"
@@ -21,13 +21,16 @@ class Listing {
     Date endDate
 
     static constraints = {
-        seller()
-        name()
-        description()
-        begDate()
-        days()
-        minAmount()
-        deliverOption(inList:["US Only", "Worldwide", "Pick Up Only"])
+        seller(nullable: false)
+        name(blank: false, nullable: false)
+        description(blank: false, nullable: false)
+        startDate(nullable: false)
+        days(nullable: false, min: 1)
+
+        float minStartingPrice = 0.0
+        startingPrice(min: minStartingPrice)
+
+        deliverOption(inList: ["US Only", "Worldwide", "Pick Up Only"])
 
         timeRemaining(blank: false, nullable: true)
         highestBidID(blank: false, nullable: true)

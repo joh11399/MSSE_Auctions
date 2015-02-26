@@ -9,8 +9,8 @@
 <body>
 <g:form action="authenticate" >
     <fieldset class="form">
-username<br/>
-<g:textField name="username" value="${accountInstance?.username}"/>
+email<br/>
+<g:textField name="email" value="${accountInstance?.email}"/>
 <br/><br/>
 password<br/>
 <g:field type="password" name="password" value="${accountInstance?.password}"/>

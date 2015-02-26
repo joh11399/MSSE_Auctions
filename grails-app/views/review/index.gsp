@@ -15,6 +15,16 @@
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
     </ul>
 </div>
+
+
+<div style="margin: 35px auto; padding: 6px 10px; width: 400px; height: 70px; border: 1px solid #777; background-color: #eaeaea;">
+    <g:form controller="review" action="index">
+        Search by Buyer or Seller
+        <g:textField name="searchBuyerSeller" value="${searchBuyerSeller}"></g:textField><br><br>
+        <g:submitButton name="submit" value="refresh" style="float: right;" />
+    </g:form>
+</div>
+
 <div id="list-review" class="content scaffold-list" role="main">
     <h1><g:message code="default.list.label" args="[entityName]" /></h1>
     <g:if test="${flash.message}">
@@ -23,13 +33,9 @@
     <table>
         <thead>
         <tr>
-            <g:sortableColumn property="description" title="${message(code: 'review.description.label', default: 'description')}" />
-
-            <g:sortableColumn property="reviewer" title="${message(code: 'review.reviewer.label', default: 'reviewer')}" />
-
             <g:sortableColumn property="reviewee" title="${message(code: 'review.reviewee.label', default: 'reviewee')}" />
 
-            <g:sortableColumn property="revieweeType" title="${message(code: 'review.revieweeType.label', default: 'revieweeType')}" />
+            <g:sortableColumn property="description" title="${message(code: 'review.description.label', default: 'description')}" />
 
             <g:sortableColumn property="rating" title="${message(code: 'review.rating.label', default: 'rating')}" />
 
@@ -37,19 +43,16 @@
 
             <g:sortableColumn property="listing" title="${message(code: 'review.listing.label', default: 'listing')}" />
 
+            <g:sortableColumn property="reviewer" title="${message(code: 'review.reviewer.label', default: 'reviewer')}" />
         </tr>
         </thead>
         <tbody>
         <g:each in="${reviewInstanceList}" status="i" var="reviewInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show" id="${reviewInstance.id}">${fieldValue(bean: reviewInstance, field: "description")}</g:link></td>
+                <td>${fieldValue(bean: reviewInstance, field: "reviewee")} (${fieldValue(bean: reviewInstance, field: "reviewOf")})</td>
 
-                <td>${fieldValue(bean: reviewInstance, field: "reviewer")}</td>
-
-                <td>${fieldValue(bean: reviewInstance, field: "reviewee")}</td>
-
-                <td>${fieldValue(bean: reviewInstance, field: "revieweeType")}</td>
+                <td>${fieldValue(bean: reviewInstance, field: "description")}</td>
 
                 <td>${fieldValue(bean: reviewInstance, field: "rating")}</td>
 
@@ -57,6 +60,7 @@
 
                 <td><g:link controller="listing" action="show" id="${reviewInstance.listing.id}">${fieldValue(bean: reviewInstance, field: "listing")}</g:link></td>
 
+                <td>${fieldValue(bean: reviewInstance, field: "reviewer")}</td>
 
             </tr>
         </g:each>
