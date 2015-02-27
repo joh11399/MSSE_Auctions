@@ -33,17 +33,12 @@
     <table>
         <thead>
         <tr>
-            <g:sortableColumn property="reviewee" title="${message(code: 'review.reviewee.label', default: 'reviewee')}" />
-
-            <g:sortableColumn property="description" title="${message(code: 'review.description.label', default: 'description')}" />
-
-            <g:sortableColumn property="rating" title="${message(code: 'review.rating.label', default: 'rating')}" />
-
-            <g:sortableColumn property="thumbs" title="${message(code: 'review.thumbs.label', default: 'thumbs')}" />
-
-            <g:sortableColumn property="listing" title="${message(code: 'review.listing.label', default: 'listing')}" />
-
-            <g:sortableColumn property="reviewer" title="${message(code: 'review.reviewer.label', default: 'reviewer')}" />
+            <th>${message(code: 'review.reviewee.label', default: 'reviewee')}</th>
+            <th>${message(code: 'review.description.label', default: 'description')}</th>
+            <th>${message(code: 'review.rating.label', default: 'rating')}</th>
+            <th>${message(code: 'review.thumbs.label', default: 'thumbs')}</th>
+            <th>${message(code: 'review.listing.label', default: 'listing')}</th>
+            <th>${message(code: 'review.reviewer.label', default: 'reviewer')}</th>
         </tr>
         </thead>
         <tbody>

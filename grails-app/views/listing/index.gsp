@@ -7,9 +7,12 @@
 </head>
 
 <body>
-
-
-<a class="home" href="${createLink(uri: '/listing/create/')}">Create New Listing</a>
+<div class="nav" role="navigation">
+    <ul>
+        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+        <li><g:link class="create" controller="listing" action="create">Create New Listing</g:link></li>
+    </ul>
+</div>
 
 <div style="margin: 35px auto; padding: 6px 10px; width: 400px; height: 70px; border: 1px solid #777; background-color: #eaeaea;">
 <g:form controller="listing" action="index">
@@ -31,9 +34,9 @@
 
         <th>Name & Description</th>
 
-        <g:sortableColumn property="startDate" title="${message(code: 'listing.startDate.label', default: 'Start Date')}" />
+        <th>${message(code: 'listing.startDate.label', default: 'Start Date')}</th>
 
-        <g:sortableColumn property="deliverOption" title="${message(code: 'listing.deliverOption.label', default: 'Deliver Option')}" />
+        <th>${message(code: 'listing.deliverOption.label', default: 'Deliver Option')}</th>
 
         <th><g:message code="listing.seller.label" default="Seller" /></th>
 

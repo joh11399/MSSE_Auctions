@@ -23,12 +23,11 @@
     <table>
         <thead>
         <tr>
-
             <th><g:message code="bid.listing.label" default="Listing" /></th>
 
             <th><g:message code="bid.bidder.label" default="Bidder" /></th>
 
-            <g:sortableColumn property="amount" title="${message(code: 'bid.amount.label', default: 'Amount')}" />
+            <th>${message(code: 'bid.amount.label', default: 'Amount')}</th>
 
             <th><g:message code="bid.bidder.label" default="id" /></th>
             <th><g:message code="bid.bidder.label" default="dateCreated" /></th>
@@ -40,7 +39,7 @@
         <g:each in="${bidInstanceList}" status="i" var="bidInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show" id="${bidInstance.id}">${fieldValue(bean: bidInstance, field: "listing")}</g:link></td>
+                <td><g:link controller="listing" action="show" id="${bidInstance.listing.id}">${fieldValue(bean: bidInstance, field: "listing")}</g:link></td>
 
                 <td>${fieldValue(bean: bidInstance, field: "bidder")}</td>
 
@@ -48,9 +47,9 @@
 
                 <td>${fieldValue(bean: bidInstance, field: "id")}</td>
 
-                <td>${fieldValue(bean: bidInstance, field: "dateCreated")}</td>
+                <td><g:formatDate format="M/dd h:mm a" date="${bidInstance.dateCreated}" /></td>
 
-                <td>${fieldValue(bean: bidInstance, field: "lastUpdated")}</td>
+                <td><g:formatDate format="M/dd h:mm a" date="${bidInstance.lastUpdated}" /></td>
 
             </tr>
         </g:each>

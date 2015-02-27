@@ -2,20 +2,6 @@ package msse_auctions
 
 class ListingController {
 
-    def beforeInterceptor = [action:this.&auth]
-
-    def auth() {
-
-
-        //TODO  this bypasses the login process
-        session.user = Account.findById(1)
-
-        if(!session.user) {
-            redirect(controller: 'Account', action:"login")
-            return false
-        }
-    }
-
     def index(Integer max) {
 
         def completedListingsCheckbox = 'off'

@@ -23,16 +23,18 @@
     <table>
         <thead>
         <tr>
-            <g:sortableColumn property="name" title="${message(code: 'account.name.label', default: 'Name')}" />
+            <th>${message(code: 'account.name.label', default: 'Name')}</th>
 
-            <g:sortableColumn property="addressState" title="${message(code: 'account.addressState.label', default: 'Address State')}" />
+            <th>${message(code: 'account.name.label', default: 'Email')}</th>
 
-            <g:sortableColumn property="addressCity" title="${message(code: 'account.addressCity.label', default: 'Address City')}" />
+            <th>${message(code: 'account.addressState.label', default: 'Address State')}</th>
 
-            <g:sortableColumn property="addressStreet" title="${message(code: 'account.addressStreet.label', default: 'Address Street')}" />
+            <th>${message(code: 'account.addressCity.label', default: 'Address City')}</th>
 
-            <g:sortableColumn property="dateCreated" title="${message(code: 'listing.dateCreated.label', default: 'Date Created')}" />
-            <g:sortableColumn property="lastUpdated" title="${message(code: 'listing.lastUpdated.label', default: 'Last Updated')}" />
+            <th>${message(code: 'account.addressStreet.label', default: 'Address Street')}</th>
+
+            <th>${message(code: 'listing.dateCreated.label', default: 'Date Created')}</th>
+            <th>${message(code: 'listing.lastUpdated.label', default: 'Last Updated')}</th>
 
         </tr>
         </thead>
@@ -41,6 +43,8 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                 <td><g:link action="show" id="${accountInstance.id}">${fieldValue(bean: accountInstance, field: "name")}</g:link></td>
+
+                <td>${fieldValue(bean: accountInstance, field: "email")}</td>
 
                 <td>${fieldValue(bean: accountInstance, field: "addressState")}</td>
 

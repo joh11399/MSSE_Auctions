@@ -121,7 +121,7 @@
     </ol>
     <g:form url="[resource:listingInstance, action:'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${auctionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+            <g:link class="edit" action="edit" resource="${listingInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
         </fieldset>
     </g:form>
 </div>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="0.617" timestamp="2015-02-27T01:41:31">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountIntegrationSpec" package="msse_auctions" tests="1" time="0.642" timestamp="2015-02-27T02:21:08">
       <properties />
 
-      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="0.594" />
+      <testcase classname="msse_auctions.AccountIntegrationSpec" name="unsuccessfully create an account:  duplicate email" time="0.636" />
 
       <system-out><![CDATA[--Output from unsuccessfully create an account:  duplicate email--
 ]]></system-out>
@@ -12,22 +12,22 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="BidControllerSpec" package="msse_auctions" tests="7" time="1.118" timestamp="2015-02-27T01:41:32">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="BidControllerSpec" package="msse_auctions" tests="7" time="1.085" timestamp="2015-02-27T02:21:09">
       <properties />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="create a new bid" time="0.745" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="create a new bid" time="0.595" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="successfully create a new bid where the amount is exactly 0.50 higher than the startingPrice" time="0.048" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="successfully create a new bid where the amount is exactly 0.50 higher than the startingPrice" time="0.052" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  null bidder account" time="0.039" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  null bidder account" time="0.032" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  null bid amount" time="0.122" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  null bid amount" time="0.196" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.029" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the startingPrice" time="0.047" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.06" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="unsuccessfully create a new bid:  amount is below the highest bid + 0.50" time="0.076" />
 
-      <testcase classname="msse_auctions.BidControllerSpec" name="successfully create a new bid:  amount is higher the highest bid + 0.50" time="0.07" />
+      <testcase classname="msse_auctions.BidControllerSpec" name="successfully create a new bid:  amount is higher the highest bid + 0.50" time="0.074" />
 
       <system-out><![CDATA[--Output from create a new bid--
 --Output from successfully create a new bid where the amount is exactly 0.50 higher than the startingPrice--
@@ -48,14 +48,14 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidSpec" package="msse_auctions" tests="3" time="0.783" timestamp="2015-02-27T01:41:33">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="BidSpec" package="msse_auctions" tests="3" time="0.481" timestamp="2015-02-27T02:21:10">
       <properties />
 
-      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="0.098" />
+      <testcase classname="msse_auctions.BidSpec" name="create a bid" time="0.067" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.093" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null listing" time="0.031" />
 
-      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.049" />
+      <testcase classname="msse_auctions.BidSpec" name="unsuccessfully create a bid:  null bidder" time="0.028" />
 
       <system-out><![CDATA[--Output from create a bid--
 --Output from unsuccessfully create a bid:  null listing--
@@ -68,30 +68,30 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="ListingControllerSpec" package="msse_auctions" tests="11" time="3.278" timestamp="2015-02-27T01:41:34">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="ListingControllerSpec" package="msse_auctions" tests="11" time="1.997" timestamp="2015-02-27T02:21:11">
       <properties />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 OPEN listings" time="2.351" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index with no parameters returns no more than 10 OPEN listings" time="1.368" />
 
       <testcase classname="msse_auctions.ListingControllerSpec" name="index with &apos;Show Completed Listings&apos; checked returns no more than 10 OPEN or COMPLETED listings" time="0.114" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index using searchDescription returns no more than 10 OPEN listings with name or description containing the searchDescription text" time="0.145" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index using searchDescription returns no more than 10 OPEN listings with name or description containing the searchDescription text" time="0.096" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index with &apos;page 2&apos; requested returns no more than 10 OPEN listings" time="0.053" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index with &apos;page 2&apos; requested returns no more than 10 OPEN listings" time="0.066" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="index displays the highest bid (amount and account) for each listing,  and completed listings are marked as &apos;winner&apos;" time="0.138" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="index displays the highest bid (amount and account) for each listing,  and completed listings are marked as &apos;winner&apos;" time="0.137" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="show listing returns listing values for an OPEN listing" time="0.057" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="show listing returns listing values for an OPEN listing" time="0.036" />
 
       <testcase classname="msse_auctions.ListingControllerSpec" name="show listing returns listing values for a COMPLETED listing" time="0.024" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="create a listing via the controller" time="0.037" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="create a listing via the controller" time="0.032" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  null seller account" time="0.02" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  null seller account" time="0.025" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  null deliver option" time="0.026" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  null deliver option" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  invalid deliver option selected" time="0.216" />
+      <testcase classname="msse_auctions.ListingControllerSpec" name="unsuccessfully create a listing via the controller:  invalid deliver option selected" time="0.021" />
 
       <system-out><![CDATA[--Output from index with no parameters returns no more than 10 OPEN listings--
 
@@ -160,36 +160,36 @@ order :  null
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingSpec" package="msse_auctions" tests="14" time="0.586" timestamp="2015-02-27T01:41:37">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingSpec" package="msse_auctions" tests="14" time="0.323" timestamp="2015-02-27T02:21:13">
       <properties />
 
-      <testcase classname="msse_auctions.ListingSpec" name="successfully create a listing" time="0.185" />
+      <testcase classname="msse_auctions.ListingSpec" name="successfully create a listing" time="0.036" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null seller" time="0.018" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null seller" time="0.016" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.029" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid seller" time="0.019" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.024" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null name" time="0.043" />
 
       <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank name" time="0.017" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.058" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null description" time="0.018" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.025" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  blank description" time="0.018" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.024" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null start date" time="0.017" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.026" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null days" time="0.016" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.098" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  zero days" time="0.02" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.014" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative days" time="0.039" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative starting price" time="0.016" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  negative starting price" time="0.02" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.016" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  null deliver option" time="0.017" />
 
-      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid deliver option" time="0.029" />
+      <testcase classname="msse_auctions.ListingSpec" name="unsuccessfully create a listing:  invalid deliver option" time="0.019" />
 
       <system-out><![CDATA[--Output from successfully create a listing--
 --Output from unsuccessfully create a listing:  null seller--
@@ -224,18 +224,18 @@ order :  null
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ReviewSpec" package="msse_auctions" tests="6" time="0.498" timestamp="2015-02-27T01:41:37">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ReviewSpec" package="msse_auctions" tests="6" time="0.292" timestamp="2015-02-27T02:21:13">
       <properties />
 
-      <testcase classname="msse_auctions.ReviewSpec" name="successfully create a review" time="0.226" />
+      <testcase classname="msse_auctions.ReviewSpec" name="successfully create a review" time="0.071" />
 
-      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  description too long" time="0.109" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  description too long" time="0.048" />
 
-      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewer" time="0.041" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewer" time="0.037" />
 
-      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewee" time="0.032" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  null reviewee" time="0.063" />
 
-      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  invalid rating" time="0.048" />
+      <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  invalid rating" time="0.032" />
 
       <testcase classname="msse_auctions.ReviewSpec" name="unsuccessfully create a review:  invalid thumbs" time="0.036" />
 

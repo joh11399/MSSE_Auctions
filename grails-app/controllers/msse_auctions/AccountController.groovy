@@ -19,26 +19,6 @@ class AccountController {
         respond account, model:[reviewList: reviewList]
     }
 
-    def login = {}
-
-    def authenticate = {
-        def user = Account.findByEmailAndPassword(params.email, params.password)
-        if(user){
-            session.user = user
-            redirect(controller: 'Listing', action:"index")
-        }else{
-
-            flash.message = "Sorry. Please try again."
-
-            redirect(action:"login")
-        }
-    }
-
-    def logout = {
-        session.user = null
-        redirect(action:"login")
-    }
-
     def create() {
         respond new Account(params)
     }
@@ -48,7 +28,7 @@ class AccountController {
             return
         }else{
             accountInstance.save()
-            authenticate()
+            redirect(action: 'index')
         }
     }
 
