@@ -50,11 +50,11 @@
 
             </li>
         </g:if>
-        <g:if test="${listingInstance?.highestBidID}">
+        <g:if test="${listingInstance?.highestBidStr}">
             <li class="fieldcontain">
-                <span id="highestBidID-label" class="property-label"><g:message code="listing.highestBidID.label" default="${listingInstance.timeRemaining=='completed' ? 'Winning Bid':'Highest Bid'}" /></span>
+                <span id="highestBidStr-label" class="property-label"><g:message code="listing.highestBidStr.label" default="${listingInstance.timeRemaining=='completed' ? 'Winning Bid':'Highest Bid'}" /></span>
 
-                <span class="property-value" aria-labelledby="highestBidID-label"><b><g:fieldValue bean="${listingInstance}" field="highestBidID"/></b>
+                <span class="property-value" aria-labelledby="highestBidStr-label"><b><g:fieldValue bean="${listingInstance}" field="highestBidStr"/></b>
                     <g:link class="create" controller="bid" action="index" style="margin-left: 15px;" params="[listingID: listingInstance.id]">Bid History</g:link>
                 </span>
             </li>

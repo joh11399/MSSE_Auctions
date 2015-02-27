@@ -63,6 +63,54 @@ class AccountControllerSpec extends Specification {
         Account.count() == 0
     }
 
+    def "unsuccessfully create account via json post with a 7 character of a password"(){
+        given:
+        request.method = 'POST'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"a1b2c3d","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+
+        when:
+        controller.save()
+
+        then:
+        Account.count() == 0
+    }
+
+    def "successfully create account via json post with a 8 character of a password"(){
+        given:
+        request.method = 'POST'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"a1b2c3d4","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+
+        when:
+        controller.save()
+
+        then:
+        Account.count() == 1
+    }
+
+    def "successfully create account via json post with a 16 character of a password"(){
+        given:
+        request.method = 'POST'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"a1b2c3d4e5f6g7h8","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+
+        when:
+        controller.save()
+
+        then:
+        Account.count() == 1
+    }
+
+    def "unsuccessfully create account via json post with a 17 character of a password"(){
+        given:
+        request.method = 'POST'
+        controller.request.json = '{"class":"msse_auctions.Account","email":"accountController@test.com","password":"a1b2c3d4e5f6g7h8i","name":"Dan Johnson","addressStreet":"123","addressCity":"456","addressState":"MN","addressZip":"54321"}'
+
+        when:
+        controller.save()
+
+        then:
+        Account.count() == 0
+    }
+
     def "create account via json post with a password without a number"(){
         given:
         request.method = 'POST'

@@ -52,8 +52,7 @@
 
             <td>${listingInstance.timeRemaining}<br/>(<g:formatDate format="M/dd h:mm a" date="${listingInstance.endDate}"/>)</td>
 
-            <td style="font-weight: ${listingInstance.timeRemaining=='completed' ? 'bold': 'normal' }">
-            ${listingInstance.timeRemaining=='completed' ? 'Winner: ': '' }${listingInstance.highestBidID}</td>
+            <td style="font-weight: ${listingInstance.timeRemaining=='completed' ? 'bold': 'normal' }">${listingInstance.highestBidStr}</td>
 
             <td><g:link action="show" id="${listingInstance.id}">${fieldValue(bean: listingInstance, field: "name")}</g:link>
 

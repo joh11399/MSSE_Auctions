@@ -104,7 +104,13 @@ class ListingController {
         def bids = BidController.getBids(it)
         if(bids.size() > 0){
             def bid = BidController.getHighestBid(bids)
-            it.highestBidID = "\$" + bid.amount.round(2) + " - " + bid.bidder
+
+            if(it.timeRemaining == 'completed') {
+                it.highestBidStr = "Winner: \$" + bid.amount.round(2) + " - " + bid.bidder
+            }
+            else {
+                it.highestBidStr = "\$" + bid.amount.round(2) + " - " + bid.bidder
+            }
         }
     }
 

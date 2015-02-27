@@ -17,7 +17,7 @@ class Listing {
 
     //these are calculated columns that are updated by the controller
     String timeRemaining
-    String highestBidID
+    String highestBidStr
     Date endDate
 
     static constraints = {
@@ -33,7 +33,7 @@ class Listing {
         deliverOption(inList: ["US Only", "Worldwide", "Pick Up Only"])
 
         timeRemaining(blank: false, nullable: true)
-        highestBidID(blank: false, nullable: true)
+        highestBidStr(blank: false, nullable: true)
         endDate(nullable: true)
     }
 }

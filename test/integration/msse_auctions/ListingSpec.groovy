@@ -12,7 +12,7 @@ class ListingSpec extends Specification {
         Account.findByEmail('listingTest@email.com').delete()
     }
 
-    def "create a listing"() {
+    def "successfully create a listing"() {
         given:
 
         when:
@@ -146,7 +146,7 @@ class ListingSpec extends Specification {
         given:
 
         when:
-        new Listing(name: 'firsta', description: 'first auction', startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'Home', seller: Account.findByEmail('listingTest@email.com')).save(failOnError: true)
+        new Listing(name: 'firsta', description: 'first auction', startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'My Home', seller: Account.findByEmail('listingTest@email.com')).save(failOnError: true)
 
         then:
         thrown(grails.validation.ValidationException)

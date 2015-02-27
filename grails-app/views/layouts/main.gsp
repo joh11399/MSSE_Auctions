@@ -17,7 +17,9 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner" style="height: 80px;"><!--<a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>--></div>
+		<div id="grailsLogo" role="banner" style="height: 60px; padding: 10px;"><!--<a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a>-->
+        <h1 style="margin-left: 70px; color: #333;">Sell it</h1>
+        </div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

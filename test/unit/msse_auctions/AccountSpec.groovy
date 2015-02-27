@@ -19,6 +19,71 @@ class AccountSpec extends Specification {
         Account.count() == 1
     }
 
+
+
+
+
+    void "unsuccessfully create an account:  null email"() {
+        setup:
+        when:
+        new Account(password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+    void "unsuccessfully create an account:  null name"() {
+        setup:
+        when:
+        new Account(email: 'dan@dan.com', password: 'danjohnson1',  addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+    void "unsuccessfully create an account:  null addressStreet"() {
+        setup:
+        when:
+        new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+    void "unsuccessfully create an account:  null addressCity"() {
+        setup:
+        when:
+        new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123',  addressState: 'MN', addressZip: '54321').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+    void "unsuccessfully create an account:  null addressState"() {
+        setup:
+        when:
+        new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressZip: '54321').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+    void "unsuccessfully create an account:  null addressZip"() {
+        setup:
+        when:
+        new Account(email: 'dan@dan.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN').save(failOnError: true)
+
+        then:
+        thrown(grails.validation.ValidationException)
+        Account.count() == 0
+    }
+
+
+
+
+
+
+
     void "unsuccessfully create an account:  bad email"() {
         setup:
         when:
@@ -58,55 +123,4 @@ class AccountSpec extends Specification {
         thrown(grails.validation.ValidationException)
         Account.count() == 0
     }
-
-
-
-
-
-    //TODO  these three are calvo's examples..
-    /*def 'saving user persists new user in database'() {
-        setup:
-        def account = new Account(password: 'P@$sW0rD', email: 'dan@dan.com', name: 'Dan Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd')
-
-        when:
-        account.save(failOnError: true)
-
-        then:
-
-        println(account)
-        println(account.id)
-        println(account.username)
-        println(account.email)
-        println(account.dateCreated)
-        println(account.lastUpdated)
-
-        account.errors.errorCount == 0
-        account.id
-        //account.dateCreated
-        Account.get(account.id).email == 'dan@dan.com'
-    }
-    def 'updating a user changes data'() {
-        setup:
-        def account = new Account(email: 'joe@smith.com', password: '7654321').save(failOnError: true)
-        account.save(failOnError: true)
-
-        when:
-        def foundUser = Account.get(account.id)
-        foundUser.password = 'secure'
-        foundUser.save(failOnError: true)
-
-        then:
-        Account.get(account.id).password == 'secure'
-    }
-    def 'deleting an existing user removes it from the database'() {
-        setup:
-        def account = new Account(email: 'pat@ska.com', password: 'skillz')
-        account.save(failOnError: true)
-
-        when:
-        account.delete()
-
-        then:
-        !Account.exists(account.id)
-    }*/
 }

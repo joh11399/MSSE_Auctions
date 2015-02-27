@@ -9,8 +9,8 @@ class BidSpec extends Specification {
     }
 
     void cleanup() {
-        Account.findByEmail('bidTest@email.com').delete()
         Listing.findByName('open listing Bid test').delete()
+        Account.findByEmail('bidTest@email.com').delete()
     }
 
     def "create a bid"() {
@@ -47,21 +47,4 @@ class BidSpec extends Specification {
         then:
         thrown(grails.validation.ValidationException)
     }
-
-    /*
-
-    //TODO  find out why this isn't throwing a null exception
-
-    def "unsuccessfully create a bid:  null amount"() {
-        given:
-
-        when:
-        new Bid(listing: Listing.findByName('open listing Bid test'), bidder: Account.findByEmail('bidTest@email.com')).save(failOnError: true)
-
-        then:
-        thrown(grails.validation.ValidationException)
-        Bid.count() == 0
-    }
-    */
-
 }

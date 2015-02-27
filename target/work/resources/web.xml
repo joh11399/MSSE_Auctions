@@ -119,13 +119,13 @@
         <servlet-class>org.codehaus.groovy.grails.web.pages.GroovyPagesServlet</servlet-class>
     </servlet>
   <servlet>
-    <servlet-name>grails-errorhandler</servlet-name>
-    <servlet-class>org.codehaus.groovy.grails.web.servlet.ErrorHandlingServlet</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>grails-remote-control</servlet-name>
     <servlet-class>grails.plugin.remotecontrol.RemoteControlServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>grails-errorhandler</servlet-name>
+    <servlet-class>org.codehaus.groovy.grails.web.servlet.ErrorHandlingServlet</servlet-class>
   </servlet>
 
     <servlet-mapping>
@@ -133,12 +133,12 @@
         <url-pattern>*.gsp</url-pattern>
     </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>grails-errorhandler</servlet-name>
-    <url-pattern>/grails-errorhandler</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>grails-remote-control</servlet-name>
     <url-pattern>/grails-remote-control</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>grails-errorhandler</servlet-name>
+    <url-pattern>/grails-errorhandler</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>grails</servlet-name>

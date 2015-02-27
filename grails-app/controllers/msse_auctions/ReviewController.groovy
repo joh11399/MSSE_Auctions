@@ -12,7 +12,7 @@ class ReviewController {
         def reviews
         if(params.searchBuyerSeller){
             searchBuyerSeller = params.searchBuyerSeller
-            reviews = Review.findAll("from Review as r where r.reviewer.name like :searchBuyerSeller or r.reviewee.name like :searchBuyerSeller order by r.dateCreated desc", [searchBuyerSeller: '%'+ searchBuyerSeller+'%'], params)
+            reviews = Review.findAll("from Review as r where r.reviewer.name like :searchBuyerSeller or r.reviewee.name like :searchBuyerSeller order by r.dateCreated desc", [searchBuyerSeller: "%"+ searchBuyerSeller+"%"], params)
         }
         else{
             reviews = Review.list(params)

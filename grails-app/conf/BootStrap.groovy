@@ -32,8 +32,8 @@ class BootStrap {
         def l1 = new Listing(name: 'lamp', description: 'it\'s a lamp', dateCreated: new Date() - 11, startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a3).save(failOnError: true)
         def l2 = new Listing(name: 'antique dresser', description: 'it\'s an antique dresser', dateCreated: new Date() - 9, startDate: new Date() - 9, days: 9, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         def l3 = new Listing(name: 'clock', description: 'it\'s a clock', dateCreated: thirtyMinutes - 8, startDate: thirtyMinutes - 8, days: 8, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
-        def l4 = new Listing(name: 'guitar', description: 'it\'s a guitar', dateCreated: twoHours - 6, startDate: twoHours - 6, days: 6, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
-        def l5 = new Listing(name: 'picture frame', description: 'it\'s a picture frame', dateCreated: new Date() - 3, startDate: new Date() - 3, days: 5, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
+        new Listing(name: 'guitar', description: 'it\'s a guitar', dateCreated: twoHours - 6, startDate: twoHours - 6, days: 6, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
+        new Listing(name: 'picture frame', description: 'it\'s a picture frame', dateCreated: new Date() - 3, startDate: new Date() - 3, days: 5, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         new Listing(name: 'test4', description: 'it\'s a test', startDate: new Date() - 1, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         new Listing(name: 'test5', description: 'it\'s a test', startDate: new Date() - 1, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         new Listing(name: 'test6', description: 'it\'s a test', startDate: new Date() - 1, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
@@ -47,8 +47,10 @@ class BootStrap {
         new Bid(listing: l2, bidder: a2, amount: 25.00).save(failOnError: true)
         new Bid(listing: l3, bidder: a1, amount: 12.00).save(failOnError: true)
 
-        new Review(listing: l1, reviewer: a1, reviewee: a2, reviewOf: 'Buyer', rating: 2, thumbs: 'down', description: 'he never paid!!').save(failOnError: true)
-        new Review(listing: l1, reviewer: a2, reviewee: a1, reviewOf: 'Seller', rating: 4, thumbs: 'up', description: 'great product!').save(failOnError: true)
+        new Review(listing: l1, reviewer: a3, reviewee: a2, reviewOf: 'Seller', rating: 1, thumbs: 'down', description: 'he never paid!!').save(failOnError: true)
+        new Review(listing: l1, reviewer: a2, reviewee: a3, reviewOf: 'Buyer', rating: 4, thumbs: 'up', description: 'great product!').save(failOnError: true)
+        new Review(listing: l2, reviewer: a1, reviewee: a2, reviewOf: 'Seller', rating: 5, thumbs: 'up', description: 'paid right away.').save(failOnError: true)
+        new Review(listing: l2, reviewer: a2, reviewee: a1, reviewOf: 'Buyer', rating: 4, thumbs: 'up', description: 'shipped quickly enough.').save(failOnError: true)
     }
 }
 

@@ -9,6 +9,11 @@ class AccountGetPage extends Page {
     static content = {
         name { $("#name") }
         email { $("#email") }
+        addressStreet { $("#addressStreet") }
+        addressCity { $("#addressCity") }
+        addressState { $("#addressState") }
+        addressZip { $("#addressZip") }
+        dateCreated { $("#dateCreated") }
+        lastUpdated { $("#lastUpdated") }
     }
-
 }
