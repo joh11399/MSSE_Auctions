@@ -69,11 +69,6 @@ class BidController {
             respond bidInstance.errors, view:'create'
             return
         }
-        /*
-        else if(bidInstance.bidder.id != session.user.id) {
-            respond flash.message = 'You are not logged in as ' + bidInstance.bidder + '.  Please log in or select the correct account.', view:'create'
-            return
-        }*/
         else if(bidInstance.amount < highestBidAmount){
             respond flash.message = 'The minimum bid for this listing is $' + highestBidAmount, view:'create'
             return

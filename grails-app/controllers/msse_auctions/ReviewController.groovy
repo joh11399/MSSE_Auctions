@@ -30,7 +30,7 @@ class ReviewController {
 
 
     def save(Review reviewInstance) {
-        reviewInstance.save(failOnError: true) //flush:true
+        reviewInstance.save(failOnError: true)
         redirect(controller: "review", action: "index")
     }
 }

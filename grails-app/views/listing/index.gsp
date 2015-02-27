@@ -39,7 +39,6 @@
         <th>${message(code: 'listing.deliverOption.label', default: 'Deliver Option')}</th>
 
         <th><g:message code="listing.seller.label" default="Seller" /></th>
-]
 
     </tr>
     </thead>

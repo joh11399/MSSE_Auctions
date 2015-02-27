@@ -92,7 +92,6 @@ class ListingController {
     def save(Listing listingInstance) {
         if (listingInstance.hasErrors()) {
             respond listingInstance.errors, view:'create'
-            return
         }else{
             listingInstance.save()
             redirect(action: "index")
