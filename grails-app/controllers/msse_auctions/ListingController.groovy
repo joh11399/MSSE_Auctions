@@ -13,32 +13,17 @@ class ListingController {
             searchDescription = params.searchDescription
         }
 
-        println("")
-        println("descr:  "+ params.searchDescription)
-        println("descr:  "+ searchDescription)
-        println("params:  " + params)
-        println("max   :  " + params.max)
-        println("offset:  " + params.offset)
-        println("sort  :  " + params.sort)
-        println("order :  " + params.order)
-
         params.max = Math.min(max ?: 10, 100)
         if(params.offset==null){
             params.offset = 0
         }
 
-
         def listings
 
         if(completedListingsCheckbox=='on'){
-
-            //TODO user-specified sorting doesn't work.....
-
             if(searchDescription!='') {
-                //listings = Listing.findAll("from Listing as l where (l.startDate + l.days) < :today and l.description like :description order by (l.startDate + l.days) desc", [today: new Date(), description: searchDescription], params)
                 listings = Listing.findAll("from Listing as l where l.description like :description order by (l.startDate + l.days)", [description: '%'+searchDescription+'%'], params)
             }else {
-                //listings = Listing.findAll("from Listing as l where (l.startDate + l.days) < ? order by (l.startDate + l.days) desc", [new Date()], params)
                 listings = Listing.findAll("from Listing as l order by (l.startDate + l.days)", [max:10, offset:0])
             }
         }
@@ -49,8 +34,6 @@ class ListingController {
                 listings = Listing.findAll("from Listing as l where (l.startDate + l.days) >= ? order by (l.startDate + l.days)", [new Date()], params)
             }
         }
-
-        //max: params.max, offset: params.offset, sort: params.sort, order: params.order
 
         listings.each(){
             getListingBidderAndState(it)

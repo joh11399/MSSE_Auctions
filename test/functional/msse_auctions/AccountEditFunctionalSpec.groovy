@@ -2,9 +2,9 @@ package msse_auctions
 
 import geb.spock.GebSpec
 import grails.plugin.remotecontrol.RemoteControl
-import msse_auctions.pages.AccountShowPage
+import msse_auctions.pages.AccountEditPage
 
-class AccountFunctionalSpec extends GebSpec {
+class AccountEditFunctionalSpec extends GebSpec {
 
     def remote = new RemoteControl()
 
@@ -32,9 +32,9 @@ class AccountFunctionalSpec extends GebSpec {
         }
     }
 
-    def "gets account details"() {
+    def "displays account Edit fields"() {
         when:
-        to AccountShowPage, id: accountId
+        to AccountEditPage, id: accountId
 
         then:
         email.text() == 'functional@test.com'

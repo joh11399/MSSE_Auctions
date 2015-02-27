@@ -7,7 +7,7 @@
         <g:message code="account.email.label" default="Email" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="email" required="" value="${accountInstance?.email}"/>
+    <g:textField id="email" name="email" required="" value="${accountInstance?.email}"/>
 
 </div>
 
@@ -16,7 +16,7 @@
         <g:message code="account.name.label" default="Name" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="name" required="" value="${accountInstance?.name}"/>
+    <g:textField id="name" name="name" required="" value="${accountInstance?.name}"/>
 
 </div>
 
@@ -25,7 +25,7 @@
         <g:message code="account.password.label" default="Password" />
         <span class="required-indicator">*</span>
     </label>
-    <g:field type="password" name="password" required="" value="${accountInstance?.password}"/>
+    <g:field id="password" type="password" name="password" required="" value="${accountInstance?.password}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressStreet', 'error')} required">
@@ -33,7 +33,7 @@
         <g:message code="account.addressStreet.label" default="Address Street" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="addressStreet" required="" value="${accountInstance?.addressStreet}"/>
+    <g:textField id="addressStreet" name="addressStreet" required="" value="${accountInstance?.addressStreet}"/>
 
 </div>
 
@@ -42,7 +42,7 @@
         <g:message code="account.addressCity.label" default="Address City" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="addressCity" required="" value="${accountInstance?.addressCity}"/>
+    <g:textField id="addressCity" name="addressCity" required="" value="${accountInstance?.addressCity}"/>
 
 </div>
 
@@ -51,7 +51,7 @@
         <g:message code="account.addressState.label" default="Address State" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select name="addressState" from="${accountInstance.constraints.addressState.inList}" required="" value="${accountInstance?.addressState}" valueMessagePrefix="account.addressState"/>
+    <g:select id="addressState" name="addressState" from="${accountInstance.constraints.addressState.inList}" required="" value="${accountInstance?.addressState}" valueMessagePrefix="account.addressState"/>
 
 </div>
 
@@ -60,7 +60,7 @@
         <g:message code="account.addressZip.label" default="Address Zip" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="addressZip" required="" value="${accountInstance?.addressZip}"/>
+    <g:textField id="addressZip" name="addressZip" required="" value="${accountInstance?.addressZip}"/>
 
 </div>
 
