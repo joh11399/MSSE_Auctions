@@ -47,20 +47,20 @@
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
             <td>
-                <g:link id="listing_${i}_bidLink" class="create" controller="bid" action="create" params="[listingID: listingInstance.id]" style="display: ${listingInstance.timeRemaining=='completed' ? 'none': 'block' }">${listingInstance.timeRemaining=='completed' ? '': 'bid'}</g:link>
-                <g:link id="listing_${i}_rateSellerLink" class="create" controller="review" action="create" params="[listingID: listingInstance.id]" style="display: ${listingInstance.timeRemaining=='completed' ? 'block': 'none' }; white-space: nowrap;">${listingInstance.timeRemaining=='completed' ? 'Rate Seller': ''}</g:link>
-                <g:link id="listing_${i}_rateBuyerLink" class="create" controller="review" action="create" params="[listingID: listingInstance.id]" style="display: ${listingInstance.timeRemaining=='completed' ? 'block': 'none' }; white-space: nowrap;">${listingInstance.timeRemaining=='completed' ? 'Rate Buyer': ''}</g:link>
+                <a href="/MSSE_Auctions/bid/create/?listingID=${listingInstance.id}" class="create bidLink" style="display: ${listingInstance.timeRemaining=='completed' ? 'none': 'block' }">bid</a>
+                <a href="/MSSE_Auctions/review/create/?listingID=${listingInstance.id}" class="create rateSellerLink" style="display: ${listingInstance.timeRemaining=='completed' ? 'block': 'none' }; white-space: nowrap;">Rate Seller</a>
+                <a href="/MSSE_Auctions/review/create/?listingID=${listingInstance.id}" class="create rateBuyerLink" style="display: ${listingInstance.timeRemaining=='completed' ? 'block': 'none' }; white-space: nowrap;">Rate Buyer</a>
             </td>
 
-            <td><label id="listing_${i}_timeRemaining">${listingInstance.timeRemaining}</label><br/>(<g:formatDate format="M/dd h:mm a" date="${listingInstance.endDate}"/>)</td>
+            <td><label class="timeRemaining">${listingInstance.timeRemaining}</label><br/>(<g:formatDate format="M/dd h:mm a" date="${listingInstance.endDate}"/>)</td>
 
-            <td id="listing_${i}_highestBidStr" style="font-weight: ${listingInstance.timeRemaining=='completed' ? 'bold': 'normal' }">${listingInstance.highestBidStr}</td>
+            <td style="font-weight: ${listingInstance.timeRemaining=='completed' ? 'bold': 'normal' }" class="highestBidStr">${listingInstance.highestBidStr}</td>
 
             <td><g:link action="show" id="${listingInstance.id}">${fieldValue(bean: listingInstance, field: "name")}</g:link>
 
             <br />
 
-                ${fieldValue(bean: listingInstance, field: "description")}</td>
+                <label class="description">${fieldValue(bean: listingInstance, field: "description")}</label></td>
 
             <td><g:formatDate format="M/dd h:mm a" date="${listingInstance.startDate}" /></td>
 
