@@ -2,7 +2,7 @@ package msse_auctions
 
 class ListingController {
 
-    def index(Integer max) {
+    def index(){
 
         def completedListingsCheckbox = 'off'
         if(params.completedListingsCheckbox!=null) {
@@ -13,7 +13,6 @@ class ListingController {
             searchDescription = params.searchDescription
         }
 
-        params.max = Math.min(max ?: 10, 100)
         if(params.offset==null){
             params.offset = 0
         }
@@ -74,11 +73,10 @@ class ListingController {
         if(bids.size() > 0){
             def bid = BidController.getHighestBid(bids)
 
+            it.highestBidStr = "\$" + bid.amount.round(2) + " - " + bid.bidder
+
             if(it.timeRemaining == 'completed') {
-                it.highestBidStr = "Winner: \$" + bid.amount.round(2) + " - " + bid.bidder
-            }
-            else {
-                it.highestBidStr = "\$" + bid.amount.round(2) + " - " + bid.bidder
+                it.highestBidStr = "Winner: " + it.highestBidStr
             }
         }
     }

@@ -14,13 +14,6 @@ class AccountControllerSpec extends Specification {
 
     def parser = new JsonSlurper()
 
-    //TODO   do you need to be logged in?...
-    /*def setup(){
-        def user = Account.findByEmailAndPassword(params.email, params.password)
-        if(user){
-            session.user = user
-    }*/
-
 
     def "create account"() {
         given:
