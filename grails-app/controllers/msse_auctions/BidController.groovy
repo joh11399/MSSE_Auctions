@@ -42,12 +42,14 @@ class BidController {
     }
 
     static def getBids(Listing listing){
+        //get all bids for the specified listing
         Bid.findAll("from Bid as b where b.listing.id=:listingId", [listingId: listing.id])
     }
 
     static def getHighestBid(def bids){
         Bid highestBid = null
         if(bids.size() > 0){
+            //loop through the collection of bids and assign the bid with the highest amount as the highestBid
             bids.each(){
                 if(highestBid!=null){
                     if(it.amount > highestBid.amount){
