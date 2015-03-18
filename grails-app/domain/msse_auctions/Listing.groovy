@@ -1,5 +1,8 @@
 package msse_auctions
 
+//import grails.rest.Resource
+
+//@Resource(uri='/api/listings', formats = ['json', 'xml'])
 class Listing {
     Date dateCreated
     Date lastUpdated

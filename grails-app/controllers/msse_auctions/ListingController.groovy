@@ -16,7 +16,7 @@ class ListingController {
         def listings
 
         if(params.completedListingsCheckbox=='on'){
-            if(params.searchDescription!='') {
+            if(!params.searchDescription) {
                 //get all listings using the search text
                 listings = Listing.findAll("from Listing as l where l.description like :description order by (l.startDate + l.days)", [description: '%'+params.searchDescription+'%'], params)
             }else {
