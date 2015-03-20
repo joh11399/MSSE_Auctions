@@ -1,6 +1,13 @@
 package msse_auctions
 
 class Account {
+    transient springSecurityService
+
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
+    String username
     String email
     String password
     String name
@@ -14,16 +21,18 @@ class Account {
     Date dateCreated
     Date lastUpdated
 
-
+    static transients = ['springSecurityService']
 
     static constraints = {
+		username blank: false, unique: true
         email(email: true, blank: false, unique: true)
-        password(blank: false, password: true, size: 8..16, validator: {val ->
-            def containsNumber = val.matches(".*\\d.*")
-            def containsLetter = val ==~ /.*[a-zA-Z].*/
+        password(blank: false)//, password: true, size: 8..16, validator: {val ->
+            //def containsNumber = val.matches(".*\\d.*")
+            //def containsLetter = val ==~ /.*[a-zA-Z].*/
 
-            return containsNumber && containsLetter
-        })
+            //return containsNumber && containsLetter
+        //})
+
         name(nullable: false)
         addressStreet(nullable: false)
         addressCity(nullable: false)
@@ -38,4 +47,26 @@ class Account {
         dateCreated()
         lastUpdated()
     }
+
+	static mapping = {
+		password column: '`password`'
+	}
+
+	Set<Role> getAuthorities() {
+		AccountRole.findAllByAccount(this).collect { it.role }
+	}
+
+	def beforeInsert() {
+		encodePassword()
+	}
+
+	def beforeUpdate() {
+		if (isDirty('password')) {
+			encodePassword()
+		}
+	}
+
+	protected void encodePassword() {
+		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+	}
 }

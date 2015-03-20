@@ -1,4 +1,4 @@
-<%@ page import="msse_auctions.Review" %>
+<%@ page import="msse_auctions.Account; msse_auctions.Review" %>
 
 
 
@@ -23,7 +23,7 @@
         <g:message code="review.reviewee.label" default="Reviewee" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="reviewee" name="reviewee.id" from="${msse_auctions.Account.list()}" optionKey="id" required="" value="${reviewInstance?.reviewee?.id}" class="many-to-one"/>
+    <g:select id="reviewee" name="reviewee.id" from="${Account.list()}" optionKey="id" required="" value="${reviewInstance?.reviewee?.id}" class="many-to-one"/>
 </div>
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewOf', 'error')} required">
     <label for="reviewOf">

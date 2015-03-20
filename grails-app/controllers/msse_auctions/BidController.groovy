@@ -1,6 +1,10 @@
 package msse_auctions
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class BidController {
+    
+    def springSecurityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -15,7 +19,7 @@ class BidController {
         }
         respond bids, model:[bidInstanceCount: Bid.count()]
     }
-
+    @Secured(['ROLE_USER'])
     def create(String listingID) {
         def bid = new Bid(params)
         if(listingID) {
@@ -23,7 +27,7 @@ class BidController {
             bid.listing = listing
             bid.amount = getHighestBidAmount(listing)
         }
-        bid.bidder = session.user
+        bid.bidder = springSecurityService.currentUser as Account
 
         respond bid
     }
@@ -63,7 +67,7 @@ class BidController {
         }
         highestBid
     }
-
+    @Secured(['ROLE_USER'])
     def save(Bid bidInstance) {
         def highestBidAmount = getHighestBidAmount(bidInstance.listing)
 

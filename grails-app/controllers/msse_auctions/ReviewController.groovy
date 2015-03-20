@@ -1,6 +1,10 @@
 package msse_auctions
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class ReviewController {
+
+    def springSecurityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -17,18 +21,32 @@ class ReviewController {
 
         respond reviews, model: [reviewInstanceCount: Review.count(), searchBuyerSeller: searchBuyerSeller]
     }
-
+    @Secured(['ROLE_USER'])
     def create(String listingID) {
         def review = new Review(params)
+
         if (listingID) {
             Listing listing = Listing.findById(listingID)
             review.listing = listing
         }
 
-        respond review
+        def account = springSecurityService.currentUser as Account
+        def seller = review?.listing?.seller
+        def winningBid = Bid.findAll("from Bid as b where b.listing.id=:listingId order by dateCreated desc", [listingId: review?.listing?.id])
+        def winner = winningBid.bidder
+        if (account.id != seller.id &&
+            account.id != winner.id) {
+            redirect(controller: "listing", action: "show", id: review?.listing?.id)
+        } else {
+            review.reviewOf = account.id == seller.id?'Buyer':'Seller'
+            review.reviewer = account
+            review.reviewee = account.id == seller.id ? winner : seller
+
+            respond review
+        }
     }
 
-
+    @Secured(['ROLE_USER'])
     def save(Review reviewInstance) {
         reviewInstance.save(failOnError: true)
         redirect(controller: "review", action: "index")

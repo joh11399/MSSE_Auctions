@@ -1,4 +1,4 @@
-<%@ page import="msse_auctions.Listing" %>
+<%@ page import="msse_auctions.Account; msse_auctions.Listing" %>
 
 
 

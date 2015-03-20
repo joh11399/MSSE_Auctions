@@ -1,7 +1,12 @@
 package msse_auctions
 
+import grails.plugin.springsecurity.annotation.Secured
+
 class ListingController {
 
+    def springSecurityService
+
+    @Secured(['permitAll'])
     def index(){
 
         //set a default value for completedListingsCheckbox
@@ -90,12 +95,14 @@ class ListingController {
         }
     }
 
-
+    @Secured(['ROLE_USER'])
     def create() {
         def listing = new Listing(params)
-        listing.seller = session.user
+        listing.seller = springSecurityService.currentUser as Account
         respond listing
     }
+
+    @Secured(['ROLE_USER'])
     def save(Listing listingInstance) {
         if (listingInstance.hasErrors()) {
             respond listingInstance.errors, view:'create'
@@ -104,7 +111,7 @@ class ListingController {
             redirect(action: "index")
         }
     }
-
+    @Secured(['permitAll'])
     def show(Listing listingInstance) {
         getListingBidderAndState(listingInstance)
         respond listingInstance
