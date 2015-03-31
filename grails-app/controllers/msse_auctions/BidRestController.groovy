@@ -1,25 +1,133 @@
 package msse_auctions
 
-import grails.rest.RestfulController
+import grails.plugin.springsecurity.annotation.Secured
 
-class BidRestController extends RestfulController<Bid> {
+class BidRestController {
+
+    def springSecurityService
+    def BidService
+
+    static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']
 
     @SuppressWarnings("GroovyUnusedDeclaration")
     static responseFormats = ['json', 'xml']
 
-    BidRestController() {
-        super(Bid)
-    }
 
-    def index(Integer max, String q) {
-        if (!q) {
-            return super.index(max)
-        }
+    //@Secured(['ROLE_USER'])
+    @Secured('permitAll()')
+    def index(Integer max, int listingId) {
         params.max = Math.min(max ?: 10, 100)
 
-        //def bids = Bid.where { name =~ "%${q.toLowerCase()}%" }.list(max: max)
-        def bids = Bid.list()
-        respond bids, model: [bidCount: bids.size()]
+        def bids
+        if (listingId) {
+            bids = Bid.where { listing.id == listingId }.list(max: max)
+        }else{
+            bids = Bid.list()
+        }
+        respond bids
     }
 
+    @Secured('permitAll()')
+    def show() {
+        Bid bidInstance = Bid.findById(params.id)
+
+        if (!bidInstance) {
+            response.status = 404;
+            render "Not found"
+        } else {
+            respond bidInstance
+        }
+    }
+
+    @Secured(['ROLE_USER'])
+    def save() {
+        def account = springSecurityService.currentUser as Account
+
+        Bid bidInstance = new Bid()
+        BidService.getBidFromJson(bidInstance, request.JSON)
+        def highestBidAmount = BidService.getHighestBidAmount(bidInstance.listing)
+
+        if (bidInstance.hasErrors()) {
+            response.status = 400;
+            render "Bad request.  The parameters provided caused an error: " + bidInstance.errors
+        }
+        else if(bidInstance.bidder.username != account?.username) {
+            response.status = 401;
+            render "Not authorized to save a bid for Account ID ${bidInstance.bidder.id}"
+        }
+        else if(bidInstance.amount < highestBidAmount){
+            response.status = 400;
+            render "The minimum bid for this listing is \$${highestBidAmount}"
+        }
+        else {
+            bidInstance.save(flush: true, failOnError: true)
+            response.status = 201;
+            render(contentType: 'text/json') {
+                [
+                        'responseText': "Success!  Bid ID ${bidInstance.id} has been created.",
+                        'id'    : bidInstance.id
+                ]
+            }
+        }
+    }
+
+    @Secured(['ROLE_USER'])
+    def update() {
+        if (!params.id) {
+
+            //TODO..  is the illegalargumentexception worth using??
+            //throw new IllegalArgumentException('Missing id parameter')
+
+            response.status = 400;
+            render "Bad request.  No Bid ID provided."
+            return
+        }
+
+        def account = springSecurityService.currentUser as Account
+        Bid bidInstance = Bid.findById(params.id)
+
+        if (bidInstance.bidder.username != account.username) {
+            response.status = 401;
+            render "Not authorized to update Bid ID ${bidInstance.id}"
+        } else {
+            BidService.getBidFromJson(bidInstance, request.JSON)
+            if (bidInstance.hasErrors()) {
+                response.status = 400;
+                render "Bad request.  The parameters provided caused an error: " + bidInstance.errors
+                return
+            }
+            bidInstance.save(flush: true, failOnError: true)
+
+            render "Success!  Bid ID ${bidInstance.id} has been updated."
+        }
+    }
+
+
+    @Secured(['ROLE_USER'])
+    def delete() {
+        def account = springSecurityService.currentUser as Account
+        if (!params.id) {
+            response.status = 400;
+            render "Bad request.  No Bid ID provided."
+            return
+        }
+
+        Bid bidInstance = Bid.findById(params.id)
+        if (!bidInstance) {
+            response.status = 404
+            render "Not found"
+            return
+        }
+
+        //if the user's account doesn't match the bidInstance.bidder  return a 401
+        if (bidInstance?.bidder?.username != account?.username) {
+            response.status = 401;
+            render "Not authorized to delete bids for Account ID ${bidInstance.bidder.id}"
+            return
+        }
+        def bidId = bidInstance.id
+
+        bidInstance.delete(flush: true)
+        render "Success!  Account ID ${bidId} has been deleted."
+    }
 }

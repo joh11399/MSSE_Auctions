@@ -24,9 +24,9 @@ class Account {
     static transients = ['springSecurityService']
 
     static constraints = {
-		username blank: false, unique: true
-        email(email: true, blank: false, unique: true)
-        password(blank: false)//, password: true, size: 8..16, validator: {val ->
+		username(nullable: false, blank: false, unique: true)
+        email(nullable: false, email: true, blank: false, unique: true)
+        password(nullable: false, blank: false)//, password: true, size: 8..16, validator: {val ->
             //def containsNumber = val.matches(".*\\d.*")
             //def containsLetter = val ==~ /.*[a-zA-Z].*/
 
@@ -41,7 +41,6 @@ class Account {
                              "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
                              "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
                              "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY" ], nullable: false)
-
         addressZip(nullable: false)
 
         dateCreated()

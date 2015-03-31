@@ -5,13 +5,15 @@ import grails.plugin.springsecurity.annotation.Secured
 class BidController {
     
     def springSecurityService
+    def BidService
 
+    @Secured('permitAll()')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
         def bids
         if(params.listingID){
-            String listingID = params.listingID
+            int listingID = params.listingID
             Listing listing = Listing.findById(listingID)
             bids = Bid.findAll("from Bid as b where b.listing.id = :listingID order by b.dateCreated desc", [listingID: listing.id], params)
         }else{
@@ -19,65 +21,29 @@ class BidController {
         }
         respond bids, model:[bidInstanceCount: Bid.count()]
     }
+
     @Secured(['ROLE_USER'])
     def create(String listingID) {
         def bid = new Bid(params)
         if(listingID) {
             Listing listing = Listing.findById(listingID)
             bid.listing = listing
-            bid.amount = getHighestBidAmount(listing)
+            bid.amount = BidService.getHighestBidAmount(listing)
         }
         bid.bidder = springSecurityService.currentUser as Account
 
         respond bid
     }
 
-    static def getHighestBidAmount(Listing listing){
-        def highestBidAmount
-        def bids = getBids(listing)
-        if(bids.size() == 0) {
-            highestBidAmount = listing.startingPrice
-        }
-        else{
-            def highestBid = getHighestBid(bids)
-            highestBidAmount = highestBid.amount + 0.5
-        }
-        highestBidAmount
-    }
-
-    static def getBids(Listing listing){
-        //get all bids for the specified listing
-        Bid.findAll("from Bid as b where b.listing.id=:listingId", [listingId: listing.id])
-    }
-
-    static def getHighestBid(def bids){
-        Bid highestBid = null
-        if(bids.size() > 0){
-            //loop through the collection of bids and assign the bid with the highest amount as the highestBid
-            bids.each(){
-                if(highestBid!=null){
-                    if(it.amount > highestBid.amount){
-                        highestBid = it
-                    }
-                }
-                else{
-                    highestBid = it
-                }
-            }
-        }
-        highestBid
-    }
     @Secured(['ROLE_USER'])
     def save(Bid bidInstance) {
-        def highestBidAmount = getHighestBidAmount(bidInstance.listing)
+        def highestBidAmount = BidService.getHighestBidAmount(bidInstance.listing)
 
         if (bidInstance.hasErrors()) {
             respond bidInstance.errors, view:'create'
-            return
         }
         else if(bidInstance.amount < highestBidAmount){
             respond flash.message = 'The minimum bid for this listing is $' + highestBidAmount, view:'create'
-            return
         }
         else{
             bidInstance.save flush:true

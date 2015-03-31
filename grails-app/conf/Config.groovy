@@ -118,74 +118,6 @@ log4j.main = {
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'MSSE_Auctions.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'MSSE_Auctions.UserRole'
-grails.plugin.springsecurity.authority.className = 'MSSE_Auctions.Role'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-
-
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'MSSE_Auctions.Account'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'MSSE_Auctions.AccountUser'
-grails.plugin.springsecurity.authority.className = 'MSSE_Auctions.User'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-
-
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'MSSE_Auctions.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'MSSE_Auctions.UserRole'
-grails.plugin.springsecurity.authority.className = 'MSSE_Auctions.Role'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-
-
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'msse_auctions.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'msse_auctions.UserRole'
-grails.plugin.springsecurity.authority.className = 'msse_auctions.Role'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-
-
-// Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'msse_auctions.Account'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'msse_auctions.AccountRole'
 grails.plugin.springsecurity.authority.className = 'msse_auctions.Role'
@@ -197,6 +129,22 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+	'/**/favicon.ico':                ['permitAll'],
+
+
+        //TODO  this is from Calvo's example...
+    // REST API
+    // Stupid, stupid, stupid spring security uses controller names here (rather than urls)
+    // Debug issues with by uncommenting lines above about debugging security issues
+    /*'/song/*'                  : ['ROLE_USER'], // actually url: /rest/songs
+    '/artistrest/*'            : ['ROLE_USER'], // actual url: /rest/artists
+
+    // Regular controllers - these work as expected
+    '/artist/**'               : ['ROLE_USER'],
+    '/play/**'                 : ['ROLE_USER'],
+    '/profile/**'              : ['ROLE_USER'],
+      */
+
+    '/grails-remote-control/**': ['permitAll']
 ]
 

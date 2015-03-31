@@ -7,7 +7,7 @@ import spock.lang.Specification
 class ListingControllerSpec extends Specification {
 
     void setupSpec() {
-        def a1 = new Account(email: 'listingControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        def a1 = new Account(username: 'listingControllerTest', email: 'listingControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
         new Listing(name: 'completed listing ListingController test', description: 'test description 1', startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         new Listing(name: 'open listing ListingController test', description: 'test description 2', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
     }

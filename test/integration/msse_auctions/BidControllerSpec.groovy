@@ -7,7 +7,7 @@ class BidControllerSpec extends Specification {
     def controller = new BidController()
 
     void setup() {
-        new Account(email: 'bidControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Account(username: 'bidControllerTest', email: 'bidControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
         new Listing(name: 'open listing BidController test', description: 'test description 2', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: Account.findByEmail('bidControllerTest@email.com')).save(failOnError: true)
     }
 

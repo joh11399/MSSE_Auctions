@@ -5,7 +5,7 @@ import spock.lang.Specification
 class ListingSpec extends Specification {
 
     void setup() {
-        new Account(email: 'listingTest@email.com', password: 'abc12345', name: 'Heather Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Account(username: 'listingTest', email: 'listingTest@email.com', password: 'abc12345', name: 'Heather Johnson', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
     }
 
     void cleanup() {

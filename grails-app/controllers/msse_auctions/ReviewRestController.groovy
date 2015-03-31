@@ -1,24 +1,140 @@
 package msse_auctions
 
-import grails.rest.RestfulController
+import grails.plugin.springsecurity.annotation.Secured
 
-class ReviewRestController extends RestfulController<Review> {
+class ReviewRestController  {
+
+    def springSecurityService
+    def ReviewService
+
+    static allowedMethods = [index: 'GET', save: 'POST', update: 'PUT', delete: 'DELETE']
 
     @SuppressWarnings("GroovyUnusedDeclaration")
     static responseFormats = ['json', 'xml']
 
-    ReviewRestController() {
-        super(Review)
-    }
 
-    def index(Integer max, String q) {
-        if (!q) {
-            return super.index(max)
-        }
+    //@Secured(['ROLE_USER'])
+    @Secured('permitAll()')
+    def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
-        //def reviews = Review.where { name =~ "%${q.toLowerCase()}%" }.list(max: max)
         def reviews = Review.list()
-        respond reviews, model: [reviewCount: reviews.size()]
+        respond reviews
     }
+
+
+    @Secured(['ROLE_USER'])
+    def show() {
+        def account = springSecurityService.currentUser as Account
+        Review reviewInstance = Review.findById(params.id)
+
+        if (!reviewInstance) {
+            response.status = 404;
+            render "Not found"
+
+            /*
+
+            TODO..  is this access restriction necessary?
+            index is not protected.  should this be?
+            if not, you don't need ROLE_USER or an account variable here
+
+
+            //only the reviewer and reviewee are authorized to access reviews
+        } else if (reviewInstance.reviewer.username != account.username &&
+                   reviewInstance.reviewee.username != account.username) {
+            response.status = 401;
+            render "Not authorized to view Review ID ${reviewInstance.id}"
+            */
+        } else {
+            respond reviewInstance
+        }
+    }
+
+
+    @Secured(['ROLE_USER'])
+    def save() {
+        Review reviewInstance = new Review()
+        ReviewService.getReviewFromJson(reviewInstance, request.JSON)
+
+        if (reviewInstance.hasErrors()) {
+            response.status = 400;
+            render "Bad request.  The parameters provided caused an error: " + reviewInstance.errors
+        } else {
+            def account = springSecurityService.currentUser as Account
+            if (!ReviewService.isValidReview(account, reviewInstance)) {
+                response.status = 400;
+                render "Sorry.  You need to be either the seller or the winner of the listing to submit a review."
+            }else {
+                reviewInstance.save(flush: true, failOnError: true)
+                response.status = 201;
+                render(contentType: 'text/json') {
+                    [
+                            'responseText': "Success!  Review ID ${reviewInstance.id} has been created.",
+                            'id'    : reviewInstance.id
+                    ]
+                }
+            }
+        }
+    }
+
+    @Secured(['ROLE_USER'])
+    def update() {
+        if (!params.id) {
+            response.status = 400;
+            render "Bad request.  No Review ID provided."
+            return
+        }
+
+        def account = springSecurityService.currentUser as Account
+        def reviewInstance = Review.findById(params.id)
+
+        if (reviewInstance.reviewer.username != account.username) {
+            response.status = 401;
+            render "Not authorized to update Review ID ${reviewInstance.id}"
+
+        } else {
+            ReviewService.getReviewFromJson(reviewInstance, request.JSON)
+
+            if (reviewInstance.hasErrors()) {
+                response.status = 400;
+                render "Bad request.  The parameters provided caused an error: " + reviewInstance.errors
+                return
+            }
+            if (!ReviewService.isValidReview(account, reviewInstance)) {
+                response.status = 400;
+                render "Sorry.  You need to be either the seller or the winner of the listing to update this review."
+            } else {
+                reviewInstance.save(failOnError: true)
+                render "Success!  Review ID ${reviewInstance.id} has been updated."
+            }
+        }
+    }
+
+    @Secured(['ROLE_USER'])
+    def delete() {
+        if (!params.id) {
+            response.status = 400;
+            render "Bad request.  No Review ID provided."
+            return
+        }
+
+        def reviewInstance = Review.findById(params.id)
+        if (!reviewInstance) {
+            response.status = 404
+            render "Not found"
+            return
+        }
+
+        def account = springSecurityService.currentUser as Account
+        if (reviewInstance.reviewer.username != account.username) {
+            response.status = 401;
+            render "Not authorized to delete Review ID ${reviewInstance.id}"
+        }
+        else{
+            def reviewId = reviewInstance.id
+            reviewInstance.delete(flush: true)
+            render "Success!  Review ID ${reviewId} has been deleted."
+        }
+    }
+
 }

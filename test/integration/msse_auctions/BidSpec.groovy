@@ -4,7 +4,7 @@ import spock.lang.Specification
 
 class BidSpec extends Specification {
     void setup() {
-        new Account(email: 'bidTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Account(username: 'bidTest', email: 'bidTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
         new Listing(name: 'open listing Bid test', description: 'test description 2', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: Account.findByEmail('bidTest@email.com')).save(failOnError: true)
     }
 

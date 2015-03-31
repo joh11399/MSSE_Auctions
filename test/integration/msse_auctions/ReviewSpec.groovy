@@ -5,8 +5,8 @@ import spock.lang.Specification
 class ReviewSpec extends Specification{
 
     void setup() {
-        new Account(email: 'reviewTest1@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
-        new Account(email: 'reviewTest2@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Account(username: 'reviewTest1', email: 'reviewTest1@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        new Account(username: 'reviewTest2', email: 'reviewTest2@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
         new Listing(name: 'completed listing Review test', description: 'test description 2', startDate: new Date() -11, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: Account.findByEmail('reviewTest1@email.com')).save(failOnError: true)
     }
 

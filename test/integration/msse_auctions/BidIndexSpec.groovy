@@ -8,7 +8,7 @@ class BidIndexSpec extends Specification {
 
 
     void setupSpec() {
-        def a1 = new Account(email: 'bidIndexTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
+        def a1 = new Account(username: 'bidIndexTest', email: 'bidIndexTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
         def l1 = new Listing(name: 'open listing bidIndex test', description: 'test description', startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: a1).save(failOnError: true)
         new Bid(listing: l1, bidder: a1, amount: 12.00).save(failOnError: true)
         new Bid(listing: l1, bidder: a1, amount: 20.00).save(failOnError: true)

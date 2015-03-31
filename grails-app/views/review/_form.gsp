@@ -7,8 +7,8 @@
         <g:message code="review.listing.label" default="Listing" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="listing" name="listing.id" from="${msse_auctions.Listing.list()}" optionKey="id" required="" value="${reviewInstance?.listing?.id}" class="many-to-one"/>
-
+    <label style="text-align: left; cursor: default;">${reviewInstance?.listing?.name}</label>
+    <input type="hidden" id="listing" name="listing.id" value="${reviewInstance?.listing?.id}" >
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewer', 'error')} required">
@@ -16,21 +16,24 @@
         <g:message code="review.reviewer.label" default="Reviewer" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="reviewer" name="reviewer.id" from="${msse_auctions.Account.list()}" optionKey="id" required="" value="${reviewInstance?.reviewer?.id}" class="many-to-one"/>
+    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewer?.name}</label>
+    <input type="hidden" id="reviewer" name="reviewer.id" value="${reviewInstance?.reviewer?.id}" >
 </div>
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewee', 'error')} required">
     <label for="reviewee">
         <g:message code="review.reviewee.label" default="Reviewee" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="reviewee" name="reviewee.id" from="${Account.list()}" optionKey="id" required="" value="${reviewInstance?.reviewee?.id}" class="many-to-one"/>
+    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewee?.name}</label>
+    <input type="hidden" id="reviewee" name="reviewee.id" value="${reviewInstance?.reviewee?.id}" >
 </div>
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewOf', 'error')} required">
     <label for="reviewOf">
         <g:message code="review.reviewOf.label" default="Review of" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select name="reviewOf" from="${reviewInstance.constraints.reviewOf.inList}" required="" value="${reviewInstance?.reviewOf}" valueMessagePrefix="review.reviewOf"/>
+    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewOf}</label>
+    <input type="hidden" id="reviewOf" name="reviewOf" value="${reviewInstance?.reviewOf}" >
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'rating', 'error')} required">

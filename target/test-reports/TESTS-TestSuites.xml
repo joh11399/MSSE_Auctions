@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountEditFunctionalSpec" package="msse_auctions" tests="1" time="16.261" timestamp="2015-03-04T00:49:57">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountEditFunctionalSpec" package="msse_auctions" tests="2" time="6.874" timestamp="2015-03-31T03:18:35">
       <properties />
 
-      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="displays account Edit fields" time="16.253" />
+      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="displays account Edit fields" time="4.694" />
+
+      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="does not display unauthorized account" time="2.137" />
 
       <system-out><![CDATA[--Output from displays account Edit fields--
+--Output from does not display unauthorized account--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from displays account Edit fields--
+--Output from does not display unauthorized account--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="1.81" timestamp="2015-03-04T00:50:13">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="3.741" timestamp="2015-03-31T03:18:42">
       <properties />
 
-      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="1.809" />
+      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="2.702" />
 
       <system-out><![CDATA[--Output from gets account details--
 ]]></system-out>
@@ -24,55 +28,147 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="ListingFunctionalSpec" package="msse_auctions" tests="1" time="7.022" timestamp="2015-03-04T00:50:15">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="AccountRestFunctionalSpec" package="msse_auctions" tests="17" time="1.781" timestamp="2015-03-31T03:18:45">
       <properties />
 
-      <testcase classname="msse_auctions.ListingFunctionalSpec" name="listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing" time="7.019" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account list" time="0.119" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account detail" time="0.04" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="not authorized to view account detail" time="0.03" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[0]" time="0.198" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[1]" time="0.038" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[2]" time="0.017" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[3]" time="0.015" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[4]" time="0.021" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[5]" time="0.015" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[6]" time="0.01" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[7]" time="0.007" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[8]" time="0.009" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="successfully creates a account" time="0.276" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="delete an account" time="0.124" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="updates an account" time="0.276" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[0]" time="0.008" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[1]" time="0.111" />
+
+      <system-out><![CDATA[--Output from returns account list--
+--Output from returns account detail--
+--Output from not authorized to view account detail--
+--Output from unsuccessfully create an account[0]--
+--Output from unsuccessfully create an account[1]--
+--Output from unsuccessfully create an account[2]--
+--Output from unsuccessfully create an account[3]--
+--Output from unsuccessfully create an account[4]--
+--Output from unsuccessfully create an account[5]--
+--Output from unsuccessfully create an account[6]--
+--Output from unsuccessfully create an account[7]--
+--Output from unsuccessfully create an account[8]--
+--Output from successfully creates a account--
+--Output from delete an account--
+--Output from updates an account--
+--Output from unsuccessfully update an account[0]--
+--Output from unsuccessfully update an account[1]--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from returns account list--
+--Output from returns account detail--
+--Output from not authorized to view account detail--
+--Output from unsuccessfully create an account[0]--
+--Output from unsuccessfully create an account[1]--
+--Output from unsuccessfully create an account[2]--
+--Output from unsuccessfully create an account[3]--
+--Output from unsuccessfully create an account[4]--
+--Output from unsuccessfully create an account[5]--
+--Output from unsuccessfully create an account[6]--
+--Output from unsuccessfully create an account[7]--
+--Output from unsuccessfully create an account[8]--
+--Output from successfully creates a account--
+--Output from delete an account--
+--Output from updates an account--
+--Output from unsuccessfully update an account[0]--
+--Output from unsuccessfully update an account[1]--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidRestFunctionalSpec" package="msse_auctions" tests="3" time="0.106" timestamp="2015-03-31T03:18:47">
+      <properties />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="returns bid list" time="0.054" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="returns bid detail" time="0.035" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="not authorized to view account detail" time="0.013" />
+
+      <system-out><![CDATA[--Output from returns bid list--
+--Output from returns bid detail--
+--Output from not authorized to view account detail--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from returns bid list--
+--Output from returns bid detail--
+--Output from not authorized to view account detail--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingFunctionalSpec" package="msse_auctions" tests="1" time="6.493" timestamp="2015-03-31T03:18:47">
+      <properties />
+
+      <testcase classname="msse_auctions.ListingFunctionalSpec" name="listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing" time="5.797" />
 
       <system-out><![CDATA[--Output from listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing--
-it's a lamp
-... bidLink: none
-... rateSellerLink: block
-... rateBuyerLink: block
-it's an antique dresser
-... bidLink: none
-... rateSellerLink: block
-... rateBuyerLink: block
-it's a clock
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a guitar
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a picture frame
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a test
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a test
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a test
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a test
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
-it's a test
-... bidLink: block
-... rateSellerLink: none
-... rateBuyerLink: none
 ]]></system-out>
 
       <system-err><![CDATA[--Output from listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingRestFunctionalSpec" package="msse_auctions" tests="4" time="1.106" timestamp="2015-03-31T03:18:54">
+      <properties />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[0]" time="0.162" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[1]" time="0.132" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[2]" time="0.156" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns listing detail" time="0.044" />
+
+      <system-out><![CDATA[--Output from returns a list of open and completed listings[0]--
+--Output from returns a list of open and completed listings[1]--
+--Output from returns a list of open and completed listings[2]--
+--Output from returns listing detail--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from returns a list of open and completed listings[0]--
+--Output from returns a list of open and completed listings[1]--
+--Output from returns a list of open and completed listings[2]--
+--Output from returns listing detail--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="ReviewRestFunctionalSpec" package="msse_auctions" tests="1" time="0.079" timestamp="2015-03-31T03:18:56">
+      <properties />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="returns review list" time="0.076" />
+
+      <system-out><![CDATA[--Output from returns review list--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from returns review list--
 ]]></system-err>
 
   </testsuite>
