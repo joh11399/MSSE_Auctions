@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountEditFunctionalSpec" package="msse_auctions" tests="2" time="6.874" timestamp="2015-03-31T03:18:35">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountEditFunctionalSpec" package="msse_auctions" tests="2" time="5.99" timestamp="2015-03-31T21:58:23">
       <properties />
 
-      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="displays account Edit fields" time="4.694" />
+      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="displays account Edit fields" time="4.247" />
 
-      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="does not display unauthorized account" time="2.137" />
+      <testcase classname="msse_auctions.AccountEditFunctionalSpec" name="does not display unauthorized account" time="1.713" />
 
       <system-out><![CDATA[--Output from displays account Edit fields--
 --Output from does not display unauthorized account--
@@ -16,10 +16,10 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="3.741" timestamp="2015-03-31T03:18:42">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountFunctionalSpec" package="msse_auctions" tests="1" time="2.963" timestamp="2015-03-31T21:58:29">
       <properties />
 
-      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="2.702" />
+      <testcase classname="msse_auctions.AccountFunctionalSpec" name="gets account details" time="2.017" />
 
       <system-out><![CDATA[--Output from gets account details--
 ]]></system-out>
@@ -28,42 +28,44 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="AccountRestFunctionalSpec" package="msse_auctions" tests="17" time="1.781" timestamp="2015-03-31T03:18:45">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="2" name="AccountRestFunctionalSpec" package="msse_auctions" tests="18" time="2.714" timestamp="2015-03-31T21:58:32">
       <properties />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account list" time="0.119" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account list" time="0.104" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account detail" time="0.04" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="returns account detail" time="0.036" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="not authorized to view account detail" time="0.03" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="not authorized to view account detail" time="0.014" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[0]" time="0.198" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[0]" time="0.135" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[1]" time="0.038" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[1]" time="0.025" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[2]" time="0.017" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[2]" time="0.028" />
 
       <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[3]" time="0.015" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[4]" time="0.021" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[4]" time="0.024" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[5]" time="0.015" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[5]" time="0.009" />
 
       <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[6]" time="0.01" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[7]" time="0.007" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[7]" time="0.008" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[8]" time="0.009" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully create an account[8]" time="0.008" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="successfully creates a account" time="0.276" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="successfully create an account" time="0.28" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="delete an account" time="0.124" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully delete an account" time="0.557" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="updates an account" time="0.276" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="delete an account" time="0.133" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[0]" time="0.008" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="updates an account" time="0.369" />
 
-      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[1]" time="0.111" />
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[0]" time="0.012" />
+
+      <testcase classname="msse_auctions.AccountRestFunctionalSpec" name="unsuccessfully update an account[1]" time="0.119" />
 
       <system-out><![CDATA[--Output from returns account list--
 --Output from returns account detail--
@@ -77,7 +79,8 @@
 --Output from unsuccessfully create an account[6]--
 --Output from unsuccessfully create an account[7]--
 --Output from unsuccessfully create an account[8]--
---Output from successfully creates a account--
+--Output from successfully create an account--
+--Output from unsuccessfully delete an account--
 --Output from delete an account--
 --Output from updates an account--
 --Output from unsuccessfully update an account[0]--
@@ -96,7 +99,8 @@
 --Output from unsuccessfully create an account[6]--
 --Output from unsuccessfully create an account[7]--
 --Output from unsuccessfully create an account[8]--
---Output from successfully creates a account--
+--Output from successfully create an account--
+--Output from unsuccessfully delete an account--
 --Output from delete an account--
 --Output from updates an account--
 --Output from unsuccessfully update an account[0]--
@@ -104,30 +108,50 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidRestFunctionalSpec" package="msse_auctions" tests="3" time="0.106" timestamp="2015-03-31T03:18:47">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="3" name="BidRestFunctionalSpec" package="msse_auctions" tests="8" time="0.675" timestamp="2015-03-31T21:58:35">
       <properties />
 
-      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="returns bid list" time="0.054" />
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="returns bid detail" time="0.042" />
 
-      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="returns bid detail" time="0.035" />
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="unsuccessfully create a bid[0]" time="0.36" />
 
-      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="not authorized to view account detail" time="0.013" />
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="unsuccessfully create a bid[1]" time="0.019" />
 
-      <system-out><![CDATA[--Output from returns bid list--
---Output from returns bid detail--
---Output from not authorized to view account detail--
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="unsuccessfully create a bid[2]" time="0.016" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="unsuccessfully create a bid[3]" time="0.016" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="successfully create a bid" time="0.042" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="unsuccessfully delete a bid" time="0.047" />
+
+      <testcase classname="msse_auctions.BidRestFunctionalSpec" name="delete a bid" time="0.123" />
+
+      <system-out><![CDATA[--Output from returns bid detail--
+--Output from unsuccessfully create a bid[0]--
+--Output from unsuccessfully create a bid[1]--
+--Output from unsuccessfully create a bid[2]--
+--Output from unsuccessfully create a bid[3]--
+--Output from successfully create a bid--
+--Output from unsuccessfully delete a bid--
+--Output from delete a bid--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from returns bid list--
---Output from returns bid detail--
---Output from not authorized to view account detail--
+      <system-err><![CDATA[--Output from returns bid detail--
+--Output from unsuccessfully create a bid[0]--
+--Output from unsuccessfully create a bid[1]--
+--Output from unsuccessfully create a bid[2]--
+--Output from unsuccessfully create a bid[3]--
+--Output from successfully create a bid--
+--Output from unsuccessfully delete a bid--
+--Output from delete a bid--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingFunctionalSpec" package="msse_auctions" tests="1" time="6.493" timestamp="2015-03-31T03:18:47">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="4" name="ListingFunctionalSpec" package="msse_auctions" tests="1" time="4.182" timestamp="2015-03-31T21:58:36">
       <properties />
 
-      <testcase classname="msse_auctions.ListingFunctionalSpec" name="listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing" time="5.797" />
+      <testcase classname="msse_auctions.ListingFunctionalSpec" name="listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing" time="3.619" />
 
       <system-out><![CDATA[--Output from listing index displays bid for OPEN listings and rate buyer/seller for COMPLETED listing--
 ]]></system-out>
@@ -136,39 +160,131 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingRestFunctionalSpec" package="msse_auctions" tests="4" time="1.106" timestamp="2015-03-31T03:18:54">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="5" name="ListingRestFunctionalSpec" package="msse_auctions" tests="14" time="1.047" timestamp="2015-03-31T21:58:40">
       <properties />
 
-      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[0]" time="0.162" />
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[0]" time="0.128" />
 
-      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[1]" time="0.132" />
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[1]" time="0.093" />
 
-      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[2]" time="0.156" />
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns a list of open and completed listings[2]" time="0.082" />
 
-      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns listing detail" time="0.044" />
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="returns listing detail" time="0.028" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[0]" time="0.024" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[1]" time="0.018" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[2]" time="0.017" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[3]" time="0.014" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[4]" time="0.01" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[5]" time="0.01" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[6]" time="0.009" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully create a listing[7]" time="0.013" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="successfully create a listing" time="0.033" />
+
+      <testcase classname="msse_auctions.ListingRestFunctionalSpec" name="unsuccessfully delete a listing" time="0.033" />
 
       <system-out><![CDATA[--Output from returns a list of open and completed listings[0]--
 --Output from returns a list of open and completed listings[1]--
 --Output from returns a list of open and completed listings[2]--
 --Output from returns listing detail--
+--Output from unsuccessfully create a listing[0]--
+--Output from unsuccessfully create a listing[1]--
+--Output from unsuccessfully create a listing[2]--
+--Output from unsuccessfully create a listing[3]--
+--Output from unsuccessfully create a listing[4]--
+--Output from unsuccessfully create a listing[5]--
+--Output from unsuccessfully create a listing[6]--
+--Output from unsuccessfully create a listing[7]--
+--Output from successfully create a listing--
+--Output from unsuccessfully delete a listing--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from returns a list of open and completed listings[0]--
 --Output from returns a list of open and completed listings[1]--
 --Output from returns a list of open and completed listings[2]--
 --Output from returns listing detail--
+--Output from unsuccessfully create a listing[0]--
+--Output from unsuccessfully create a listing[1]--
+--Output from unsuccessfully create a listing[2]--
+--Output from unsuccessfully create a listing[3]--
+--Output from unsuccessfully create a listing[4]--
+--Output from unsuccessfully create a listing[5]--
+--Output from unsuccessfully create a listing[6]--
+--Output from unsuccessfully create a listing[7]--
+--Output from successfully create a listing--
+--Output from unsuccessfully delete a listing--
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="ReviewRestFunctionalSpec" package="msse_auctions" tests="1" time="0.079" timestamp="2015-03-31T03:18:56">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="6" name="ReviewRestFunctionalSpec" package="msse_auctions" tests="14" time="0.445" timestamp="2015-03-31T21:58:41">
       <properties />
 
-      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="returns review list" time="0.076" />
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="returns review list" time="0.055" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="returns review detail" time="0.046" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[0]" time="0.043" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[1]" time="0.017" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[2]" time="0.017" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[3]" time="0.024" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[4]" time="0.013" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[5]" time="0.015" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[6]" time="0.022" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[7]" time="0.018" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[8]" time="0.014" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[9]" time="0.061" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="unsuccessfully create a review[10]" time="0.031" />
+
+      <testcase classname="msse_auctions.ReviewRestFunctionalSpec" name="successfully create a review" time="0.049" />
 
       <system-out><![CDATA[--Output from returns review list--
+--Output from returns review detail--
+--Output from unsuccessfully create a review[0]--
+--Output from unsuccessfully create a review[1]--
+--Output from unsuccessfully create a review[2]--
+--Output from unsuccessfully create a review[3]--
+--Output from unsuccessfully create a review[4]--
+--Output from unsuccessfully create a review[5]--
+--Output from unsuccessfully create a review[6]--
+--Output from unsuccessfully create a review[7]--
+--Output from unsuccessfully create a review[8]--
+--Output from unsuccessfully create a review[9]--
+--Output from unsuccessfully create a review[10]--
+--Output from successfully create a review--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from returns review list--
+--Output from returns review detail--
+--Output from unsuccessfully create a review[0]--
+--Output from unsuccessfully create a review[1]--
+--Output from unsuccessfully create a review[2]--
+--Output from unsuccessfully create a review[3]--
+--Output from unsuccessfully create a review[4]--
+--Output from unsuccessfully create a review[5]--
+--Output from unsuccessfully create a review[6]--
+--Output from unsuccessfully create a review[7]--
+--Output from unsuccessfully create a review[8]--
+--Output from unsuccessfully create a review[9]--
+--Output from unsuccessfully create a review[10]--
+--Output from successfully create a review--
 ]]></system-err>
 
   </testsuite>

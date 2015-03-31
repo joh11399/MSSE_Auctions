@@ -45,17 +45,23 @@ class BidRestController {
 
         Bid bidInstance = new Bid()
         BidService.getBidFromJson(bidInstance, request.JSON)
-        def highestBidAmount = BidService.getHighestBidAmount(bidInstance.listing)
 
-        if (bidInstance.hasErrors()) {
+        if (bidInstance.hasErrors() ||
+            bidInstance?.listing == null ||
+            bidInstance?.bidder == null ||
+            bidInstance?.amount == null) {
             response.status = 400;
             render "Bad request.  The parameters provided caused an error: " + bidInstance.errors
+            return
         }
-        else if(bidInstance.bidder.username != account?.username) {
+        if(bidInstance.bidder.username != account?.username) {
             response.status = 401;
             render "Not authorized to save a bid for Account ID ${bidInstance.bidder.id}"
+            return
         }
-        else if(bidInstance.amount < highestBidAmount){
+
+        def highestBidAmount = BidService.getHighestBidAmount(bidInstance.listing)
+        if(bidInstance.amount < highestBidAmount){
             response.status = 400;
             render "The minimum bid for this listing is \$${highestBidAmount}"
         }
@@ -91,14 +97,21 @@ class BidRestController {
             render "Not authorized to update Bid ID ${bidInstance.id}"
         } else {
             BidService.getBidFromJson(bidInstance, request.JSON)
-            if (bidInstance.hasErrors()) {
+
+            //although this is the same if statement, the bidder may have changed with getBidFromJson
+            //make sure the user is not setting the bidder to a different account
+            if (bidInstance.bidder.username != account.username) {
+                response.status = 401;
+                render "Not authorized to update as Account ID ${bidInstance.bidder.id}"
+            }else if (bidInstance.hasErrors()) {
                 response.status = 400;
                 render "Bad request.  The parameters provided caused an error: " + bidInstance.errors
-                return
             }
-            bidInstance.save(flush: true, failOnError: true)
-
-            render "Success!  Bid ID ${bidInstance.id} has been updated."
+            else{
+                bidInstance.save(flush: true, failOnError: true)
+                response.status = 200;
+                render "Success!  Bid ID ${bidInstance.id} has been updated."
+            }
         }
     }
 
@@ -128,6 +141,6 @@ class BidRestController {
         def bidId = bidInstance.id
 
         bidInstance.delete(flush: true)
-        render "Success!  Account ID ${bidId} has been deleted."
+        render "Success!  Bid ID ${bidId} has been deleted."
     }
 }
