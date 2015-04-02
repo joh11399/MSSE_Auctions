@@ -49,21 +49,12 @@ class ListingFunctionalSpec extends GebSpec {
         $('body').text().toString().indexOf('Please Login')==-1
     }
 
-    def 'listing create page sets seller as account logged in'() {
+    def 'listing create page sets the seller as the account logged in'() {
         when:
         to ListingCreatePage
 
         then:
-        sellerLbl.text() == sellerName
-        seller.value() == sellerId
-
-        where:
-        username | password   | sellerName | sellerId
-        'me'     | 'abcd1234' | 'Me Test'  | '1'
-        /*
-        TODO..  this doesn't need to be a Data Driven Test if you can't figure out the next two..........
-        'test'   | 'abcd1234' | 'Test 2'   | '2'
-        'dan'    | 'johnson1' | 'dan'      | '3'
-        */
+        sellerLbl.text() == 'Me Test'
+        seller.value() == '1'
     }
 }

@@ -54,14 +54,22 @@ class AccountRestController {
         } else if (response.status == 409) {
             render "Duplicate account.  The username and email must be unique.  Error: " + accountInstance.errors
         } else {
-            accountInstance.save(flush: true, failOnError: true)
-            def r = Role.findByAuthority('ROLE_USER')
-            new AccountRole(account: accountInstance, role: r).save(flush: true, failOnError: true)
-            render(contentType: 'text/json') {
-                [
-                        'responseText': "Success!  Account ID ${accountInstance.id} has been created.",
-                        'id'    : accountInstance.id
-                ]
+            //try saving the accountInstance
+            // an exception will be thrown if the password is invalid
+            try {
+                accountInstance.save(flush: true, failOnError: true)
+                def r = Role.findByAuthority('ROLE_USER')
+                new AccountRole(account: accountInstance, role: r).save(flush: true, failOnError: true)
+                render(contentType: 'text/json') {
+                    [
+                            'responseText': "Success!  Account ID ${accountInstance.id} has been created.",
+                            'id'    : accountInstance.id
+                    ]
+                }
+            }
+            catch(ex) {
+                response.status = 400
+                render "Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter."
             }
         }
     }
@@ -87,7 +95,6 @@ class AccountRestController {
 
             if (response.status == 400) {
                 render "Bad request.  The parameters provided caused an error: " + accountClone.errors
-                return
             }
             else {
                 if (response.status == 409) {
@@ -99,15 +106,41 @@ class AccountRestController {
 
                 AccountService.copyAccountFromSource(accountClone, accountInstance)
 
+
+
+                println("========================")
+                println('========================')
                 println(accountClone.name)
                 println(accountInstance.name)
 
-                accountInstance.save(flush: true, failOnError: true)
 
-                render(contentType: 'text/json') {[
-                        'responseText': "Success!  Account ID ${accountInstance.id} has been updated.",
-                        'id': accountInstance.id
-                ]}
+
+                //try saving the accountInstance
+                // an exception will be thrown if the password is invalid
+                try {
+                    accountInstance.save(flush: true, failOnError: true)
+
+                    render(contentType: 'text/json') {[
+                            'responseText': "Success!  Account ID ${accountInstance.id} has been updated.",
+                            'id': accountInstance.id
+                    ]}
+                }
+                catch(ex){
+
+                    println('-----------------------')
+                    println('-----------------------')
+                    println(ex)
+
+                    def responseText
+                    if(ex.toString().indexOf('Invalid password complexity')!=-1){
+                        responseText = "Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter."
+                    }else{
+                        responseText = "Bad request.  The parameters provided caused an error: " + ex
+                    }
+
+                    response.status = 400
+                    render responseText
+                }
             }
         }
     }

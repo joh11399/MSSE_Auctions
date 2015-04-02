@@ -114,25 +114,8 @@ class ListingRestController {
                 response.status = 401;
                 render "Not authorized to set Account ID ${listingClone.seller} as the seller"
             } else {
-
-
-                println("================")
-                println("================")
-                println(listingClone?.id + " --  " + listingClone?.name)
-                println(listingInstance?.id + " --  " + listingInstance?.name)
-
                 ListingService.copyListingFromSource(listingClone, listingInstance)
                 listingInstance.save(flush: true, failOnError: true)
-
-
-
-                println("----------------")
-                println(listingClone?.id + " --  " + listingClone?.name)
-                println(listingInstance?.id + " --  " + listingInstance?.name)
-                println("================")
-                println("================")
-
-
                 render "Success!  Listing ID ${listingInstance.id} has been updated."
             }
         }

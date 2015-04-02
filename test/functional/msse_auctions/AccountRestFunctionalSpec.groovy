@@ -22,11 +22,13 @@ class AccountRestFunctionalSpec extends Specification {
         cleanupSampleData()
     }
 
-    /*
 
-    TODO   I still have no idea why this isn't working.............
 
     def 'returns account list'() {
+        given:
+        //logging in here is unnecessary, but I was running into problems relying solely on the setupSampleData() for login
+        setupLogIn('me', 'abcd1234')
+
         when:
         def resp = doGet("api/accounts")
 
@@ -37,10 +39,10 @@ class AccountRestFunctionalSpec extends Specification {
         accounts.find { it.username == 'me' }
     }
 
-
-    TODO   more doGet methods not working  :(    :(    :(    :(    :(
-
     def 'returns account detail'() {
+        given:
+        setupLogIn('me', 'abcd1234')
+
         when:
         def resp = doGet("api/accounts/${accountId}" as String)
 
@@ -51,52 +53,58 @@ class AccountRestFunctionalSpec extends Specification {
     }
 
     def 'not authorized to view account detail'() {
+        given:
+        setupLogIn(accountTest1.username, accountTest1.password)
+
         when:
-        def unauthAccountId = 2
-        //accountId is logged in.  Make sure unauthAccount isn't actually logged in
-        if(unauthAccountId == accountId){
-            unauthAccountId = 3
-        }
-        def resp = doGet("api/accounts/${unauthAccountId}" as String)
+        //accountTest1 is logged in.  accountTest2 cannot access this account
+        def resp = doGet("api/accounts/${accountTest2.id}" as String)
 
         then:
         resp.status == 401
         resp.statusText == 'Unauthorized'
     }
-*/
-
 
     @Unroll
     def 'unsuccessfully create an account'() {
         when:
-        def resp = doJsonPost('api/accounts', [username: username, password: password, email: email, name: name, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip ])
+        def resp = doJsonPost('api/accounts', [username: username, password: password, email: email, name: name, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip])
 
         then:
         resp.status == respStatus
+        resp.data.toString().indexOf(respText) != -1
+
 
         where:
-        username | email         | password      | name          | addressStreet | addressCity | addressState | addressZip | respStatus
-        'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 409
-        null     | 'dan@dan.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400
-        'Dan'    | null          | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | null          | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | 'danjohnson1' | null          | '123'         | '456'       | 'MN'         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | 'danjohnson1' | 'Dan Johnson' | null          | '456'       | 'MN'         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | null        | 'MN'         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | null         | '54321'    | 400
-        'Dan'    | 'dan@dan.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | null       | 400
+        username | email          | password      | name          | addressStreet | addressCity | addressState | addressZip | respStatus | respText
+        'me'     | 'me@test.com'  | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 409        | 'Duplicate account.  The username and email must be unique.'
+        null     | 'me2@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | null           | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | null          | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | 'danjohnson1' | null          | '123'         | '456'       | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | 'danjohnson1' | 'Dan Johnson' | null          | '456'       | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | null        | 'MN'         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | null         | '54321'    | 400        | 'Bad request.  The parameters provided caused an error: '
+        'me2'    | 'me2@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | null       | 400        | 'Bad request.  The parameters provided caused an error: '
 
-        /*
+        //bad passwords
+        'me2' | 'me2@test.com' | 'danjohnson' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        'me2' | 'me2@test.com' | '12345678'   | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
 
-        TODO  add bad passwords....
+        'me2' | 'me2@test.com' | '1tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        'me2' | 'me2@test.com' | 'a1234567891011121314151617181920' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
 
-        */
+        'me2' | 'me2@test.com' | 'abc123'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        'me2' | 'me2@test.com' | 'abc'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        'me2' | 'me2@test.com' | '123'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        'me2' | 'me2@test.com' | ''           | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'  | 400 | 'Bad request.  The parameters provided caused an error: '
     }
 
 
     /*
     *
-    *  no test for unauthorized account creation
+    *
+    *  it is intentional that there is no test for unauthorized account creation
     *    user's don't need to be (can't be) logged in to create an account
     *
     *
@@ -121,16 +129,17 @@ class AccountRestFunctionalSpec extends Specification {
         resp.contentType == 'application/json'
         resp.data.username == 'testAccount'
 
-
         //do not delete this account here
         //it is deleted in a subsequent test
     }
 
 
     def 'unsuccessfully update an account - not logged in'() {
-        when:
+        given:
         setupLogOut('me')
-        def resp = doJsonPut('api/accounts/' + accountTest1.id, [username: 'me', password: 'abcd1234', email: 'updatedEmail@test.com', name: 'Me Test', addressStreet: '456 Test St', addressCity: '789', addressState: 'MN', addressZip: '12345'])
+
+        when:
+        def resp = doJsonPut("api/accounts/${accountTest1.id}", [username: 'me', password: 'abcd1234', email: 'updatedEmail@test.com', name: 'Me Test', addressStreet: '456 Test St', addressCity: '789', addressState: 'MN', addressZip: '12345'])
 
         then: 'the page redirects to the login page'
         resp.status == 302
@@ -141,35 +150,56 @@ class AccountRestFunctionalSpec extends Specification {
     @Unroll
     def 'unsuccessfully update an account'() {
         given:
-        setupLogIn('testAccount', 'abcd1234')
+        setupLogIn('me', 'abcd1234')
 
         when:
-        def resp = doJsonPut("api/accounts/" + account, [username: username, password: password, email: email, name: name, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip])
+        def resp = doJsonPut("api/accounts/${account}", [username: username, password: password, email: email, name: name, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip])
 
         then:
         resp.status == respStatus
-
-        //TODO,  I bet you're still actually updating the accounts  (like in Bid)
-        //    maybe do a get after each of these to verify the account still has the original values
-
+        resp.data.toString().indexOf(respText) != -1
 
         where:
-        account                   | username | email         | password      | name          | addressStreet | addressCity | addressState | addressZip | respStatus
-        //logged as username:'testAccount'  and attempt to update account username:'me'
-        accountTest1.id as String | 'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'invalid'    | '54321'    | 401
+        account                   | username | email | password | name | addressStreet | addressCity | addressState | addressZip | respStatus | respText
+        //logged as username:'me'  and attempt to update the wrong account ID
+        accountTest2.id as String | 'me'  | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 401 | 'Not authorized to update Account ID '
+
+        //attempt to change username:'me' to a non-unique username
+        accountTest1.id as String | 'test' | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
+
+        //attempt to change email:'me@test.com' to a non-unique email
+        accountTest1.id as String | 'me' | 'test@test.com' | 'danjohnson1' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
 
         /*
+        TODO....  remove these if you need to..
+
+        //bad passwords
+        // I couldn't figure out how to catch the Invalid password complexity exception.  my only choice was to anticipate the 500 error
+        accountTest1.id as String | 'me' | 'me@test.com' | 'danjohnson' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '12345678'   | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+
+        accountTest1.id as String | 'me' | 'me@test.com' | 'tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '1234567891011121314151617181920' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+
+        accountTest1.id as String | 'me' | 'me@test.com' | 'abc123'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | 'abc'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '123'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | ''           | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
 
 
-        TODO  add bad passwords here...
+original...
 
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | null          | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | null          | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | 'danjohnson1' | null          | '123'         | '456'       | 'MN'         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | null          | '456'       | 'MN'         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | null        | 'MN'         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | null         | '54321'    | 400
-        logInUsername |  logInPassword |  accountId as String       | 'me'     | 'me@test.com' | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | null       | 400*/
+        accountTest1.id as String | 'me' | 'me@test.com' | 'danjohnson' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '12345678'   | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+
+        accountTest1.id as String | 'me' | 'me@test.com' | 'tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '1234567891011121314151617181920' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+
+        accountTest1.id as String | 'me' | 'me@test.com' | 'abc123'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | 'abc'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | '123'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+        accountTest1.id as String | 'me' | 'me@test.com' | ''           | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
+*/
     }
 
     def 'successfully update an account'() {

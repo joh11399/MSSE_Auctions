@@ -131,20 +131,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
 
-
-        //TODO  this is from Calvo's example...
-    // REST API
-    // Stupid, stupid, stupid spring security uses controller names here (rather than urls)
-    // Debug issues with by uncommenting lines above about debugging security issues
-    /*'/song/*'                  : ['ROLE_USER'], // actually url: /rest/songs
-    '/artistrest/*'            : ['ROLE_USER'], // actual url: /rest/artists
-
-    // Regular controllers - these work as expected
-    '/artist/**'               : ['ROLE_USER'],
-    '/play/**'                 : ['ROLE_USER'],
-    '/profile/**'              : ['ROLE_USER'],
-      */
-
     '/grails-remote-control/**': ['permitAll']
 ]
 

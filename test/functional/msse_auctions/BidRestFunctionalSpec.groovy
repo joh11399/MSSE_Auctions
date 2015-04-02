@@ -19,33 +19,29 @@ def setupSpec() {
     setupSampleData()
 }
 
-def cleanupSpec() {
-    cleanupSampleData()
-}
+    def cleanupSpec() {
+        cleanupSampleData()
+    }
 
+    def 'returns bid list'() {
+        given:
+        setupLogIn('me', 'abcd1234')
 
-    /*
+        when:
+        def resp = doGet("api/bids")
 
-    TODO  this needs to work......................
-       I have no idea why it stopped working
+        then:
+        resp.status == 200
+        resp.contentType == 'application/json'
+        def bids = resp.data
+        bids.find { it.id == bidId }
+    }
 
-
-def 'returns bid list'() {
-    when:
-    def resp = doGet("api/bids")
-
-    then:
-    resp.status == 200
-    resp.contentType == 'application/json'
-    def bids = resp.data
-    bids.find { it.id == bidId }
-}
-
-
-
-    TODO   I still have no idea why this isn't working.............
 
     def 'returns bid detail'() {
+        given:
+        setupLogIn('me', 'abcd1234')
+
         when:
         def resp = doGet("api/bids/${bidId}" as String)
 
@@ -54,9 +50,6 @@ def 'returns bid list'() {
         resp.contentType == 'application/json'
         resp.data.id == bidId
     }
-    */
-
-
 
     def 'unsuccessfully create a bid - not logged in'() {
         when:
@@ -68,46 +61,56 @@ def 'returns bid list'() {
         resp.headers.toString().indexOf("Location: http://localhost:8080/MSSE_Auctions/login/auth") != -1
     }
 
-@Unroll
-def 'unsuccessfully create a bid'() {
-    given:
-    setupLogIn('me', 'abcd1234')
+    @Unroll
+    def 'unsuccessfully create a bid'() {
+        given:
+        setupLogIn('me', 'abcd1234')
 
-    when:
-    def resp = doJsonPost('api/bids', [listing: [id: listingTestId], bidder: [id: bidderTestId], amount: amount])
+        when:
+        def resp = doJsonPost('api/bids', [listing: [id: listingTestId], bidder: [id: bidderTestId], amount: amount])
 
-    then:
-    resp.status == respStatus
+        then:
+        resp.status == respStatus
 
-    where:
-    listingTestId           | bidderTestId              | amount  | respStatus
-    listingOpenId as String | accountId as String       | 9.99    | 400
-    0 as String             | accountId as String       | 10.00   | 400
-    listingOpenId as String | 0 as String               | 10.00   | 400
-    listingOpenId as String | (accountId + 1) as String | 10.00   | 401
+        where:
+        listingTestId           | bidderTestId              | amount | respStatus
+        listingOpenId as String | accountId as String       | 9.99   | 400
+        0 as String             | accountId as String       | 10.00  | 400
+        listingOpenId as String | 0 as String               | 10.00  | 400
+        listingOpenId as String | (accountId + 1) as String | 10.00  | 401
+    }
 
-}
+    def 'successfully create a bid'() {
+        when:
+        def resp = doJsonPost('api/bids', [listing: [id: listingOpenId], bidder: [id: accountId], amount: 10.00])
 
-def 'successfully create a bid'() {
-    when:
-    def resp = doJsonPost('api/bids', [listing: [id: listingOpenId], bidder: [id: accountId], amount: 10.00])
+        then:
+        resp.status == 201
+        resp.data.id
 
-    then:
-    resp.status == 201
-    resp.data.id
+        when:
+        resp = doGet("api/bids/${resp.data.id}" as String)
 
-    when:
-    resp = doGet("api/bids/${resp.data.id}" as String)
+        then:
+        resp.status == 200
+        resp.contentType == 'application/json'
+        resp.data.listing.id == listingOpenId
+        resp.data.bidder.id == accountId
+        resp.data.amount == 10.00
 
-    then:
-    resp.status == 200
-    resp.contentType == 'application/json'
-    resp.data.listing.id == listingOpenId
-    resp.data.bidder.id == accountId
+        //do not delete this bid here
+        //it is deleted in a subsequent test
+    }
 
-    //do not delete this bid here
-    //it is deleted in a subsequent test
-}
+
+    def 'unsuccessfully create a bid - bid is less than $0.50 more than the highest bid'() {
+        when:
+        def resp = doJsonPost('api/bids', [listing: [id: listingOpenId], bidder: [id: accountId], amount: 10.25])
+
+        then:
+        resp.status == 400
+        resp.data == 'The minimum bid for this listing is $10.5'
+    }
 
 
     def 'unsuccessfully update a bid - not logged in'() {
@@ -123,32 +126,6 @@ def 'successfully create a bid'() {
         resp.headers.toString().indexOf("Location: http://localhost:8080/MSSE_Auctions/login/auth") != -1
     }
 
-    /*
-
-    TODO  remove this?   having trouble, and it's not necessary
-
-*******************************************************************
-************    YOU'RE NOT ADDING THE ID TO THE URL   *************
-*******************************************************************
-
-def 'successfully update a bid'() {
-    when:
-    def bidAccountId = accountId2
-    setupLogIn('test', 'abcd1234')
-    def resp = doJsonPut('api/bids/' + bidId, [listing: [id: listingOpenId], bidder: [id: bidAccountId], amount: 16.00])
-
-    then:
-    resp.status == 200
-    resp.data.id
-
-    when:
-    resp = doGet("api/bids/${bidId}" as String)
-
-    then:
-    resp.status == 200
-    resp.contentType == 'application/json'
-    resp.data.amount == 11.00
-}*/
 
     /*
 def 'unsuccessfully update a bid'() {
@@ -191,6 +168,35 @@ def 'unsuccessfully update a bid'() {
 
 }
     */
+
+
+    /*
+
+TODO  remove this?   having trouble, and it's not necessary
+
+*******************************************************************
+************    YOU'RE NOT ADDING THE ID TO THE URL   *************
+*******************************************************************
+
+def 'successfully update a bid'() {
+when:
+def bidAccountId = accountId2
+setupLogIn('test', 'abcd1234')
+def resp = doJsonPut('api/bids/' + bidId, [listing: [id: listingOpenId], bidder: [id: bidAccountId], amount: 16.00])
+
+then:
+resp.status == 200
+resp.data.id
+
+when:
+resp = doGet("api/bids/${bidId}" as String)
+
+then:
+resp.status == 200
+resp.contentType == 'application/json'
+resp.data.amount == 11.00
+}*/
+
 
     def 'unsuccessfully delete a bid'() {
         given:
