@@ -46,7 +46,7 @@ class AccountRestController {
     @Secured('permitAll()')
     def save() {
         Account accountInstance = new Account();
-        AccountService.getAccountFromJson(accountInstance, request.JSON)
+        AccountService.copyAccountFromSource(request.JSON, accountInstance)
         response.status = AccountService.validateAccount(accountInstance)
 
         if (response.status == 400) {
@@ -81,20 +81,34 @@ class AccountRestController {
             response.status = 401;
             render "Not authorized to update Account ID ${accountInstance.id}"
         } else {
-            AccountService.getAccountFromJson(accountInstance, request.JSON)
-            response.status = AccountService.validateAccount(accountInstance)
+            def accountClone = new Account()
+            AccountService.copyAccountFromSource(request.JSON, accountClone)
+            response.status = AccountService.validateAccount(accountClone)
 
             if (response.status == 400) {
-                render "Bad request.  The parameters provided caused an error: " + accountInstance.errors
+                render "Bad request.  The parameters provided caused an error: " + accountClone.errors
                 return
             }
-            else{
+            else {
+                if (response.status == 409) {
+                    //this could be redesigned, but I'll just change it here
+                    //if the response is a 409, that is still acceptable for an update
+                    // just change it to a 200  (because, by now, all other errors would have been caught)
+                    response.status = 200
+                }
+
+                AccountService.copyAccountFromSource(accountClone, accountInstance)
+
+                println(accountClone.name)
+                println(accountInstance.name)
+
                 accountInstance.save(flush: true, failOnError: true)
+
+                render(contentType: 'text/json') {[
+                        'responseText': "Success!  Account ID ${accountInstance.id} has been updated.",
+                        'id': accountInstance.id
+                ]}
             }
-            render(contentType: 'text/json') {[
-                    'responseText': "Success!  Account ID ${accountInstance.id} has been updated.",
-                    'id': accountInstance.id
-            ]}
         }
     }
 

@@ -56,7 +56,14 @@ class ReviewRestController  {
         Review reviewInstance = new Review()
         ReviewService.getReviewFromJson(reviewInstance, request.JSON)
 
-        if (reviewInstance.hasErrors()) {
+        if (reviewInstance.hasErrors() ||
+            reviewInstance?.listing == null ||
+            reviewInstance?.reviewer == null ||
+            reviewInstance?.reviewee == null ||
+            (reviewInstance?.reviewOf != "Buyer" && reviewInstance?.reviewOf != "Seller" ) ||
+            reviewInstance?.rating == null ||
+            (reviewInstance?.thumbs != "up" && reviewInstance?.thumbs != "down") ||
+            reviewInstance?.description == null) {
             response.status = 400;
             render "Bad request.  The parameters provided caused an error: " + reviewInstance.errors
         } else {

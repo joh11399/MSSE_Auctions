@@ -21,7 +21,6 @@ class AccountController {
     def show(Account accountInstance) {
 //TODO  this is a good opportunity for a service   (you have several of these)....
         def account = springSecurityService.currentUser as Account
-
         if(accountInstance.username!=account.username) {
             flash.message = 'Not authorized to view account ' + accountInstance.id
             redirect(action: 'index')
@@ -40,15 +39,16 @@ class AccountController {
     def save(Account accountInstance) {
         if (accountInstance.hasErrors()) {
             respond accountInstance.errors, view:'create'
-            return
         }else{
-            accountInstance.save(flush: true, failOnError: true)
-
-            //TODO:  make sure this is working (similar to the REST method)
-            //new AccountRole(account: accountInstance, role: new Role(authority: 'ROLE_USER')).save(flush: true, failOnError: true)
-
-
-            redirect(action: 'index')
+            if(accountInstance.validatePasswordComplexity(accountInstance.password)) {
+                accountInstance.save(flush: true, failOnError: true)
+                new AccountRole(account: accountInstance, role: Role.findByAuthority('ROLE_USER')).save(flush: true, failOnError: true)
+                redirect(action: 'index')
+            }
+            else{
+                flash.message = 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
+                redirect(action: 'create', model: [accountInstance: accountInstance])
+            }
         }
     }
     /*

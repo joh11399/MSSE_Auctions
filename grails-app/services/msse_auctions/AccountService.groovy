@@ -2,16 +2,17 @@ package msse_auctions
 
 class AccountService {
 
-    def getAccountFromJson(def accountInstance, def jsonObject) {
-        accountInstance.username = jsonObject.username ?: accountInstance.username
-        accountInstance.email = jsonObject.email ?: accountInstance.email
-        accountInstance.password = jsonObject.password ?: accountInstance.password
-        accountInstance.name = jsonObject.name ?: accountInstance.name
-        accountInstance.addressStreet = jsonObject.addressStreet ?: accountInstance.addressStreet
-        accountInstance.addressCity = jsonObject.addressCity ?: accountInstance.addressCity
-        accountInstance.addressState = jsonObject.addressState ?: accountInstance.addressState
-        accountInstance.addressZip = jsonObject.addressZip ?: accountInstance.addressZip
-        //does not return anything, the accountInstance values have been updated
+    def copyAccountFromSource(def src, Account dest) {
+        //if the source does not have a value, attempt to use the existing destination value
+        dest.username = src?.username ?: dest.username
+        dest.email = src?.email ?: dest.email
+        dest.password = src?.password ?: dest.password
+        dest.name = src?.name ?: dest.name
+        dest.addressStreet = src?.addressStreet ?: dest.addressStreet
+        dest.addressCity = src?.addressCity ?: dest.addressCity
+        dest.addressState = src?.addressState ?: dest.addressState
+        dest.addressZip = src?.addressZip ?: dest.addressZip
+        //does not return anything, the dest values have been updated
     }
 
     def validateAccount(def accountInstance) {

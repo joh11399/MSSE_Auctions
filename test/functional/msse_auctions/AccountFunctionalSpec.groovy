@@ -2,6 +2,7 @@ package msse_auctions
 
 import geb.spock.GebSpec
 import grails.plugin.remotecontrol.RemoteControl
+import msse_auctions.pages.AccountEditPage
 import msse_auctions.pages.AccountShowPage
 import msse_auctions.pages.LoginPage
 import spock.lang.Stepwise
@@ -12,15 +13,20 @@ class AccountFunctionalSpec extends GebSpec {
     def remote = new RemoteControl()
 
     def accountId
+    def accountId2
     def accountDateCreated
     def accountLastUpdated
 
     void setup() {
         accountId = remote {
-            /*def account = new Account(username: 'functional', email: 'functional@test.com', password: 'password', name: 'Functional Test', addressStreet: 'test street', addressCity: 'test city', addressState: 'MN', addressZip: '12345')
+            /*def account = new Account(username: 'functional', email: 'functional@test.com', password: 'abcd1234', name: 'Functional Test', addressStreet: 'test street', addressCity: 'test city', addressState: 'MN', addressZip: '12345')
             account.save(flush: true, failOnError: true)
             account.id*/
             Account.findByUsername('me').id
+        }
+        accountId2 = remote {
+            def account = Account.findByUsername('test')
+            account.id
         }
         accountDateCreated = remote {
             Account.findByUsername('me').dateCreated
@@ -32,21 +38,11 @@ class AccountFunctionalSpec extends GebSpec {
         }
     }
 
-    void cleanup() {
-        remote {
-            /*
-            def account = Account.findById(accountId)
-            AccountRole.findByAccount(account).delete()
-            Account.findByEmail('functional@test.com').delete()
-             */
-        }
-    }
-
     def "gets account details"() {
         when:
 
         to LoginPage
-        login('me', 'password')
+        login('me', 'abcd1234')
         to AccountShowPage, id: accountId
 
         /*
@@ -81,4 +77,39 @@ class AccountFunctionalSpec extends GebSpec {
         dateCreated.text() == dateCreatedDate.format("M/dd/yy h:mm a")
         lastUpdated.text() == lastUpdatedDate.format("M/dd/yy h:mm a")
     }
+
+
+    def "does not display details for unauthorized account"() {
+        when:
+        to AccountShowPage, id: accountId2
+
+        then:
+        $('body').text().toString().indexOf("Not authorized to view account ${accountId2}") != -1
+    }
+
+
+
+    def "displays account Edit fields for authorized users"() {
+        when:
+        to AccountEditPage, id: accountId
+
+        then:
+        email.text() == 'me@test.com'
+        name.text() == 'Me Test'
+        Date dateCreatedDate = accountDateCreated
+        Date lastUpdatedDate = accountLastUpdated
+        dateCreated.text() == dateCreatedDate.format("M/dd/yy h:mm a")
+        lastUpdated.text() == lastUpdatedDate.format("M/dd/yy h:mm a")
+
+        $('body').text().toString().indexOf("Not authorized to view account ${accountId}") == -1
+    }
+
+    def "does not display Edit page for unauthorized account"() {
+        when:
+        to AccountEditPage, id: accountId2
+
+        then:
+        $('body').text().toString().indexOf("Not authorized to view account ${accountId2}") != -1
+    }
+
 }

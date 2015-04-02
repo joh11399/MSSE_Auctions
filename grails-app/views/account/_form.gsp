@@ -1,6 +1,12 @@
 <%@ page import="msse_auctions.Account" %>
 
-
+<div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'username', 'error')} required">
+    <label for="username">
+        <g:message code="account.username.label" default="Username" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField id="username" name="username" required="" value="${accountInstance?.username}"/>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'email', 'error')} required">
     <label for="email">
@@ -8,7 +14,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField id="email" name="email" required="" value="${accountInstance?.email}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'name', 'error')} required">
@@ -17,7 +22,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField id="name" name="name" required="" value="${accountInstance?.name}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'password', 'error')} required">
@@ -34,7 +38,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField id="addressStreet" name="addressStreet" required="" value="${accountInstance?.addressStreet}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressCity', 'error')} required">
@@ -43,7 +46,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField id="addressCity" name="addressCity" required="" value="${accountInstance?.addressCity}"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressState', 'error')} required">
@@ -52,7 +54,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:select id="addressState" name="addressState" from="${accountInstance.constraints.addressState.inList}" required="" value="${accountInstance?.addressState}" valueMessagePrefix="account.addressState"/>
-
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: accountInstance, field: 'addressZip', 'error')} required">
@@ -61,7 +62,6 @@
         <span class="required-indicator">*</span>
     </label>
     <g:textField id="addressZip" name="addressZip" required="" value="${accountInstance?.addressZip}"/>
-
 </div>
 
 

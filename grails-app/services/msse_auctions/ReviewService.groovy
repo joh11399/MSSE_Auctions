@@ -5,12 +5,12 @@ class ReviewService {
     def BidService
 
     def getReviewFromJson(Review reviewInstance, def jsonObject) {
-        reviewInstance.listing = Listing.findById(jsonObject.listing.id) ?: reviewInstance?.listing
-        reviewInstance.reviewer = Account.findById(jsonObject.reviewer.id) ?: reviewInstance?.reviewer
-        reviewInstance.reviewee = Account.findById(jsonObject.reviewee.id) ?: reviewInstance?.reviewee
-        reviewInstance.reviewOf = jsonObject.reviewOf ?: reviewInstance?.reviewOf
-        reviewInstance.rating = jsonObject.rating ?: reviewInstance?.rating
-        reviewInstance.thumbs = jsonObject.thumbs ?: reviewInstance?.thumbs
+        reviewInstance.listing = jsonObject?.listing?.id ? Listing.findById(jsonObject.listing.id) : reviewInstance?.listing
+        reviewInstance.reviewer = jsonObject?.reviewer?.id ? Account.findById(jsonObject.reviewer.id) : reviewInstance?.reviewer
+        reviewInstance.reviewee = jsonObject?.reviewee?.id ? Account.findById(jsonObject.reviewee.id) : reviewInstance?.reviewee
+        reviewInstance.reviewOf = jsonObject?.reviewOf ?: reviewInstance?.reviewOf
+        reviewInstance.rating = jsonObject?.rating ?: reviewInstance?.rating
+        reviewInstance.thumbs = jsonObject?.thumbs ?: reviewInstance?.thumbs
         reviewInstance.description = jsonObject.description ?: reviewInstance?.description
         //does not return anything, the reviewInstance values have been updated
     }

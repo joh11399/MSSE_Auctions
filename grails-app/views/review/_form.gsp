@@ -5,34 +5,30 @@
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'listing', 'error')} required">
     <label for="listing">
         <g:message code="review.listing.label" default="Listing" />
-        <span class="required-indicator">*</span>
     </label>
-    <label style="text-align: left; cursor: default;">${reviewInstance?.listing?.name}</label>
+    <label id="listingLbl" style="text-align: left; cursor: default;">${reviewInstance?.listing?.name}</label>
     <input type="hidden" id="listing" name="listing.id" value="${reviewInstance?.listing?.id}" >
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewer', 'error')} required">
     <label for="reviewer">
         <g:message code="review.reviewer.label" default="Reviewer" />
-        <span class="required-indicator">*</span>
     </label>
-    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewer?.name}</label>
+    <label id="reviewerLbl" style="text-align: left; cursor: default;">${reviewInstance?.reviewer?.name}</label>
     <input type="hidden" id="reviewer" name="reviewer.id" value="${reviewInstance?.reviewer?.id}" >
 </div>
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewee', 'error')} required">
     <label for="reviewee">
         <g:message code="review.reviewee.label" default="Reviewee" />
-        <span class="required-indicator">*</span>
     </label>
-    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewee?.name}</label>
+    <label id="revieweeLbl" style="text-align: left; cursor: default;">${reviewInstance?.reviewee?.name}</label>
     <input type="hidden" id="reviewee" name="reviewee.id" value="${reviewInstance?.reviewee?.id}" >
 </div>
 <div class="fieldcontain ${hasErrors(bean: reviewInstance, field: 'reviewOf', 'error')} required">
     <label for="reviewOf">
         <g:message code="review.reviewOf.label" default="Review of" />
-        <span class="required-indicator">*</span>
     </label>
-    <label style="text-align: left; cursor: default;">${reviewInstance?.reviewOf}</label>
+    <label id="reviewOfLbl" style="text-align: left; cursor: default;">${reviewInstance?.reviewOf}</label>
     <input type="hidden" id="reviewOf" name="reviewOf" value="${reviewInstance?.reviewOf}" >
 </div>
 

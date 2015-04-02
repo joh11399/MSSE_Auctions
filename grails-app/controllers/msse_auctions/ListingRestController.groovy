@@ -67,9 +67,10 @@ class ListingRestController {
         def account = springSecurityService.currentUser as Account
 
         Listing listingInstance = new Listing()
-        ListingService.getListingFromJson(listingInstance, request.JSON)
+        ListingService.copyListingFromSource(request.JSON, listingInstance)
 
-        if (listingInstance.hasErrors()) {
+
+        if (!ListingService.listingIsValid(listingInstance)) {
             response.status = 400;
             render "Bad request.  The parameters provided caused an error: " + listingInstance.errors
         }
@@ -103,16 +104,37 @@ class ListingRestController {
             response.status = 401;
             render "Not authorized to update Listing ID ${listingInstance.id}"
         } else {
-            ListingService.getListingFromJson(listingInstance, request.JSON)
-            if (listingInstance.hasErrors()) {
+            def listingClone = new Listing()
+            ListingService.copyListingFromSource(request.JSON, listingClone)
+
+            if (!ListingService.listingIsValid(listingClone)) {
                 response.status = 400;
-                render "Bad request.  The parameters provided caused an error: " + listingInstance.errors
-                return
+                render "Bad request.  The parameters provided caused an error: " + listingClone.errors
+            } else if (listingClone.seller.username != account.username) {
+                response.status = 401;
+                render "Not authorized to set Account ID ${listingClone.seller} as the seller"
+            } else {
+
+
+                println("================")
+                println("================")
+                println(listingClone?.id + " --  " + listingClone?.name)
+                println(listingInstance?.id + " --  " + listingInstance?.name)
+
+                ListingService.copyListingFromSource(listingClone, listingInstance)
+                listingInstance.save(flush: true, failOnError: true)
+
+
+
+                println("----------------")
+                println(listingClone?.id + " --  " + listingClone?.name)
+                println(listingInstance?.id + " --  " + listingInstance?.name)
+                println("================")
+                println("================")
+
+
+                render "Success!  Listing ID ${listingInstance.id} has been updated."
             }
-            listingInstance.save(flush: true, failOnError: true)
-
-            render "Success!  Listing ID ${listingInstance.id} has been updated."
-
         }
     }
 

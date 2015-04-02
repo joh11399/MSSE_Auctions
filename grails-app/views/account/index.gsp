@@ -23,6 +23,8 @@
     <table>
         <thead>
         <tr>
+            <th>${message(code: 'account.username.label', default: 'Username')}</th>
+
             <th>${message(code: 'account.name.label', default: 'Name')}</th>
 
             <th>${message(code: 'account.name.label', default: 'Email')}</th>
@@ -42,7 +44,9 @@
         <g:each in="${accountInstanceList}" status="i" var="accountInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link action="show" id="${accountInstance.id}">${fieldValue(bean: accountInstance, field: "name")}</g:link></td>
+                <td><g:link action="show" id="${accountInstance.id}">${fieldValue(bean: accountInstance, field: "username")}</g:link></td>
+
+                <td>${fieldValue(bean: accountInstance, field: "name")}</td>
 
                 <td>${fieldValue(bean: accountInstance, field: "email")}</td>
 

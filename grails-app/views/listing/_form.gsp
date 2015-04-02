@@ -5,10 +5,9 @@
 <div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'seller', 'error')} required">
     <label for="seller">
         <g:message code="listing.seller.label" default="Seller" />
-        <span class="required-indicator">*</span>
     </label>
-    <g:select id="seller" name="seller.id" from="${msse_auctions.Account.list()}" optionKey="id" required="" value="${listingInstance?.seller?.id}" class="many-to-one"/>
-
+    <label id="sellerLbl" style="text-align: left; cursor: default;">${listingInstance?.seller?.name}</label>
+    <input type="hidden" id="seller" name="seller.id" value="${listingInstance?.seller?.id}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: listingInstance, field: 'name', 'error')} required">

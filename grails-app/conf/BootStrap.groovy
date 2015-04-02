@@ -34,18 +34,18 @@ class BootStrap {
 
 
         //  these are used for testing.  I could not figure out how to add these in FunctionalTestUtils
-        def test_a0 = new Account(username: 'me', email: 'me@test.com', password: 'password', name: 'Me Test', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
+        def test_a0 = new Account(username: 'me', email: 'me@test.com', password: 'abcd1234', name: 'Me Test', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
         new AccountRole(account: test_a0, role: r2).save(flush: true, failOnError: true)
-        def test_a1 = new Account(username: 'test', email: 'test@test.com', password: 'password', name: 'Me Test', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
+        def test_a1 = new Account(username: 'test', email: 'test@test.com', password: 'abcd1234', name: 'Test 2', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
         new AccountRole(account: test_a1, role: r2).save(flush: true, failOnError: true)
         def test_l1 = new Listing(name: 'testCompleted', description: 'it\'s a completed test', dateCreated: new Date() - 11, startDate: new Date() - 11, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: test_a0).save(flush: true, failOnError: true)
-        new Listing(name: 'testOpen', description: 'it\'s an open test', dateCreated: new Date() - 9, startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: test_a0).save(flush: true, failOnError: true)
+        new Listing(name: 'testOpen', description: 'it\'s an open test', dateCreated: new Date() - 9, startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: test_a1).save(flush: true, failOnError: true)
         new Bid(listing: test_l1, bidder: test_a1, amount: 15.00).save(flush: true, failOnError: true)
-        new Review(listing: test_l1, reviewer: test_a0, reviewee: test_a1, reviewOf: 'Buyer', rating: 1, thumbs: 'down', description: 'he never paid!!').save(flush: true, failOnError: true)
+        new Review(listing: test_l1, reviewer: test_a1, reviewee: test_a0, reviewOf: 'Seller', rating: 5, thumbs: 'up', description: 'great!!').save(flush: true, failOnError: true)
 
 
 
-        def a1 = new Account(username: 'dan', email: 'dan@email.com', password: 'johnson',name: 'Dan Johnson', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
+        def a1 = new Account(username: 'dan', email: 'dan@email.com', password: 'johnson1',name: 'Dan Johnson', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
         def a2 = new Account(username: 'john', email: 'j.smith@smith.com',  password: 'a1b2c3po', name: 'John Smith', addressStreet: '456 Avenue St. Se', addressCity: 'St. Paul', addressState: 'MN', addressZip: '23456').save(flush: true, failOnError: true)
         def a3 = new Account(username: 'sally', email: 'sally@swanson.com', password: 'abc12345', name: 'Sally Swanson', addressStreet: '789 Boulevard Cir', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '34567').save(flush: true, failOnError: true)
 
