@@ -54,7 +54,7 @@ class ReviewRestController  {
     @Secured(['ROLE_USER'])
     def save() {
         Review reviewInstance = new Review()
-        ReviewService.getReviewFromJson(reviewInstance, request.JSON)
+        ReviewService.copyReviewFromSource(request.JSON, reviewInstance)
 
         if (reviewInstance.hasErrors() ||
             reviewInstance?.listing == null ||
@@ -100,17 +100,19 @@ class ReviewRestController  {
             render "Not authorized to update Review ID ${reviewInstance.id}"
 
         } else {
-            ReviewService.getReviewFromJson(reviewInstance, request.JSON)
+            def reviewClone = new Review()
+            ReviewService.copyReviewFromSource(request.JSON, reviewClone)
 
-            if (reviewInstance.hasErrors()) {
+            if (reviewClone.hasErrors()) {
                 response.status = 400;
-                render "Bad request.  The parameters provided caused an error: " + reviewInstance.errors
+                render "Bad request.  The parameters provided caused an error: " + reviewClone.errors
                 return
             }
-            if (!ReviewService.isValidReview(account, reviewInstance)) {
+            if (!ReviewService.isValidReview(account, reviewClone)) {
                 response.status = 400;
                 render "Sorry.  You need to be either the seller or the winner of the listing to update this review."
             } else {
+                ReviewService.copyReviewFromSource(reviewClone, reviewInstance)
                 reviewInstance.save(failOnError: true)
                 render "Success!  Review ID ${reviewInstance.id} has been updated."
             }

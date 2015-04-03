@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="BidFunctionalSpec" package="msse_auctions" tests="1" time="18.243" timestamp="2015-04-02T22:40:18">
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="0" name="AccountControllerSpec" package="msse_auctions" tests="3" time="1.886" timestamp="2015-04-03T11:59:02">
       <properties />
 
-      <testcase classname="msse_auctions.BidFunctionalSpec" name="bid create page sets the bidder as the account logged in" time="18.236" />
+      <testcase classname="msse_auctions.AccountControllerSpec" name="create account" time="1.381" />
 
-      <system-out><![CDATA[--Output from bid create page sets the bidder as the account logged in--
+      <testcase classname="msse_auctions.AccountControllerSpec" name="unsuccessfully create account with bad email" time="0.166" />
+
+      <testcase classname="msse_auctions.AccountControllerSpec" name="unsuccessfully create account - invalid password" time="0.247" />
+
+      <system-out><![CDATA[--Output from create account--
+--Output from unsuccessfully create account with bad email--
+--Output from unsuccessfully create account - invalid password--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from bid create page sets the bidder as the account logged in--
+      <system-err><![CDATA[--Output from create account--
+--Output from unsuccessfully create account with bad email--
+--Output from unsuccessfully create account - invalid password--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="F7DP9W1" id="1" name="AccountSpec" package="msse_auctions" tests="10" time="2.233" timestamp="2015-04-03T11:59:04">
+      <properties />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[0]" time="1.738" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[1]" time="0.04" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[2]" time="0.036" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[3]" time="0.033" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[4]" time="0.045" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[5]" time="0.032" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[6]" time="0.062" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[7]" time="0.028" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="unsuccessfully create an account:  null or invalid parameters[8]" time="0.046" />
+
+      <testcase classname="msse_auctions.AccountSpec" name="successfully create an account" time="0.112" />
+
+      <system-out><![CDATA[--Output from unsuccessfully create an account:  null or invalid parameters[0]--
+--Output from unsuccessfully create an account:  null or invalid parameters[1]--
+--Output from unsuccessfully create an account:  null or invalid parameters[2]--
+--Output from unsuccessfully create an account:  null or invalid parameters[3]--
+--Output from unsuccessfully create an account:  null or invalid parameters[4]--
+--Output from unsuccessfully create an account:  null or invalid parameters[5]--
+--Output from unsuccessfully create an account:  null or invalid parameters[6]--
+--Output from unsuccessfully create an account:  null or invalid parameters[7]--
+--Output from unsuccessfully create an account:  null or invalid parameters[8]--
+--Output from successfully create an account--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from unsuccessfully create an account:  null or invalid parameters[0]--
+--Output from unsuccessfully create an account:  null or invalid parameters[1]--
+--Output from unsuccessfully create an account:  null or invalid parameters[2]--
+--Output from unsuccessfully create an account:  null or invalid parameters[3]--
+--Output from unsuccessfully create an account:  null or invalid parameters[4]--
+--Output from unsuccessfully create an account:  null or invalid parameters[5]--
+--Output from unsuccessfully create an account:  null or invalid parameters[6]--
+--Output from unsuccessfully create an account:  null or invalid parameters[7]--
+--Output from unsuccessfully create an account:  null or invalid parameters[8]--
+--Output from successfully create an account--
 ]]></system-err>
 
   </testsuite>

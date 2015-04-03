@@ -46,7 +46,7 @@ class BidController {
             respond flash.message = 'The minimum bid for this listing is $' + highestBidAmount, view:'create'
         }
         else{
-            bidInstance.save flush:true
+            bidInstance.save(flush:true, failOnError: true)
             redirect(controller: "listing", action: "index")
         }
     }

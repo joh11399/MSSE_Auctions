@@ -1,11 +1,12 @@
 package msse_auctions
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
+import spock.lang.Ignore
 import spock.lang.Specification
 
-@TestFor(BidController)
+@Ignore
+@Mock(Bid)
 class BidIndexSpec extends Specification {
-
 
     void setupSpec() {
         def a1 = new Account(username: 'bidIndexTest', email: 'bidIndexTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
@@ -54,5 +55,4 @@ class BidIndexSpec extends Specification {
         model.bidInstanceList.size() > 0
         model.bidInstanceList.size() <= 10
     }
-
 }

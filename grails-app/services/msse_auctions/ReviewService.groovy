@@ -4,15 +4,16 @@ class ReviewService {
 
     def BidService
 
-    def getReviewFromJson(Review reviewInstance, def jsonObject) {
-        reviewInstance.listing = jsonObject?.listing?.id ? Listing.findById(jsonObject.listing.id) : reviewInstance?.listing
-        reviewInstance.reviewer = jsonObject?.reviewer?.id ? Account.findById(jsonObject.reviewer.id) : reviewInstance?.reviewer
-        reviewInstance.reviewee = jsonObject?.reviewee?.id ? Account.findById(jsonObject.reviewee.id) : reviewInstance?.reviewee
-        reviewInstance.reviewOf = jsonObject?.reviewOf ?: reviewInstance?.reviewOf
-        reviewInstance.rating = jsonObject?.rating ?: reviewInstance?.rating
-        reviewInstance.thumbs = jsonObject?.thumbs ?: reviewInstance?.thumbs
-        reviewInstance.description = jsonObject.description ?: reviewInstance?.description
-        //does not return anything, the reviewInstance values have been updated
+    def copyReviewFromSource(def src, Review dest) {
+        //if the source does not have a value, attempt to use the existing destination value
+        dest.listing = src?.listing?.id ? Listing.findById(src.listing.id) : dest?.listing
+        dest.reviewer = src?.reviewer?.id ? Account.findById(src.reviewer.id) : dest?.reviewer
+        dest.reviewee = src?.reviewee?.id ? Account.findById(src.reviewee.id) : dest?.reviewee
+        dest.reviewOf = src?.reviewOf ?: dest?.reviewOf
+        dest.rating = src?.rating ?: dest?.rating
+        dest.thumbs = src?.thumbs ?: dest?.thumbs
+        dest.description = src.description ?: dest?.description
+        //does not return anything, the dest values have been updated
     }
 
     def isValidReview(Account account, Review reviewInstance) {

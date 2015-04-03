@@ -51,21 +51,7 @@ class AccountController {
             }
         }
     }
-    /*
-    TODO  remove this....
-    @Secured(closure = {
-        def account = request.requestURI.substring(request.requestURI.lastIndexOf('/')+1)
 
-        println(account)
-        //println(params)
-        println(request.getParameterMap())
-        println(authentication.principal.username)
-        println(authentication.principal)
-
-        authentication.principal.username == account
-    })
-    @PreAuthorize('isAuthenticated() and principal?.username == #accountInstance.username')
-    */
     @Secured(['ROLE_USER'])
     def edit(Account accountInstance) {
         def account = springSecurityService.currentUser as Account

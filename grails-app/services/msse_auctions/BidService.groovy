@@ -90,7 +90,7 @@ class BidService {
 
     def getBids(Listing listing){
         //get all bids for the specified listing
-        Bid.findAll("from Bid as b where b.listing.id=:listingId", [listingId: listing.id])
+        Bid.findAll("from Bid as b where b.listing.id=:bidListingId order by amount desc", [bidListingId: listing.id])
     }
 
     def getHighestBid(def bids){
@@ -111,11 +111,11 @@ class BidService {
         highestBid
     }
 
-    def getBidFromJson(Bid bidInstance, def jsonObject) {
-        bidInstance.listing = Listing.findById(jsonObject.listing.id) ?: bidInstance.listing
-        bidInstance.bidder = Account.findById(jsonObject.bidder.id) ?: bidInstance.bidder
-        bidInstance.amount = jsonObject.amount ?: bidInstance.amount
-
-        //does not return anything, the bidInstance values have been updated
+    def copyBidFromSource(def src, Bid dest) {
+        //if the source does not have a value, attempt to use the existing destination value
+        dest.listing = Listing.findById(src.listing.id) ?: dest.listing
+        dest.bidder = Account.findById(src.bidder.id) ?: dest.bidder
+        dest.amount = src.amount ?: dest.amount
+        //does not return anything, the dest values have been updated
     }
 }

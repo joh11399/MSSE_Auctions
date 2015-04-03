@@ -44,7 +44,7 @@ class BidRestController {
         def account = springSecurityService.currentUser as Account
 
         Bid bidInstance = new Bid()
-        BidService.getBidFromJson(bidInstance, request.JSON)
+        BidService.copyBidFromSource(request.JSON, bidInstance)
 
         if (bidInstance.hasErrors() ||
             bidInstance?.listing == null ||
@@ -96,18 +96,20 @@ class BidRestController {
             response.status = 401;
             render "Not authorized to update Bid ID ${bidInstance.id}"
         } else {
-            BidService.getBidFromJson(bidInstance, request.JSON)
+            def bidClone = new Bid()
+            BidService.copyBidFromSource(request.JSON, bidClone)
 
             //although this is the same if statement, the bidder may have changed with getBidFromJson
             //make sure the user is not setting the bidder to a different account
-            if (bidInstance.bidder.username != account.username) {
+            if (bidClone.bidder.username != account.username) {
                 response.status = 401;
-                render "Not authorized to update as Account ID ${bidInstance.bidder.id}"
-            }else if (bidInstance.hasErrors()) {
+                render "Not authorized to update as Account ID ${bidClone.bidder.id}"
+            }else if (bidClone.hasErrors()) {
                 response.status = 400;
-                render "Bad request.  The parameters provided caused an error: " + bidInstance.errors
+                render "Bad request.  The parameters provided caused an error: " + bidClone.errors
             }
             else{
+                BidService.copyBidFromSource(bidClone, bidInstance)
                 bidInstance.save(flush: true, failOnError: true)
                 response.status = 200;
                 render "Success!  Bid ID ${bidInstance.id} has been updated."
