@@ -106,15 +106,6 @@ class AccountRestController {
 
                 AccountService.copyAccountFromSource(accountClone, accountInstance)
 
-
-
-                println("========================")
-                println('========================')
-                println(accountClone.name)
-                println(accountInstance.name)
-
-
-
                 //try saving the accountInstance
                 // an exception will be thrown if the password is invalid
                 try {
@@ -126,11 +117,6 @@ class AccountRestController {
                     ]}
                 }
                 catch(ex){
-
-                    println('-----------------------')
-                    println('-----------------------')
-                    println(ex)
-
                     def responseText
                     if(ex.toString().indexOf('Invalid password complexity')!=-1){
                         responseText = "Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter."

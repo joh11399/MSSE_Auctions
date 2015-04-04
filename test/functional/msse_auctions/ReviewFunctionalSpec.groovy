@@ -41,28 +41,4 @@ class ReviewFunctionalSpec extends GebSpec {
         then:
         $('body').text().toString().indexOf("Not authorized to submit a review for Listing ID 3") != -1
     }
-
-
-/*
-
-    def 'listing create page sets seller as account logged in'() {
-        when:
-        to LoginPage
-        login(username, password)
-        to ListingCreatePage
-
-        then:
-        sellerLbl.text() == sellerName
-        seller.value() == sellerId
-
-        where:
-        username | password   | sellerName | sellerId
-        'me'     | 'abcd1234' | 'Me Test'  | '1'
-
-        //TODO..  this doesn't need to be a Data Driven Test if you can't figure out the next two..........
-        //'test'   | 'abcd1234' | 'Test 2'   | '2'
-        //'dan'    | 'johnson1' | 'dan'      | '3'
-
-    }
-*/
 }

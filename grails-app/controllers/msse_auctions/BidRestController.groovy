@@ -12,8 +12,6 @@ class BidRestController {
     @SuppressWarnings("GroovyUnusedDeclaration")
     static responseFormats = ['json', 'xml']
 
-
-    //@Secured(['ROLE_USER'])
     @Secured('permitAll()')
     def index(Integer max, int listingId) {
         params.max = Math.min(max ?: 10, 100)
@@ -80,10 +78,6 @@ class BidRestController {
     @Secured(['ROLE_USER'])
     def update() {
         if (!params.id) {
-
-            //TODO..  is the illegalargumentexception worth using??
-            //throw new IllegalArgumentException('Missing id parameter')
-
             response.status = 400;
             render "Bad request.  No Bid ID provided."
             return

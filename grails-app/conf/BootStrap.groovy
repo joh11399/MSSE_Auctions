@@ -32,7 +32,6 @@ class BootStrap {
         def r2 = new Role(authority: 'ROLE_USER').save(flush: true, failOnError: true)
 
 
-
         //  these are used for testing.  I could not figure out how to add these in FunctionalTestUtils
         def test_a0 = new Account(username: 'me', email: 'me@test.com', password: 'abcd1234', name: 'Me Test', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)
         new AccountRole(account: test_a0, role: r2).save(flush: true, failOnError: true)
@@ -42,7 +41,6 @@ class BootStrap {
         new Listing(name: 'testOpen', description: 'it\'s an open test', dateCreated: new Date() - 9, startDate: new Date() - 9, days: 10, startingPrice: 10.00, deliverOption: 'US Only', seller: test_a1).save(flush: true, failOnError: true)
         new Bid(listing: test_l1, bidder: test_a1, amount: 15.00).save(flush: true, failOnError: true)
         new Review(listing: test_l1, reviewer: test_a1, reviewee: test_a0, reviewOf: 'Seller', rating: 5, thumbs: 'up', description: 'great!!').save(flush: true, failOnError: true)
-
 
 
         def a1 = new Account(username: 'dan', email: 'dan@email.com', password: 'johnson1',name: 'Dan Johnson', addressStreet: '123 Street Ave. NW', addressCity: 'Minneapolis', addressState: 'MN', addressZip: '12345').save(flush: true, failOnError: true)

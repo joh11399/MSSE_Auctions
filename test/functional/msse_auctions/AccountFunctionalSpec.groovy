@@ -19,9 +19,6 @@ class AccountFunctionalSpec extends GebSpec {
 
     void setup() {
         accountId = remote {
-            /*def account = new Account(username: 'functional', email: 'functional@test.com', password: 'abcd1234', name: 'Functional Test', addressStreet: 'test street', addressCity: 'test city', addressState: 'MN', addressZip: '12345')
-            account.save(flush: true, failOnError: true)
-            account.id*/
             Account.findByUsername('me').id
         }
         accountId2 = remote {
@@ -30,11 +27,9 @@ class AccountFunctionalSpec extends GebSpec {
         }
         accountDateCreated = remote {
             Account.findByUsername('me').dateCreated
-            //Account.findByEmail('functional@test.com').dateCreated
         }
         accountLastUpdated = remote {
             Account.findByUsername('me').lastUpdated
-            //Account.findByEmail('functional@test.com').lastUpdated
         }
     }
 
@@ -44,25 +39,6 @@ class AccountFunctionalSpec extends GebSpec {
         to LoginPage
         login('me', 'abcd1234')
         to AccountShowPage, id: accountId
-
-        /*
-        if(!AccountRole.findByAccount(account)) {
-            println('=======================')
-            println('=======================')
-            println(account)
-
-            def r = Role.findByAuthority('ROLE_USER')
-
-            println(r.authority)
-
-            new AccountRole(account: account, role: r).save(flush: true, failOnError: true)
-
-            println(AccountRole.findByAccount(account))
-            println('=======================')
-            println('=======================')
-            println(account.id)
-            println(account)
-        }*/
 
         then:
         email.text() == 'me@test.com'

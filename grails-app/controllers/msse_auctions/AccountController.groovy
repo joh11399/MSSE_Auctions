@@ -1,8 +1,6 @@
 package msse_auctions
 
 import grails.plugin.springsecurity.annotation.Secured
-import org.springframework.security.access.prepost.PostAuthorize
-import org.springframework.security.access.prepost.PreAuthorize
 
 import static org.springframework.http.HttpStatus.OK
 
@@ -19,7 +17,6 @@ class AccountController {
 
     @Secured(['ROLE_USER'])
     def show(Account accountInstance) {
-//TODO  this is a good opportunity for a service   (you have several of these)....
         def account = springSecurityService.currentUser as Account
         if(accountInstance.username!=account.username) {
             flash.message = 'Not authorized to view account ' + accountInstance.id

@@ -41,10 +41,6 @@ class HttpUtils {
 
     def doGet(String url) {
         if (!url.startsWith(RemoteControl.functionalTestBaseUrl + '/')) {
-
-            //TODO  --  adding the slash doesn't work  the url ends up being msse_auctions//[url]
-            //url = RemoteControl.functionalTestBaseUrl + '/' + url
-
             url = RemoteControl.functionalTestBaseUrl + url
         }
 
@@ -54,9 +50,6 @@ class HttpUtils {
 
     // Use this method to submit an HTML form-style data (for example from the login screen)
     def doFormPost(String path, Map formData) {
-
-        //TODO  double-check, and then remove this?  it is adding an extra slash in the URL
-        //String url = RemoteControl.functionalTestBaseUrl + '/' + path
         String url = RemoteControl.functionalTestBaseUrl + path
 
         def request = new HttpPost(url)
@@ -72,9 +65,6 @@ class HttpUtils {
 
     // Use this method to submit JSON data via a POST
     def doJsonPost(String path, Object data) {
-
-        //TODO  double-check, and then remove this?  it is adding an extra slash in the URL
-        //String url = RemoteControl.functionalTestBaseUrl + '/' + path
         String url = RemoteControl.functionalTestBaseUrl + path
 
         def request = new HttpPost(url)
@@ -86,9 +76,6 @@ class HttpUtils {
 
     // Use this method to submit JSON data via a PUT
     def doJsonPut(String path, Object data) {
-
-        //TODO  double-check, and then remove this?  it is adding an extra slash in the URL
-        //String url = RemoteControl.functionalTestBaseUrl + '/' + path
         String url = RemoteControl.functionalTestBaseUrl + path
 
         def request = new HttpPut(url)
@@ -100,25 +87,10 @@ class HttpUtils {
 
 
     // Use this method to submit JSON data via a DELETE
-
-    //TODO..  I still don't know why I can't call this method  doDelete(path)
-    //   I am getting this error if I try to call it that way...
-    //      groovy.lang.MissingMethodException: No signature of method: msse_auctions.AccountRestFunctionalSpec.doDelete() is applicable for argument types: (java.lang.String) values: [api/accounts/5]
-    //      Possible solutions: doGet(java.lang.String), collect(), doJsonDelete(java.lang.String, java.lang.Object)
     def doJsonDelete(String path, Object data) {
-
-        //TODO  double-check, and then remove this?  it is adding an extra slash in the URL
-        //String url = RemoteControl.functionalTestBaseUrl + '/' + path
         String url = RemoteControl.functionalTestBaseUrl + path
 
         def request = new HttpDelete(url)
-
-
-        //TODO..  should the request be updated before returning?
-        //def entity = new StringEntity(JsonOutput.toJson(data), 'UTF8')
-        //entity.setContentType('application/json')
-
-        //request.setEntity(entity)
 
         return performRequest(request)
     }

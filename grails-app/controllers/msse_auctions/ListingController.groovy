@@ -22,39 +22,21 @@ class ListingController {
 
         def listings
 
-
-        //TODO..  this should be moved to a service..
         if(params.completedListingsCheckbox=='on'){
             if(!params.searchDescription) {
                 //get all listings using the search text
-
-                //TODO,  use this format instead
-                //book = Book.findByTitleLikeOrReleaseDateLessThan("%Something%", someDate)
-
                 listings = Listing.findAll("from Listing as l where l.description like :description order by (l.startDate + l.days)", [description: '%'+params.searchDescription+'%'], params)
             }else {
                 //get all listings
-
-                //TODO,  use this format instead
-                //book = Book.findByTitleLikeOrReleaseDateLessThan("%Something%", someDate)
-
                 listings = Listing.findAll("from Listing as l order by (l.startDate + l.days)", [max: params.max, offset: params.offset])
             }
         }
         else {
             if (params.searchDescription != '') {
                 //get open listings using the search text
-
-                //TODO,  use this format instead
-                //book = Book.findByTitleLikeOrReleaseDateLessThan("%Something%", someDate)
-
                 listings = Listing.findAll("from Listing as l where (l.startDate + l.days) >= :today and l.description like :description order by (l.startDate + l.days)", [today: new Date(), description: '%'+params.searchDescription+'%'], params)
             } else {
                 //get open listings
-
-                //TODO,  use this format instead
-                //book = Book.findByTitleLikeOrReleaseDateLessThan("%Something%", someDate)
-
                 listings = Listing.findAll("from Listing as l where (l.startDate + l.days) >= ? order by (l.startDate + l.days)", [new Date()], params)
             }
         }

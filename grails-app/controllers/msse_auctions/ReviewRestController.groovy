@@ -31,20 +31,6 @@ class ReviewRestController  {
         if (!reviewInstance) {
             response.status = 404;
             render "Not found"
-
-            /*
-
-            TODO..  is this access restriction necessary?
-            index is not protected.  should this be?
-            if not, you don't need ROLE_USER or an account variable here
-
-
-            //only the reviewer and reviewee are authorized to access reviews
-        } else if (reviewInstance.reviewer.username != account.username &&
-                   reviewInstance.reviewee.username != account.username) {
-            response.status = 401;
-            render "Not authorized to view Review ID ${reviewInstance.id}"
-            */
         } else {
             respond reviewInstance
         }

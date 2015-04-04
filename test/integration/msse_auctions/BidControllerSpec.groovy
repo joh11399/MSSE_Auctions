@@ -1,13 +1,16 @@
 package msse_auctions
 
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import spock.lang.Ignore
 import spock.lang.Specification
 
 @Ignore
-//@Mock(Bid)
+//@Mock([Account, Bid])
+@TestFor(BidController)
 class BidControllerSpec extends Specification {
 
-    def controller = new BidController()
+    //def controller = new BidController()
 
     void setupSpec() {
         new Account(username: 'bidControllerTest', email: 'bidControllerTest@email.com', password: 'abc12345', name: 'Test Name', addressStreet: 'd', addressCity: 'd', addressState: 'MN', addressZip: 'd').save(failOnError: true)
@@ -34,7 +37,7 @@ class BidControllerSpec extends Specification {
         cleanup:
         Bid.findByListing(newListingBid).delete()
     }
-/*
+
     def "successfully create a new bid where the amount is exactly 0.50 higher than the startingPrice"() {
         given:
         def l1 = Listing.findByName('open listing BidController test')
@@ -138,5 +141,4 @@ class BidControllerSpec extends Specification {
         float amount2000 = 20.00
         Bid.findByListingAndAmount(l1, amount2000).delete()
     }
-*/
 }

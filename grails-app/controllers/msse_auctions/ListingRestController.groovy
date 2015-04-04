@@ -21,19 +21,11 @@ class ListingRestController {
 
         def listings
 
-
-        //TODO..  this should be moved to a service..
         if(description&& !includeCompleted) {
             listings = Listing.findAll("from Listing as l where (l.startDate + l.days) >= :today and l.description like :description order by (l.startDate + l.days)", [today: new Date(), description: '%'+description+'%'], params)
-
-            //TODO..  can you use the .where notation for this query?
-            //listings = Listing.where { description =~ "%${description.toLowerCase()}%" && (startDate + days) >= new Date() }.list(max: max)
         }
         else if(!description && !includeCompleted) {
             listings = Listing.findAll("from Listing as l where (l.startDate + l.days) >= :today order by (l.startDate + l.days)", [today: new Date()], params)
-
-            //TODO..  can you use the .where notation for this query?
-            //listings = Listing.where {  (startDate + days) >= new Date() }.list(max: max)
         }
         else if(description && includeCompleted) {
             listings = Listing.where { description =~ "%${description.toLowerCase()}%" }.list(max: max)

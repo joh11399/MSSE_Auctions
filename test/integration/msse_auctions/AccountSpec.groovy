@@ -37,39 +37,6 @@ class AccountSpec extends Specification {
         'Dan'    | 'dan'         | 'danjohnson1' | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
     }
 
-
-
-
-    /*
-    TODO  come back to this if you have time..
-
-    @Unroll
-    void "unsuccessfully create an account:  invalid password"() {
-        when:
-        new Account(username: username, email: email, password: password, name: name, addressStreet: addressStreet, addressCity: addressCity, addressState: addressState, addressZip: addressZip).save()
-
-        then:
-        Account.count() == originalAccountSize
-
-        def ex = thrown(java.lang.IllegalArgumentException)
-        ex.message == 'Invalid password complexity'
-
-        where:
-        username | email         | password      | name          | addressStreet | addressCity | addressState | addressZip
-        'Dan'    | 'dan@dan.com' | 'danjohnson'  | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-        'Dan'    | 'dan@dan.com' | '12345678'    | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-        'Dan'    | 'dan@dan.com' | 'abc123'      | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-        'Dan'    | 'dan@dan.com' | 'abc'         | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-        'Dan'    | 'dan@dan.com' | '123'         | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-
-        'Dan'    | 'dan@dan.com' | '1tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'
-        'Dan'    | 'dan@dan.com' | 'a1234567891011121314151617181920'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321'
-
-        'Dan'    | 'dan@dan.com' | '12345678'   | 'Dan Johnson' | '123'         | '456'       | 'MN'         | '54321'
-    }
-    */
-
-
     void "successfully create an account"() {
         when:
         new Account(username: 'danAccount', email: 'dan@account.com', password: 'danjohnson1',  name: 'Dan Johnson', addressStreet: '123', addressCity: '456', addressState: 'MN', addressZip: '54321').save(failOnError: true)

@@ -3,7 +3,6 @@ package msse_auctions.pages
 import geb.Page
 
 class ListingIndexPage extends Page {
-
     static url = 'listing/index'
 
     static content = {
@@ -11,19 +10,10 @@ class ListingIndexPage extends Page {
     }
 }
 class ListingCreatePage extends Page {
-
     static url = 'listing/create'
 
     static content = {
         seller { $("#seller") }
         sellerLbl { $("#sellerLbl") }
-        /*
-        description { $("#description") }
-        startDate { $("#startDate") }
-        days { $("#days") }
-        startingPrice { $("#startingPrice") }
-        dateCreated { $("#dateCreated") }
-        lastUpdated { $("#lastUpdated") }
-         */
     }
 }

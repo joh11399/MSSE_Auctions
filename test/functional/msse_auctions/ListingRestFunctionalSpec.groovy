@@ -145,9 +145,9 @@ class ListingRestFunctionalSpec extends Specification {
         resp.status == respStatus
 
         where:
-        name       | description       | startDate                                     | days | startingPrice | deliverOption | sellerId  | respStatus
-        //'testName' | 'testDescription' | new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'") | 'fail'    | 10.00         | 'US Only'     | accountTest1.id | 400
+        name       | description       | startDate                                     | days | startingPrice | deliverOption | sellerId        | respStatus
         'testName' | 'testDescription' | new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'") | 10   | 10.00         | 'US Only'     | accountTest2.id | 401
+        //I intended to have more tests than this (hence the data driven formatting)
     }
 
 

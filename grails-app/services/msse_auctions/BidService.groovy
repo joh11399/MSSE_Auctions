@@ -2,10 +2,6 @@ package msse_auctions
 
 class BidService {
 
-
-
-
-
     def setListingHighestBid(Listing listing){
 
         //get all bids for this listing
@@ -25,16 +21,6 @@ class BidService {
     }
 
     def getHighestBid(Listing listing){
-
-        /*
-
-        TODO  you need to rewrite this.....
-
-        Bid.get {
-            listing == listing &&  max(amount)
-        } as Bid
-        */
-
         def bids = Bid.findAll("from Bid as b where b.listing.id=:listingId order by dateCreated desc", [listingId: listing?.id])
 
         def j = 0;
@@ -48,31 +34,6 @@ class BidService {
 
         returnBid
     }
-
-    /*
-    TODO   finish these services and move the methods off of the BidController
-
-    def getHighestBid(){
-
-//TODO...
-    //remember that a bidder can change his or her bid to be lower than the highest
-    // however..  that doesn't change the date created.  hmmmmmm...
-
-        return Bid.
-    }
-
-    def isValidBid(Bid bidInstance){
-        def isValid = false
-
-        def highestBid = getHighestBid()
-        float highestBidAmount = highestBid.amount
-        if( bidInstance.amount > (highestBidAmount + 0.25) ){
-
-        }
-
-        return isValid
-    }
-     */
 
 
     def getHighestBidAmount(Listing listing){

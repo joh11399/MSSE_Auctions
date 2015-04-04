@@ -169,37 +169,6 @@ class AccountRestFunctionalSpec extends Specification {
 
         //attempt to change email:'me@test.com' to a non-unique email
         accountTest1.id as String | 'me' | 'test@test.com' | 'danjohnson1' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
-
-        /*
-        TODO....  remove these if you need to..
-
-        //bad passwords
-        // I couldn't figure out how to catch the Invalid password complexity exception.  my only choice was to anticipate the 500 error
-        accountTest1.id as String | 'me' | 'me@test.com' | 'danjohnson' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '12345678'   | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-
-        accountTest1.id as String | 'me' | 'me@test.com' | 'tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '1234567891011121314151617181920' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-
-        accountTest1.id as String | 'me' | 'me@test.com' | 'abc123'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | 'abc'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '123'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 500 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | ''           | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
-
-
-original...
-
-        accountTest1.id as String | 'me' | 'me@test.com' | 'danjohnson' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '12345678'   | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-
-        accountTest1.id as String | 'me' | 'me@test.com' | 'tooLongTooLongTooLongTooLongTooLong' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '1234567891011121314151617181920' | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-
-        accountTest1.id as String | 'me' | 'me@test.com' | 'abc123'     | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | 'abc'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | '123'        | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Invalid password.  Passwords must be between 8-16 characters, containing a number and a letter.'
-        accountTest1.id as String | 'me' | 'me@test.com' | ''           | 'Dan Johnson' | '123' | '456' | 'MN' | '54321' | 400 | 'Bad request.  The parameters provided caused an error: '
-*/
     }
 
     def 'successfully update an account'() {
@@ -246,8 +215,8 @@ original...
     def 'delete an account'() {
         when:
         //find the account ID from the previous test.  Use that account for this test
-         def deleteAccountId = remote {
-             Account.findByUsername('testAccount').id
+        def deleteAccountId = remote {
+            Account.findByUsername('testAccount').id
         }
         def resp = doJsonDelete("api/accounts/" + deleteAccountId, [])
 

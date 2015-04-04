@@ -24,9 +24,6 @@ class ReviewRestFunctionalSpec extends Specification {
     }
 
     def 'returns review list'() {
-        //given:
-        //setupLogIn(accountTest1.username, accountTest1.password)
-
         when:
         def resp = doGet('api/reviews')
 
@@ -48,7 +45,6 @@ class ReviewRestFunctionalSpec extends Specification {
     }
 
 
-
     def 'unsuccessfully create a review - not logged in'() {
         given:
         setupLogOut('me')
@@ -68,8 +64,6 @@ class ReviewRestFunctionalSpec extends Specification {
 
         when:
         def resp = doJsonPost('api/reviews', [listing: [id: listingId], reviewer: [id: reviewerId], reviewee: [id: revieweeId], reviewOf: reviewOf, rating: rating, thumbs: thumbs, description: description])
-
-        //new Review(listing: test_l1, reviewer: test_a0, reviewee: test_a1, reviewOf: 'Buyer', rating: 1, thumbs: 'down', description: 'he never paid!!').save(flush: true, failOnError: true)
 
         then:
         resp.status == respStatus
@@ -105,8 +99,6 @@ class ReviewRestFunctionalSpec extends Specification {
 
         when:
         def resp = doJsonPost('api/reviews', [listing: [id: listingId], reviewer: [id: reviewerId], reviewee: [id: revieweeId], reviewOf: reviewOf, rating: rating, thumbs: thumbs, description: description])
-
-        //new Review(listing: test_l1, reviewer: test_a0, reviewee: test_a1, reviewOf: 'Buyer', rating: 1, thumbs: 'down', description: 'he never paid!!').save(flush: true, failOnError: true)
 
         then:
         resp.status == respStatus
@@ -147,9 +139,6 @@ class ReviewRestFunctionalSpec extends Specification {
     }
 
 
-
-
-
     def 'unsuccessfully update a review'() {
         given:
         def reviewTestId = remote { Review.findByReviewerAndDescription(Account.findByUsername('me'), 'ok.').id } as Integer
@@ -161,20 +150,6 @@ class ReviewRestFunctionalSpec extends Specification {
         then:
         resp.status == 400
         resp.data == "Sorry.  You need to be either the seller or the winner of the listing to update this review."
-
-        /*
-        //TODO  you can't assert that the values haven't changed, because you actually ARE changing the values
-        //        make sure the update() methods only validate the data,  not update and THEN validate (like it is now)
-
-            when:
-            resp = doGet("api/bids/${bidId}" as String)
-
-            then:
-            resp.status == 200
-            resp.contentType == 'application/json'
-            resp.data.bidder.id == bidAccountId
-            resp.data.amount == 15.00
-        */
     }
 
     def 'successfully update a review'() {
@@ -202,8 +177,6 @@ class ReviewRestFunctionalSpec extends Specification {
         resp.data.rating == 5
         resp.data.description == 'great job!!'
     }
-
-
 
 
 

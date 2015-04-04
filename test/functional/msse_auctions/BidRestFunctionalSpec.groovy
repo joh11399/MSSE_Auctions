@@ -127,77 +127,6 @@ def setupSpec() {
     }
 
 
-    /*
-def 'unsuccessfully update a bid'() {
-
-    //the logged in user is 'test' and this is trying to change the bidder.id to the account 'me'
-    //  also, the attempt is to increase the bid amount by $100.  The dollar increase doesn't matter, but the unauthorized bidder will cause the error
-
-    given:
-    setupLogIn('test', 'abcd1234')
-    //TODO,  logging in again is causing failures in the rest of the functional tests
-
-    when:
-    def bidAccountId = accountId2
-    def resp = doGet("api/bids/${bidId}" as String)
-
-    then:
-    resp.status == 200
-    resp.contentType == 'application/json'
-    resp.data.bidder.id == bidAccountId
-    resp.data.amount == 15.00
-
-
-    when:
-    resp = doJsonPut('api/bids/' + bidId, [listing: [id: listingOpenId], bidder: [id: accountId], amount: 115.00])
-
-    then:
-    resp.status == 401
-
-    TODO  you can't assert that the values haven't changed, because you actually ARE changing the values
-            make sure the update() methods only validate the data,  not update and THEN validate (like it is now)
-
-    when:
-    resp = doGet("api/bids/${bidId}" as String)
-
-    then:
-    resp.status == 200
-    resp.contentType == 'application/json'
-    resp.data.bidder.id == bidAccountId
-    resp.data.amount == 15.00
-
-}
-    */
-
-
-    /*
-
-TODO  remove this?   having trouble, and it's not necessary
-
-*******************************************************************
-************    YOU'RE NOT ADDING THE ID TO THE URL   *************
-*******************************************************************
-
-def 'successfully update a bid'() {
-when:
-def bidAccountId = accountId2
-setupLogIn('test', 'abcd1234')
-def resp = doJsonPut('api/bids/' + bidId, [listing: [id: listingOpenId], bidder: [id: bidAccountId], amount: 16.00])
-
-then:
-resp.status == 200
-resp.data.id
-
-when:
-resp = doGet("api/bids/${bidId}" as String)
-
-then:
-resp.status == 200
-resp.contentType == 'application/json'
-resp.data.amount == 11.00
-}*/
-
-
     def 'unsuccessfully delete a bid'() {
         given:
         setupLogIn(accountTest1.username, accountTest1.password)
@@ -215,27 +144,27 @@ resp.data.amount == 11.00
         ""        |   403
     }
 
-def 'delete a bid'() {
-    given:
-    setupLogIn(accountTest1.username, accountTest1.password)
+    def 'delete a bid'() {
+        given:
+        setupLogIn(accountTest1.username, accountTest1.password)
 
-    when:
-    //find the bid ID from a previous test.  Use that bid for this test
-    def deleteBidId = remote {
-        Bid.findByListingAndBidder( Listing.findByName('testOpen'), Account.findByUsername('me') ).id
-    } as Integer
-    def resp = doJsonDelete("api/bids/${deleteBidId}", [])
+        when:
+        //find the bid ID from a previous test.  Use that bid for this test
+        def deleteBidId = remote {
+            Bid.findByListingAndBidder(Listing.findByName('testOpen'), Account.findByUsername('me')).id
+        } as Integer
+        def resp = doJsonDelete("api/bids/${deleteBidId}", [])
 
-    then:
-    resp.status == 200
-    resp.data == "Success!  Bid ID ${deleteBidId} has been deleted."
+        then:
+        resp.status == 200
+        resp.data == "Success!  Bid ID ${deleteBidId} has been deleted."
 
-    when:
-    resp = doGet("api/bids/${deleteBidId}" as String)
+        when:
+        resp = doGet("api/bids/${deleteBidId}" as String)
 
-    then:
-    resp.status == 404
-    resp.data == "Not found"
-}
+        then:
+        resp.status == 404
+        resp.data == "Not found"
+    }
 
 }

@@ -71,7 +71,6 @@ class FunctionalTestUtils {
     def cleanupSampleData() {
         /*
         def remote = new RemoteControl()
-
         remote {
             def review = Review.findById(reviewId)
             if(review){
