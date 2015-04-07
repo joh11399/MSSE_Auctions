@@ -28,7 +28,7 @@ def setupSpec() {
         setupLogIn('me', 'abcd1234')
 
         when:
-        def resp = doGet("api/bids")
+        def resp = utils.doGet("api/bids")
 
         then:
         resp.status == 200
