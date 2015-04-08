@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MSSE_Auctions.iml" filepath="$PROJECT_DIR$/MSSE_Auctions.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MSSE_Auctions-grailsPlugins.iml" filepath="$PROJECT_DIR$/MSSE_Auctions-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/johnson.iml" filepath="$PROJECT_DIR$/johnson.iml" />
+      <module fileurl="file://$PROJECT_DIR$/johnson-grailsPlugins.iml" filepath="$PROJECT_DIR$/johnson-grailsPlugins.iml" />
     </modules>
   </component>
 </project>

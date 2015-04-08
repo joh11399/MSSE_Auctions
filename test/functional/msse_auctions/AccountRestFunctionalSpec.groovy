@@ -30,7 +30,7 @@ class AccountRestFunctionalSpec extends Specification {
         setupLogIn('me', 'abcd1234')
 
         when:
-        def resp = doGet("api/accounts")
+        def resp = utils.doGet("api/accounts")
 
         then:
         resp.status == 200
